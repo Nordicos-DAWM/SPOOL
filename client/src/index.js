@@ -2,10 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-
+import {MyFirstComponent} from './pages/index';
+var obj = {name:'camilo'}
 ReactDOM.render(
   <React.StrictMode>
-    <h3>Proyecto DAWM</h3>
+    <MyFirstComponent {...obj} />
   </React.StrictMode>,
   document.getElementById('root')
 );
