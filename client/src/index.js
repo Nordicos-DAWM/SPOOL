@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-
-import {NavBarSPOOL} from './components'
-
+import {CardIcon, Hero, Banner, NavBarSPOOL} from './components';
 ReactDOM.render(
   <React.StrictMode>
-    <h3>Proyecto DAWM</h3>
-
+  <NavBarSPOOL/>
+      <Hero/>
+    <CardIcon/>
+     <Banner/>
   </React.StrictMode>,
   document.getElementById('root')
 );
