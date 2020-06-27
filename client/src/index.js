@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import CardIcon from './components/CardIcon/CardIcon';
+import {CardIcon} from './components';
 
 ReactDOM.render(
   <React.StrictMode>

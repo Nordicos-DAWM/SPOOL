@@ -5,7 +5,7 @@ import { Container, Row, Col, Card, CardFooter } from "shards-react";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './CardIcon.css'
 
-export default function CardIcon() {
+function CardIcon() {
   return (
     <Container>
       <Row>
@@ -38,3 +38,5 @@ export default function CardIcon() {
     </Container>
   );
 }
+
+export {CardIcon};
