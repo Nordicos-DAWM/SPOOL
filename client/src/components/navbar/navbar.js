@@ -1,6 +1,6 @@
 import React from "react";
 
-import logo from "../assets/Brand-01.png";
+import logo from "../../assets/Brand-01.png";
 function NavBarSPOOL(props) {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
