@@ -1,13 +1,12 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "shards-ui/dist/css/shards.min.css";
 import { Container, Row, Col, Card, CardFooter } from "shards-react";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './CardIcon.css'
 
 function CardIcon() {
   return (
-    <Container>
+    <section className="section">
+      <Container>
       <Row>
         <Col>
         <h3>¿Qué puedes hacer en Spool?</h3>
@@ -36,6 +35,7 @@ function CardIcon() {
 
       </Row>
     </Container>
+    </section>
   );
 }
 
