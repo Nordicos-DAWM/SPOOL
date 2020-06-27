@@ -12,20 +12,20 @@ function NavBarSPOOL(props) {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto">
                 <li className="nav-item active">
-                    <a className="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a className="nav-link" href="">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="#">Projects</a>
+                    <a className="nav-link" href="">Projects</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="#">How it works</a>
+                    <a className="nav-link" href="">How it works</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="#">Help</a>
+                    <a className="nav-link" href="">Help</a>
                 </li>
 
                 </ul>
-                    <a className="nav-link" href="#">Login</a>
+                    <a className="nav-link" href="">Login</a>
             </div>
         </nav>
     );
@@ -33,4 +33,4 @@ function NavBarSPOOL(props) {
 
 
 
-export default NavBarSPOOL;
+export { NavBarSPOOL };
