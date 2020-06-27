@@ -3,13 +3,15 @@ import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
+import {CardIcon} from './components';
 import {MyFirstComponent} from './pages/index';
 
 import {Hero} from './components';
 var obj = {name:'camilo'}
 ReactDOM.render(
   <React.StrictMode>
-    <Hero/>
+      <Hero/>
+    <CardIcon/>
   </React.StrictMode>,
   document.getElementById('root')
 );
