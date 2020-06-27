@@ -5,9 +5,10 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import "shards-ui/dist/css/shards.min.css";
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import {CardIcon, Hero, Banner} from './components';
+import {CardIcon, Hero, Banner, NavBarSPOOL} from './components';
 ReactDOM.render(
   <React.StrictMode>
+  <NavBarSPOOL/>
       <Hero/>
     <CardIcon/>
      <Banner/>
