@@ -2,10 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
+import CardIcon from './components/CardIcon/CardIcon';
 
 ReactDOM.render(
   <React.StrictMode>
-    <h3>Proyecto DAWM</h3>
+    <CardIcon/>
   </React.StrictMode>,
   document.getElementById('root')
 );
