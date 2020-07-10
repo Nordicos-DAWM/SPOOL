@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import {Banner} from './components';
-
+import {CardIcon, Hero, Banner} from './components';
 ReactDOM.render(
   <React.StrictMode>
-    <Banner></Banner>
+      <Hero/>
+    <CardIcon/>
+     <Banner/>
   </React.StrictMode>,
   document.getElementById('root')
 );
