@@ -1,5 +1,6 @@
 import React from "react";
 import './style.css'
+import {Application} from "../../components"
 
 let description = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita ab fuga natus laborum, nihil earum nostrum porro, magnam laudantium eaque, eos quisquam! Molestiae consequatur assumenda suscipit ipsa blanditiis corporis eveniet.";
 let proposer = "Taika Waititi";
@@ -98,17 +99,14 @@ function ProjectInfo(props) {
             </div>
         </div>
 
-        <section className="container text-center application_section bg-white">
-            <span className="lead text-muted">
-                ¿Interesado en participar?
-            </span>
-            <button type="button" className="btn btn-sm btn-outline-secondary">Aplicar</button>
+        <section className="container application_section bg-white text-center">
+            <Application />
         </section>
+        
     </div>
     
     );
   }
-
 
 
 export { ProjectInfo };

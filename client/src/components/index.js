@@ -4,3 +4,4 @@ export * from './CardIcon/CardIcon';
 export * from './Hero/Hero';
 export * from './ProjectInfo/ProjectInfo';
 export * from './Footer/Footer';
+export * from './Application/Application'
