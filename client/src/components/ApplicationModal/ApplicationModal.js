@@ -22,9 +22,9 @@ const datos = {
 
             <Modal.Body>
                 <h5>Motivo</h5>
-                <p>{datos.reason}</p>
+                <p className="text-justify">{datos.reason}</p>
                 <h5>Propuesta</h5>
-                <p>{datos.proposal}</p>
+                <p className="text-justify">{datos.proposal}</p>
                 <h5>¿Es parte de una materia?</h5>
                 {datos.isSubject ? <p>Si</p> :<p>No</p> }
                 <h5>Proyecto</h5>
