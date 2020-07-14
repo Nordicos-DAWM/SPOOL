@@ -4,3 +4,5 @@ export * from './CardIcon/CardIcon';
 export * from './Hero/Hero';
 export * from './FacultyGraph/FacultyGraph';
 export * from './MatterGraph/MatterGraph';
+export * from './ApplicationCard/ApplicationCard';
+export * from './ApplicationModal/ApplicationModal';

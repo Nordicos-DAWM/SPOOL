@@ -5,7 +5,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 
 import { createBrowserHistory } from 'history';
 
-import {LoginHome,Home,RegisterHome,RegisterStudent,RegisterClient,Login} from '../pages';
+import {LoginHome,Home,RegisterHome,RegisterStudent,RegisterClient,Login,ApplicationStudents} from '../pages';
 
 const MainRouter = () =>{
     return(
@@ -17,6 +17,7 @@ const MainRouter = () =>{
                 <Route exact path="/login" component={Login}/>
                 <Route exact path="/register/student" component={RegisterStudent}/>
                 <Route exact path="/register/client" component={RegisterClient}/>
+                <Route exact path="/applications" component={ApplicationStudents}/>
             </Switch>
         </Router>
     )
