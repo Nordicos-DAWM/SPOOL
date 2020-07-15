@@ -5,22 +5,39 @@ import { NavBarSPOOL, ApplicationCard } from '../../components';
 const ApplicationStudents = () =>{
 
     const datos = [
-        {title:"Titulo proyecto",
-        description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-        ,id:1    
-    },
-        {title:"Titulo proyecto 2",
-        description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-        ,id:2    
-    },
-        {title:"Titulo proyecto 3",
-        description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-        },
-        {title:"Titulo proyecto 4",
-        description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-        ,id:3    
-    }
 
+        {id:'1',
+        title: "Hydroplant",
+        state:"Activo",
+        main_category:"Otra",
+        categories:["Energía",""],
+        state:"Aprobado",
+        description:"Tecnología de punta para el control de cultivos hidropónicos, considerando un sistema para el control del aire que requiere la planta y otro para entregar el agua y nutrientes. El sistema incluye electrobombas diseñadas por la propia empresa y además, todo puede ser monitoreado desde el celular."},
+        
+        {id:'2',
+        title: "Hydroplant",
+        state:"Activo",
+        main_category:"Otra",
+        categories:["Energía",""],
+        state:"Rechazado",
+        description:"Tecnología de punta para el control de cultivos hidropónicos, considerando un sistema para el control del aire que requiere la planta y otro para entregar el agua y nutrientes. El sistema incluye electrobombas diseñadas por la propia empresa y además, todo puede ser monitoreado desde el celular."},
+        
+        {id:'3',
+        title: "Hydroplant",
+        state:"Activo",
+        main_category:"Otra",
+        state:"Revision",
+        categories:["Energía",""],
+        description:"Tecnología de punta para el control de cultivos hidropónicos, considerando un sistema para el control del aire que requiere la planta y otro para entregar el agua y nutrientes. El sistema incluye electrobombas diseñadas por la propia empresa y además, todo puede ser monitoreado desde el celular."},
+        
+        {id:'4',
+        title: "Hydroplant",
+        state:"Activo",
+        main_category:"Otra",
+        state:"Aprobado",
+        categories:["Energía",""],
+        description:"Tecnología de punta para el control de cultivos hidropónicos, considerando un sistema para el control del aire que requiere la planta y otro para entregar el agua y nutrientes. El sistema incluye electrobombas diseñadas por la propia empresa y además, todo puede ser monitoreado desde el celular."}
+    
     ]
     return(
 

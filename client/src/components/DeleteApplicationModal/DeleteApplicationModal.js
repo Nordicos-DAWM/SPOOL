@@ -14,7 +14,7 @@ function DeleteApplicationModal (props) {
             </Modal.Header>
 
             <Modal.Body>
-                <h4>¿Estas seguro de que deseas eliminar esta Aplicación?</h4>
+                <h5>¿Estas seguro de que deseas eliminar esta Aplicación?</h5>
             </Modal.Body>
 
             <Modal.Footer>

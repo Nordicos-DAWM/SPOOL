@@ -3,24 +3,35 @@ import Modal from 'react-bootstrap/Modal';
 
 function ApplicationModal (props){
 const datos = {
-    reason:" tLorem Ipsumm is sim is sim is sim is sim is sim is sim is sim is sim is sim is sim is sim is sim is sim is sim is si is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been tLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been tLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been tLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been tLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been tLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been tLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been tLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been tLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been tLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been tLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ",
-    proposal:"Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+    reason:'Somos un grupo de estudiantes este semestre estará aprendiendo "Desarrollo de Aplicacinoes web y móviles" que tiene especial interés en el tema ya que contamos con conocimientos sobre agricultura y biología.',
+    proposal:"Desarrollo de una aplicació movil que permita monitorear los cúltivos hidropónicos, contará con conexión a cada una de las electrobombas de modo además se llevar control sobre los cultivos se pude también tenerlo sobre las electrobombas para darles mantimiento a tiempo y estar al tanto si una de ellas por algún motivo no está en funcionamineto",
     isSubject:true,
+    state:"Revision",
     project:{
         link:"/#",
-        title:"Inserte título del project aquí"
+        title:"Hydroplant"
     }
 }
-
+    function colorText(){
+        if(props.state==="Aprobado"){
+            return "text-success"
+        }else if(props.state==="Rechazado"){
+            return "text-danger"
+        }else{
+            return "text-warning"
+        }
+    }
 
     return(
   
         <Modal {...props}>
-            <Modal.Header closeButton>
-                <Modal.Title>Aplicación</Modal.Title>
+            <Modal.Header closeButton className="container"> 
+                <Modal.Title>Aplicación</Modal.Title>  
             </Modal.Header>
 
             <Modal.Body>
+                <h5>Estado</h5>
+                <p className={colorText()+" font-weight-bold"}>{props.state}</p>
                 <h5>Motivo</h5>
                 <p className="text-justify">{datos.reason}</p>
                 <h5>Propuesta</h5>
