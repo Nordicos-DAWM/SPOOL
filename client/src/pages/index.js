@@ -5,3 +5,8 @@ export * from './Register/RegisterHome';
 export * from './Register/RegisterStudent';
 export * from './Register/RegisterClient';
 export * from './ApplicationStudent/ApplicationStudents';
+export * from "./HowWorks/HowWorks" ;
+export * from './CreateProject/CreateProject';
+export * from './DeveloperTeam/DeveloperTeam';
+export * from './PageNews/PageNews';
+export * from './ChartsPage/ChartsPage';

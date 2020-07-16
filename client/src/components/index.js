@@ -6,3 +6,6 @@ export * from './FacultyGraph/FacultyGraph';
 export * from './MatterGraph/MatterGraph';
 export * from './ApplicationCard/ApplicationCard';
 export * from './ApplicationModal/ApplicationModal';
+export * from './Steeper/Steeper';
+export * from './CategoriesPlot/CategoriesPlot';
+export * from './SkillsPlot/SkillsPlot';
