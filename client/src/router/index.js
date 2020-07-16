@@ -2,17 +2,23 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import {Home,HowWorks,CreateProject,DeveloperTeam,PageNews,ChartsPage} from '../pages';
+import {Home,HowWorks,CreateProject,DeveloperTeam,PageNews,ChartsPage,LoginHome,RegisterHome,RegisterStudent,RegisterClient,Login,ApplicationStudents} from '../pages';
 
 const MainRouter = () =>{
     return(
         <Router>
             <Switch>
-                <Route path="/como-empezar" component={HowWorks}/>
-                <Route path="/work" component={CreateProject}/>
+                <Route path="/how-start" component={HowWorks}/>
+                <Route path="/create-project" component={CreateProject}/>
                 <Route path="/our-team" component={DeveloperTeam}/>
                 <Route path="/news" component={PageNews}/>
                 <Route path="/charts" component={ChartsPage}/>
+                <Route path="/applications" component={ApplicationStudents}/>
+                <Route path="/register/student" component={RegisterStudent}/>
+                <Route path="/register/client" component={RegisterClient}/>
+                <Route path="/register" component={RegisterHome}/>
+                <Route path="/login/home" component={LoginHome}/>
+                <Route path="/login" component={Login}/>
                 <Route path="/" component={Home}/>
             </Switch>
         </Router>
