@@ -1,6 +1,6 @@
 import React from "react";
 import './style.css'
-import {Application} from "../../components"
+
 
 
 
@@ -11,11 +11,11 @@ let project = {
     maxParticipants : 0,
     mainCategory: "Desarrollo web",
     state : "Activo",
-    name : "Título del proyectooo",
+    name : "Ejemplo de un título de proyectooo",
     color : "5ED46A"
 }
 
-class ProjectInfo extends React.Component{
+class ProjectInfoEditable extends React.Component{
 
     constructor(props){
         super(props);
@@ -24,17 +24,21 @@ class ProjectInfo extends React.Component{
 
     render() {
 
-
-        return (
-        <div className="container-fluid">
-            <div className=" jumbotron p-4 p-md-5 bg-dark text-white title">
-                <div className="col-md-9 px-0">
-                <h1 className="text-white display-5 ">{project.name}</h1>
-                </div>
-            </div>
-
+        return (<>
+            <div>
             <div className="container info">
+                <div className="row bg-white row_info"> 
+                    <div className="col-md-12 col-lg-12 col-sm-12 ">
+                        <span class="d-block text-right ">
+                            <a href="#">Editar</a>
+                        </span>
+                        <p className="p_sm">Título</p>
+                        <h5 >{ project.name }</h5>
+
+                    </div>
+                </div>
                 <div className="row bg-white row_info">
+                    
                             <div className="col-md-4 col-lg-5 col-sm-12 ">
                                 <p className="p_sm">Propuesto por</p>
                                 <h6>{ project.proposer }</h6>
@@ -105,15 +109,12 @@ class ProjectInfo extends React.Component{
                 </div>
             </div>
 
-            <section className="container application_section bg-white text-center">
-                <Application />
-            </section>
-            
-        </div>
-    
+
+            </div>
+            </>
         );
         }
   }
 
 
-export { ProjectInfo };
+export { ProjectInfoEditable };

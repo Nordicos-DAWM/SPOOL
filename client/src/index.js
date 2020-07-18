@@ -6,20 +6,15 @@ import "shards-ui/dist/css/shards.min.css";
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import {CardIcon, Hero, Banner, NavBarSPOOL, ProjectInfo, Footer} from './components';
-import {Project} from './pages'
+import {Project, Help} from './pages'
+
+
 import MainRouter from './router';
 
-/*
-  ReactDOM.render(
-  <React.StrictMode>
-    <MainRouter/>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-*/
+
 ReactDOM.render(
   <React.StrictMode>
-    <Project/>
+    <MainRouter/>
   </React.StrictMode>,
   document.getElementById('root')
 );

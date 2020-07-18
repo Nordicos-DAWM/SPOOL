@@ -16,20 +16,18 @@
       box-shadow: 0px 0px 0px 0px ; 
   }
 
-  .state{
-    margin: 0px auto;
-    margin-right: 10%;
-    margin-left: 10%;
-    height: 65%;
-    border-radius: 10px;  
-    margin-top: 5%;  
-    width: 130px;
+  #state{
+    margin-right: 5%;
+    margin-bottom: 2%;
+    font-size: medium;
+    border-radius: 6px;
+    background-color:grey;
   }
 
 
   .row_info{
-      height: 45px;
-      margin-bottom: 25px;
+
+      margin-bottom: 10px;
   }
 
   span.category{
@@ -42,8 +40,6 @@
       padding-bottom: 1% !important;
       padding-top: 4%!important;
   }
-
-
  
 .category_skills_div{
     margin-top: 30px;
