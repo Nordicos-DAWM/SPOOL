@@ -1,7 +1,9 @@
 import React from 'react';
 import '../../index.css';
-import placeholder from '../../assets/placeholder.png';
-
+import grupos from '../../assets/grupos.jpg';
+import ideas from '../../assets/ideas.jpg';
+import proyectos from '../../assets/proyectos.jpg';
+import experiencias from '../../assets/experiencias.jpg';
 function Banner(){
     return (
     <>
@@ -25,7 +27,7 @@ function Banner(){
                                         <h2 className='text-5 font-weight-400 mb-0'>Ideas</h2>
                                     </div>
                                     <div className='banner-mask'></div>
-                                    <img className='img-fluid' src={placeholder} style={{width:'410', height:'350'}} alt='banner'/>
+                                    <img className='img-fluid' src={ideas} style={{width:'410', height:'350'}} alt='banner'/>
                                 </a>
                             </div>
                         </div>
@@ -36,7 +38,7 @@ function Banner(){
                                         <h2 className='text-5 font-weight-400 mb-0'>Proyectos</h2>
                                     </div>
                                     <div className='banner-mask'></div>
-                                    <img className='img-fluid' src={placeholder} style={{width:'410', height:'350'}} alt='banner'/>
+                                    <img className='img-fluid' src={proyectos} style={{width:'410', height:'350'}} alt='banner'/>
                                 </a>
                             </div>
                         </div>
@@ -47,7 +49,7 @@ function Banner(){
                                         <h2 className='text-5 font-weight-400 mb-0'>Grupos de trabajo</h2>
                                     </div>
                                     <div className='banner-mask'></div>
-                                    <img className='img-fluid' src={placeholder} style={{width:'410', height:'350'}}alt='banner'/>
+                                    <img className='img-fluid' src={grupos} style={{width:'410', height:'350'}}alt='banner'/>
                                 </a>
                             </div>
                         </div>
@@ -58,7 +60,7 @@ function Banner(){
                                         <h2 className='text-5 font-weight-400 mb-0'>Experiencias reales</h2>
                                     </div>
                                     <div className='banner-mask'></div>
-                                    <img className='img-fluid' src={placeholder} style={{width:'410', height:'350'}} alt='banner'/>
+                                    <img className='img-fluid' src={experiencias} style={{width:'410', height:'350'}} alt='banner'/>
                                 </a>
                             </div>
                         </div>
