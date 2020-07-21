@@ -1,5 +1,5 @@
 import React from 'react';
-import {CategoriesPlot,SkillsPlot} from '../../components';
+import {CategoriesPlot,SkillsPlot,FacultyGraph,MatterGraph} from '../../components';
 const ChartsPage = () =>{
     return(
         <>
@@ -34,14 +34,14 @@ const ChartsPage = () =>{
                             <div className="col-12 col-md-6 mb-5">
                                 <div className="bg-white shadow-sm rounded p-4">
                                     <div className="featured-box style-4 py-2 text-left">
-                                        <CategoriesPlot/>
+                                        <MatterGraph/>
                                     </div>
                                 </div>
                             </div>
                             <div className="col-12 col-md-6 mb-5">
                                 <div className="bg-white shadow-sm rounded p-4">
                                     <div className="featured-box style-4 py-2 text-left">
-                                        <CategoriesPlot/>
+                                        <FacultyGraph/>
                                     </div>
                                 </div>
                             </div>
