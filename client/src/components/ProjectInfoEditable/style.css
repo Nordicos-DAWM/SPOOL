@@ -1,0 +1,28 @@
+textarea{
+  font-size:small !important;
+
+}
+input{
+  font-size:small !important;
+}
+
+span a{
+  margin-left: 10px;
+}
+input{
+  height: 50%;
+}
+span.options{
+  color:black !important;
+  text-align: right;
+  margin: 0 auto;
+}
+.button {
+
+    box-shadow: 0px 0px 0px #999;
+
+}
+textarea {
+  height: 120px !important;
+
+}
