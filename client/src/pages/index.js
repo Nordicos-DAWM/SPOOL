@@ -1,3 +1,5 @@
+export * from './Pool/Pool';
+export * from './ClientPool/ClientPool';
 export * from './Home/Home' ;
 export * from './Login/LoginHome';
 export * from './Login/Login';

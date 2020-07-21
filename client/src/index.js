@@ -9,6 +9,7 @@ import { store} from './_helpers';
 
 import * as serviceWorker from './serviceWorker';
 import MainRouter from './router';
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
