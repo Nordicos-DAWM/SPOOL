@@ -15,7 +15,7 @@ function CardIcon() {
       </Row>
       <Row>
         <Col md="6">
-          <Card className="m-2">
+          <Card className="m-2 featured-box style-5">
             <i className="fa fa-users fa-5x p-4"></i>
             
             <CardFooter className="cardFooter">
@@ -25,7 +25,7 @@ function CardIcon() {
         </Col>
 
         <Col md="6">
-          <Card className="m-2">
+          <Card className="m-2 featured-box style-5">
             <i className="fa fa-lightbulb fa-5x p-4"></i>
             <CardFooter className="cardFooter">
               <p>Proponer Proyectos.</p>
