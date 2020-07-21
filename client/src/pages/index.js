@@ -1,3 +1,8 @@
+export * from './Project/Project' ;
+export * from './Help/Help';
+export * from './ProjectProposer/ProjectProposer'
+export * from './Pool/Pool';
+export * from './ClientPool/ClientPool';
 export * from './Home/Home' ;
 export * from './Login/LoginHome';
 export * from './Login/Login';

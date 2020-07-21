@@ -8,7 +8,7 @@ function CardIcon() {
     <section className="section">
       <Container>
       <Row>
-        <Col>
+        <Col className="doSpool">
         <h3>¿Qué puedes hacer en Spool?</h3>
         <p>Muchas cosas wuuuuuuuuuuuu</p>
         </Col>

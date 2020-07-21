@@ -8,6 +8,11 @@ const MainRouter = () =>{
     return(
         <Router>
             <Switch>
+                <Route exact path="/project" component={Project}/>
+                <Route exact path="/help" component={Help}/>
+                <Route exact path="/proposer/project" component={ProjectProposer}/>
+                <Route exact path="/pool" component={Pool}/>
+                <Route exact path="/clientPool" component={ClientPool}/>
                 <Route path="/how-start" component={HowWorks}/>
                 <Route path="/create-project" component={CreateProject}/>
                 <Route path="/our-team" component={DeveloperTeam}/>
@@ -24,4 +29,5 @@ const MainRouter = () =>{
         </Router>
     )
 }
+
 export default MainRouter;

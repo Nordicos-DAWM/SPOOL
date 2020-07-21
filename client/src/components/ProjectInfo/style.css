@@ -1,0 +1,59 @@
+
+
+
+  p.p_sm{
+      margin:auto;
+      font-size: x-small;
+  }
+  h6{
+      margin-left: 5%;
+      margin-top:auto;
+      margin-left: auto;
+  }
+  .card{
+      margin:1%;
+      padding-bottom: 0%;
+      box-shadow: 0px 0px 0px 0px ; 
+  }
+
+  #state{
+    margin-right: 5%;
+    margin-bottom: 2%;
+    font-size: medium;
+    border-radius: 6px;
+    background-color:grey;
+  }
+
+
+  .row_info{
+
+      margin-bottom: 10px;
+  }
+
+  span.category{
+    margin-right: 5%;
+    margin-bottom: 2%;
+    font-size: medium;
+
+  }
+  .title{
+      padding-bottom: 1% !important;
+      padding-top: 4%!important;
+  }
+ 
+.category_skills_div{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.application_section{
+    margin-top: 0 auto;
+    margin-bottom: 0%;
+    padding-top:15px;
+    height: 60px;
+}
+.application_section span{
+    margin-right: 15px;
+}

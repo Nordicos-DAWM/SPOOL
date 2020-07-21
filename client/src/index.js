@@ -9,6 +9,7 @@ import { store} from './_helpers';
 
 import * as serviceWorker from './serviceWorker';
 import MainRouter from './router';
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
@@ -17,6 +18,7 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

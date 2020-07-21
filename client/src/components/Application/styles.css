@@ -1,0 +1,15 @@
+
+td.email{
+    width: 75% !important;
+}
+td.name{
+    width: 30% !important;
+}
+
+tr {
+    height: 10px;
+}
+
+form{
+    text-align: left !important;
+}
