@@ -5,7 +5,17 @@ export * from './Hero/Hero';
 export * from './ProjectInfo/ProjectInfo';
 export * from './Footer/Footer';
 export * from './Application/Application'
-
 export * from './ContactUs/ContactUs'
 export * from './ProjectInfoEditable/ProjectInfoEditable'
 export * from './Proposal/Proposal'
+export * from './IntroSpool/IntroSpool';
+export * from './NavBar2/NavBar2';
+export * from './ProjectCard/ProjectCard';
+export * from './ProjectCard/ClientProjectCard';
+export * from './FacultyGraph/FacultyGraph';
+export * from './MatterGraph/MatterGraph';
+export * from './ApplicationCard/ApplicationCard';
+export * from './ApplicationModal/ApplicationModal';
+export * from './Steeper/Steeper';
+export * from './CategoriesPlot/CategoriesPlot';
+export * from './SkillsPlot/SkillsPlot';
