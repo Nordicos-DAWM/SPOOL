@@ -11,7 +11,7 @@ function ContactUs(props) {
             <label for="proposal">Escriba su mensaje</label>
             <textarea class="form-control" id="proposal" placeholder="Escriba aquí" required/>
         </div>
-    
+
         <div class="text-center">
             <button type="submit" class="center-block btn btn-primary">Enviar</button>
         </div>

@@ -1,84 +1,176 @@
-import React from "react";
+import React, { useState } from 'react';
 import './style.css'
 
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
+function ProjectInfoEditable(props) {
+
+        const [editableTitle, setEditableTitle] = useState(false);
+        const [editableSecondaryInfo, setEditableSecondaryInfo] = useState(false);
+        const [editableAditionalInfo, setEditableAditionalInfo] = useState(false);
+        let nameRef = React.createRef();
+        let proposerRef = React.createRef();
+        let descriptionRef = React.createRef();
+        let emailRef = React.createRef();
+        let maxParticipantRef = React.createRef();
 
 
+        let handleEditable= (e) =>{ 
+            const {name} = e.target;
+            if (name==="titleOpt")
+                setEditableTitle(true);
+            
+            else if(name==="secondaryOpt")
+                setEditableSecondaryInfo(true);
 
-let project = {
-    description : "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita ab fuga natus laborum, nihil earum nostrum porro, magnam laudantium eaque, eos quisquam! Molestiae consequatur assumenda suscipit ipsa blanditiis corporis eveniet.",
-    proposer : "Taika Waititi",
-    email : "example.gmail.com",
-    maxParticipants : 0,
-    mainCategory: "Desarrollo web",
-    state : "Activo",
-    name : "Ejemplo de un título de proyectooo",
-    color : "5ED46A"
-}
+            else if (name==="aditionalOpt")
+                setEditableAditionalInfo(true);
 
-class ProjectInfoEditable extends React.Component{
+        }  
+        let handleCancel= (e) =>{
+            const {name} = e.target;
+            if (name==="titleOpt")
+                setEditableTitle(false);
+            
+            else if(name==="secondaryOpt")
+                setEditableSecondaryInfo(false);
 
-    constructor(props){
-        super(props);
-        
-    }
+            else if (name==="aditionalOpt")
+                setEditableAditionalInfo(false);
+        }
 
-    render() {
+        let handleSave = (e) =>{
+            let {name} = e.target;
+            if (name==="titleOpt"){
+                let value = nameRef.current.value;
+                props.setData(data => ({ ...data, ["name"]: value }));
+                setEditableTitle(false);
+            }
+            if (name==="secondaryOpt"){
+                let proposer = proposerRef.current.value;
+                props.setData(data => ({ ...data, proposer }));                
+                setEditableSecondaryInfo(false);
+            }
+            if (name==="aditionalOpt"){
+                let maxParticipants = maxParticipantRef.current.value;
+                let description = descriptionRef.current.value;
+                let email = emailRef.current.value;
 
-        return (<>
+                props.setData(data => ({ ...data, maxParticipants }));                
+                props.setData(data => ({ ...data,  description }));                
+                props.setData(data => ({ ...data, email }));                
+                
+                setEditableAditionalInfo(false);
+            }
+            
+        }
+    return (<>
             <div>
-            <div className="container info">
+            <div className=" info" id="containerInfo">
                 <div className="row bg-white row_info"> 
                     <div className="col-md-12 col-lg-12 col-sm-12 ">
-                        <span class="d-block text-right ">
-                            <a href="#">Editar</a>
+                        
+                        <span class="d-block text-right options ">
+                        {
+                            editableTitle
+                        ?   <>
+                            <a href="# " name="titleOpt" onClick={handleSave}>Guardar</a>
+                            <a href="# " name="titleOpt" class="text-danger" onClick={handleCancel}>Cancelar</a>
+                            </>
+                        :   <a href="# " name="titleOpt" onClick={handleEditable}>Editar</a>
+                        
+                        }
                         </span>
+
                         <p className="p_sm">Título</p>
-                        <h5 >{ project.name }</h5>
+                        
+                        {editableTitle
+                        ? <input ref={nameRef} type="text" class="form-control"  defaultValue ={props.data.name} />
+                        : <h5 >{ props.data.name }</h5>
+                        }
+                        
+
 
                     </div>
                 </div>
                 <div className="row bg-white row_info">
-                    
+                            <div className="col-12">
+                            <span class="d-block text-right options">
+                                {
+                                    editableSecondaryInfo
+                                ?   <>
+                                    <a href="# " name="secondaryOpt" onClick={handleSave}>Guardar</a>
+                                    <a href="# " name="secondaryOpt" class="text-danger" onClick={handleCancel}>Cancelar</a>
+                                    </>
+                                :   <a href="# " name="secondaryOpt" onClick={handleEditable}>Editar</a>
+                                
+                                }
+                            </span>
+
+                            </div>
                             <div className="col-md-4 col-lg-5 col-sm-12 ">
                                 <p className="p_sm">Propuesto por</p>
-                                <h6>{ project.proposer }</h6>
+                                {editableSecondaryInfo
+                                    ? <input ref={proposerRef} type="text" class="form-control"  defaultValue ={props.data.proposer} />
+                                    : <h6 >{ props.data.proposer }</h6>
+                                    }
                             </div>
 
                             <div className="col-md-4 col-lg-5 col-sm-12">
                                 <p className="p_sm">Categoría principal</p>
-                                <h6>{project.mainCategory}</h6>
+                                <h6 >{ props.data.mainCategory }</h6>
+                                
                             </div>
                             
                             <div className="col-md-3 col-lg-2 col-sm-12">
                                 <p className="p_sm">Estado</p>
-                                <span id="state" className="badge badge-secondary badge-pill">{project.state}</span>
+                                <span id="state" className="badge badge-secondary badge-pill">{props.data.state}</span>
                             </div>
-
+                        
                 </div>
 
                 <div className="row">
                     <div className="col-md-4 col-lg-4 col-sm-12 bg-dark text-white">
                         <div className="category_skills_div">
                             <h5 className="text-white">Categorías</h5>
-                            <span className="badge badge-secondary badge-pill category"> Categoria 1</span>
-                            <span className="badge badge-secondary badge-pill category"> Categoria 2</span>
-                            <span className="badge badge-secondary badge-pill category"> Categoria 3</span>
+                            {props.data.categories.map(i => <span className="badge badge-secondary badge-pill category"> {i}</span>)}
                         </div>
                         <div className="category_skills_div">
                             <h5 className="text-white">Habilidades</h5>
-                            <span className="badge badge-light badge-pill category"> Habilidad 1</span>
-                            <span className="badge badge-light badge-pill category"> Habilidad 2 xd</span>
-                            <span className="badge badge-light badge-pill category"> abilidad sin h</span>
+                            {props.data.skills.map(i => <span className="badge badge-light badge-pill category"> {i}</span>)}
                         </div>
                     </div>
 
-                    <div className="col-lg-8 col-sm-12 col-md-8 bg-secondary ">
+                    <div className="col-lg-8 col-sm-12 col-md-8 bg-white ">
                         <div className ="row">
+                            <div className="col-12">
+                            <span class="d-block text-right options">
+                                    {
+                                        editableAditionalInfo
+                                    ?   <>
+                                        <a href="# " name="aditionalOpt" onClick={handleSave}>Guardar</a>
+                                        <a href="# " name="aditionalOpt" class="text-danger" onClick={handleCancel}>Cancelar</a>
+                                        </>
+                                    :   <a href="# " name="aditionalOpt" onClick={handleEditable}>Editar</a>
+                                    
+                                    }
+                            </span>
+                                        
+                            </div>
                             <div className="col-12 bg-white">
+                                
                                 <div className="card">
+                                    
                                     <div className="card-body">
+
                                         <h5 className="display-5 card-title">Descripción</h5>
-                                        <p className="card-text">{project.description}</p>
+                                        {
+                                        editableAditionalInfo
+                                        ?    <textarea ref={descriptionRef} class="form-control" defaultValue={props.data.description} />
+                                        :    <p className="card-text">{props.data.description}</p>
+                                        
+                                        }
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -89,7 +181,12 @@ class ProjectInfoEditable extends React.Component{
                                 <div className="card">
                                     <div className="card-body">
                                         <h5 className=" display-5 card-title">Contacto</h5>
-                                        <p className="card-text">{project.email}</p>
+                                        {
+                                        editableAditionalInfo
+                                        ?    <input ref={emailRef} class="form-control" defaultValue={props.data.email} />
+                                        :   <p className="card-text">{props.data.email}</p>
+                                        
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -98,7 +195,12 @@ class ProjectInfoEditable extends React.Component{
                                 <div className="card">
                                     <div className="card-body">
                                         <h5 className="display-5 card-title">Máximo participantes</h5>
-                                        <p className="card-text  display 2">{project.maxParticipants}</p>
+                                        {
+                                        editableAditionalInfo
+                                        ?   <input ref={maxParticipantRef} class="form-control" defaultValue={props.data.maxParticipants} />
+                                        :   <p className="card-text">{props.data.maxParticipants}</p>
+                                        
+                                        }
                                     </div>
                                 </div>
 
@@ -113,7 +215,7 @@ class ProjectInfoEditable extends React.Component{
             </div>
             </>
         );
-        }
+        
   }
 
 

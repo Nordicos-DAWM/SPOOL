@@ -2,15 +2,7 @@ import React from 'react';
 import {useState} from 'react';
 import {Modal,Button} from 'react-bootstrap';
 
-const application = { 
-    projectID:2,
-    reason: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis cumque numquam similique beatae nam unde est doloremque, autem tenetur hic tempore consectetur vitae eum expedita!",
-    proposal: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut deleniti quis libero, odit consequatur omnis deserunt esse. Dicta fuga aliquam accusamus.", 
-    isSubject: true,
-    idStudent: 12,
-    username : "rodemore",
-    name: "Robert Moreno Carrillo"
-    }  
+
 
 let subjectLabel = (s) => {
     if (s){
@@ -26,6 +18,9 @@ let isSubject = (s) => {
 }
 
 function Proposal(props) {
+  console.log("PROPS DATA")
+  console.log(props.data);
+
     const [show, setShow] = useState(false);
   
     const handleClose = () => setShow(false);
@@ -35,11 +30,11 @@ function Proposal(props) {
         <>
         <a href="#" onClick={handleShow} class="list-group-item list-group-item-action flex-column align-items-start">
             <div className="d-flex w-100 justify-content-between">
-            <h5 className="mb-1">{application.username}</h5>
+            <h5 className="mb-1">{props.data.username}</h5>
             <small>hace 2 día</small>
             </div>
-            <p className="mb-1">{ application.proposal.substring(0,200)+"..."}</p>
-            <small>{subjectLabel(application.isSubject)}</small>
+            <p className="mb-1">{ props.data.proposal.substring(0,200)+"..."}</p>
+            <small>{subjectLabel(props.data.isSubject)}</small>
         </a>
 
         <Modal show={show} onHide={handleClose}
@@ -51,16 +46,16 @@ function Proposal(props) {
         <Modal.Body>
 
             <h5>Aplicante</h5>
-            <p>{application.name +"("+application.username+")"}</p>
+            <p>{props.data.name +"("+props.data.username+")"}</p>
 
             <h5>Propuesta</h5>
-            <p>{application.proposal}</p>
+            <p>{props.data.proposal}</p>
 
             <h5>Motivo por el que aplicó</h5>
-            <p>{application.reason}</p>
+            <p>{props.data.reason}</p>
 
             <h5>Proyecto realizado para una materia</h5>
-            <p> {isSubject(application.isSubject)} </p>
+            <p> {isSubject(props.data.isSubject)} </p>
             <br/>
         </Modal.Body>
 
