@@ -3,6 +3,25 @@ import {Bar} from 'react-chartjs-2';
 
 const FacultyGraph = () =>{
     const [chartData,setChartData] = useState({});
+    const options = {
+        responsive:true,
+        scales:{  
+            yAxes: [{
+                ticks: {
+                beginAtZero: true
+            }
+        }]
+        },
+        legend: {
+            display: false,
+        },
+        title: {
+            display: true,
+            text: 'Estudiantes por facultad',
+            fontFamily:'sans-serif'
+
+        }    
+    }
     const chart = () =>{
         setChartData({
             labels:["FADCOM","FCV","FCNM","FCSH","FCT","FIEC","FIMCP","FIMCM"],
@@ -11,14 +30,14 @@ const FacultyGraph = () =>{
                     label:'Estudiantes por facultad',
                     data:[10,7,11,15,10,25,9,7],
                     backgroundColor:[
-                    'rgba(0, 140, 255, 0.18)',
-                    'rgba(216, 50, 255, 0.18)',
-                    'rgba(255, 247, 0, 0.18)',
-                    'rgba(255, 71, 0, 0.18)',
-                    'rgba(59, 179, 0, 0.18)',
-                    'rgba(0, 16, 151, 0.18)',
-                    'rgba(255, 16, 151, 0.18)',
-                    'rgba(120, 128, 100, 0.18)']
+                    'rgba(89, 48, 145, 0.72)',
+                    'rgba(35, 124, 197, 0.72)',
+                    'rgba(209, 151, 45, 0.72)',
+                    'rgba(118, 172, 215, 0.72)',
+                    'rgba(176, 126, 189, 0.72)',
+                    'rgba(209, 48, 90, 0.72)',
+                    'rgba(35, 175, 197, 0.72)',
+                    'rgba(183, 48, 145, 0.72)']
                 }
             ],
             
@@ -30,7 +49,7 @@ const FacultyGraph = () =>{
     },[]);
     return(
         <div>
-            <Bar data={chartData}/>
+            <Bar data={chartData} options={options}/>
         </div>
     )
 

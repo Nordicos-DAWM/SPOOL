@@ -3,6 +3,7 @@ import {Doughnut} from 'react-chartjs-2';
 
 const MatterGraph = () =>{
     const [chartData,setChartData] = useState({});
+    const [options,setOptions] = useState({});
     const chart = () =>{
         setChartData({
             labels:["Si","No"],
@@ -17,6 +18,14 @@ const MatterGraph = () =>{
             ],
             
         })
+        setOptions({
+            title: {
+                display: true,
+                text: '¿Los proyectos fueron tomados como una materia?',
+                fontFamily:'sans-serif'
+
+            }
+        })
     };
 
     useEffect(()=>{
@@ -24,7 +33,7 @@ const MatterGraph = () =>{
     },[]);
     return(
         <div>
-            <Doughnut data={chartData}/>
+            <Doughnut data={chartData} options={options}/>
         </div>
     )
 
