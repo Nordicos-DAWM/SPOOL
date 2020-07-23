@@ -1,8 +1,9 @@
 import React from 'react';
-import {Steeper} from '../../components'
+import {Steeper,NavBar2,Footer} from '../../components'
 const CreateProject = () =>{
     return(
         <> 
+        <NavBar2 userType='client' isLoggedIn= {true}/>
             <section className="page-header page-header-text-dark bg-white py-5 mb-0">
                 <div className="container">
                     <div className="row align-items-center">
@@ -23,6 +24,7 @@ const CreateProject = () =>{
                         </div>
                     </div>
             </section>
+            <Footer/>
         </>
     );
 };

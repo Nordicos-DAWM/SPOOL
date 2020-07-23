@@ -28,7 +28,7 @@ function Proposal(props) {
 
     return (
         <>
-        <a href="#" onClick={handleShow} class="list-group-item list-group-item-action flex-column align-items-start">
+        <a href=" " onClick={handleShow} class="list-group-item list-group-item-action flex-column align-items-start">
             <div className="d-flex w-100 justify-content-between">
             <h5 className="mb-1">{props.data.username}</h5>
             <small>hace 2 día</small>

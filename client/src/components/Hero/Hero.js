@@ -11,12 +11,12 @@ const Hero = () =>{
             <div className="row">
                 <div className="col-12 col-lg-8 col-xl-7 text-center text-lg-left">
                     <h1 className="text-13 text-white">
-                        Lorem ipsum dolor sit amet consectetur adipisicing.
+                        Desarrolla proyectos con clientes de las industria
                     </h1>
                     <p className="text-5 text-white mb-4">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                        Se parte de SPOOL
                     </p>
-                    <a href=" " className="btn btn-primary mr-3">Get started for free</a>
+                    <a href="/register" className="btn btn-primary mr-3 register-btn">Registrate gratis</a>
                 </div>
             </div>
         </div>

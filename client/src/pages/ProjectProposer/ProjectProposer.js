@@ -1,5 +1,5 @@
 import React, { Fragment,useState } from "react";
-import {NavBarSPOOL, ProjectInfoEditable, Footer, Proposal} from '../../components';
+import {ProjectInfoEditable, Footer, Proposal,NavBar2} from '../../components';
 import "./style.css";
 let project = {
   description : "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita ab fuga natus laborum, nihil earum nostrum porro, magnam laudantium eaque, eos quisquam! Molestiae consequatur assumenda suscipit ipsa blanditiis corporis eveniet.",
@@ -47,6 +47,7 @@ function ProjectProposer(props) {
   const [data, setData] = useState(project);
     return (
     <Fragment>
+      <NavBar2 userType='client' isLoggedIn={true}/>
       <div className="container">
 
       <h4 class="mb-3">Información del proyecto</h4>

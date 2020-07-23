@@ -22,46 +22,38 @@ function Banner(){
                     <div className="row banner style-2 justify-content-center">
                         <div className='col-12 col-sm-6 mb-4 text-center'>
                             <div className='item rounded shadow d-inline-block'>
-                                <a href=' '>
-                                    <div className='caption rounded-bottom'>
-                                        <h2 className='text-5 font-weight-400 mb-0'>Ideas</h2>
-                                    </div>
-                                    <div className='banner-mask'></div>
-                                    <img className='img-fluid' src={ideas} style={{width:'410', height:'350'}} alt='banner'/>
-                                </a>
+                                <div className='caption rounded-bottom'>
+                                    <h2 className='text-5 font-weight-400 mb-0'>Ideas</h2>
+                                </div>
+                                <div className='banner-mask'></div>
+                                <img className='img-fluid' src={ideas} style={{width:'410', height:'350'}} alt='banner'/>
                             </div>
                         </div>
                         <div className='col-12 col-sm-6 mb-4 text-center'>
                             <div className='item rounded shadow d-inline-block'>
-                                <a href=' '>
-                                    <div className='caption rounded-bottom'>
-                                        <h2 className='text-5 font-weight-400 mb-0'>Proyectos</h2>
-                                    </div>
-                                    <div className='banner-mask'></div>
-                                    <img className='img-fluid' src={proyectos} style={{width:'410', height:'350'}} alt='banner'/>
-                                </a>
+                                <div className='caption rounded-bottom'>
+                                    <h2 className='text-5 font-weight-400 mb-0'>Proyectos</h2>
+                                </div>
+                                <div className='banner-mask'></div>
+                                <img className='img-fluid' src={proyectos} style={{width:'410', height:'350'}} alt='banner'/>
                             </div>
                         </div>
                         <div className='col-12 col-sm-6 mb-4 mb-sm-0 text-center'>
                             <div className='item rounded shadow d-inline-block'>
-                                <a href=' '>
-                                    <div className='caption rounded-bottom'>
-                                        <h2 className='text-5 font-weight-400 mb-0'>Grupos de trabajo</h2>
-                                    </div>
-                                    <div className='banner-mask'></div>
-                                    <img className='img-fluid' src={grupos} style={{width:'410', height:'350'}}alt='banner'/>
-                                </a>
+                                <div className='caption rounded-bottom'>
+                                    <h2 className='text-5 font-weight-400 mb-0'>Grupos de trabajo</h2>
+                                </div>
+                                <div className='banner-mask'></div>
+                                <img className='img-fluid' src={grupos} style={{width:'410', height:'350'}}alt='banner'/>
                             </div>
                         </div>
                         <div className='col-12 col-sm-6 text-center'>
                             <div className='item rounded shadow d-inline-block'>
-                                <a href=' '>
-                                    <div className='caption rounded-bottom'>
-                                        <h2 className='text-5 font-weight-400 mb-0'>Experiencias reales</h2>
-                                    </div>
-                                    <div className='banner-mask'></div>
-                                    <img className='img-fluid' src={experiencias} style={{width:'410', height:'350'}} alt='banner'/>
-                                </a>
+                                <div className='caption rounded-bottom'>
+                                    <h2 className='text-5 font-weight-400 mb-0'>Experiencias reales</h2>
+                                </div>
+                                <div className='banner-mask'></div>
+                                <img className='img-fluid' src={experiencias} style={{width:'410', height:'350'}} alt='banner'/>
                             </div>
                         </div>
                     </div>

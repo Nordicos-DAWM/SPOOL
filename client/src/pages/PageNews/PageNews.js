@@ -1,8 +1,10 @@
 import React from 'react';
+import {NavBar2,Footer} from '../../components'
 
 const PageNews = ()=>{
     return(
         <>
+        <NavBar2/>
             <section className="page-header page-header-text-dark bg-white py-5 mb-0">
                 <div className="container">
                     <div className="row align-items-center">
@@ -48,6 +50,7 @@ const PageNews = ()=>{
                     </div>
                 </section>
             </div>
+            <Footer/>
         </>
     );
 }

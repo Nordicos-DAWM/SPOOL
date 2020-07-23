@@ -1,12 +1,14 @@
 import React from 'react';
-import {CardIcon, Hero, Banner, NavBarSPOOL} from '../../components'
+import {CardIcon, Hero, Banner,IntroSpool,NavBar2,Footer} from '../../components'
 const Home = () =>{
     return(
-        <>
-            <NavBarSPOOL/>
+        <>  
+            <IntroSpool/>
+            <NavBar2/>
             <Hero/>
             <CardIcon/>
             <Banner/>
+            <Footer/>
         </>
     );
 };

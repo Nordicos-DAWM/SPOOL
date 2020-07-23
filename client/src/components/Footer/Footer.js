@@ -8,9 +8,9 @@ function Footer(props) {
 
         <div className="container text-center text-md-left">
             <div className="row footer-options">
-                <span className= "col-lg-3 col-sm-4 col-md-3 "><a className="text-secondary" href='/'>Acerca de nosotros</a></span>
-                <span className= "col-lg-3 col-sm-4 col-md-3 "><a className="text-secondary" href='/'>Contáctanos</a></span>
-                <span className= "col-lg-3 col-sm-4 col-md-3 "><a className="text-secondary" href='/'>Ayuda</a></span>
+                <span className= "col-lg-3 col-sm-4 col-md-3 "><a className="text-primary" href='/help'>Acerca de SPOOL</a></span>
+                <span className= "col-lg-3 col-sm-4 col-md-3 "><a className="text-primary" href='/help'>Contáctanos</a></span>
+                <span className= "col-lg-3 col-sm-4 col-md-3 "><a className="text-primary" href='/help'>Ayuda</a></span>
                 
             </div>
             <hr/>

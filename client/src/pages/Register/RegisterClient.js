@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import logo from '../../assets/Brand-01.png';
-import {isPassValid,putValidPass,putValidConfirmPass} from './validateForm';
+import {putValidPass,putValidConfirmPass} from './validateForm';
 
 const RegisterClient = () =>{
     const [inputs,setInputs] = useState({

@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react';
 import logo from '../../assets/Brand-01.png';
-import {isPassValid,putValidPass,putValidConfirmPass,isOlder} from './validateForm';
+import {putValidPass,putValidConfirmPass} from './validateForm';
 import {loadFaculties,loadCareers} from './LoadData';
 
 const RegisterStudent = () =>{

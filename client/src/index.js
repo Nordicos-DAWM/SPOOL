@@ -13,7 +13,7 @@ import MainRouter from './router';
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-     <MainRouter/>
+      <MainRouter/>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

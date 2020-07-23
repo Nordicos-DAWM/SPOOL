@@ -1,14 +1,16 @@
 import React,{useState, useEffect} from 'react';
 import logo from '../../assets/Brand-01.png';
-import { useLocation } from 'react-router-dom';
+//import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { userActions } from '../../_actions';
-function useQuery(){
-    return new URLSearchParams(useLocation())
-}
+/*
+    function useQuery(){
+        return new URLSearchParams(useLocation())
+    }
+*/
 const Login = () =>{
-    const query = useQuery();
+    //const query = useQuery();
     const [inputs,setInputs] = useState({
         email:'',
         password:''
@@ -22,7 +24,7 @@ const Login = () =>{
 
     useEffect(()=>{
         dispatch(userActions.logout());
-    },[]);
+    });
 
     function handleChange (e) {
         const { name, value } = e.target;
@@ -31,7 +33,7 @@ const Login = () =>{
 
     function handleSubmit (e) {
         e.preventDefault();
-        let slug = query.get("slug") || 'coins';
+        //let slug = query.get("slug") || 'coins';
         setSubmitted(true);
         /*if(email && password){
             dispatch(userActions.login(email,password,slug));

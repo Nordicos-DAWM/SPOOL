@@ -1,8 +1,9 @@
 import React from 'react';
-import {CategoriesPlot,SkillsPlot,FacultyGraph,MatterGraph} from '../../components';
+import {CategoriesPlot,SkillsPlot,FacultyGraph,MatterGraph,NavBar2,Footer} from '../../components';
 const ChartsPage = () =>{
     return(
         <>
+            <NavBar2 userType='client' isLoggedIn={true}/>
             <section className="page-header page-header-text-dark bg-white py-5 mb-0">
                 <div className="container">
                     <div className="row align-items-center">
@@ -49,6 +50,7 @@ const ChartsPage = () =>{
                     </div>
                 </section>
             </div>
+            <Footer/>
         </>
     )
 }

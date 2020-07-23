@@ -1,6 +1,6 @@
 import React  from 'react';
 
-import { NavBarSPOOL, ApplicationCard } from '../../components';
+import { NavBar2, ApplicationCard, Footer } from '../../components';
 
 const ApplicationStudents = () =>{
 
@@ -8,7 +8,7 @@ const ApplicationStudents = () =>{
 
         {id:'1',
         title: "Hydroplant",
-        state:"Activo",
+        project_state:"Activo",
         main_category:"Otra",
         categories:["Energía",""],
         state:"Aprobado",
@@ -16,7 +16,7 @@ const ApplicationStudents = () =>{
         
         {id:'2',
         title: "Hydroplant",
-        state:"Activo",
+        project_tate:"Activo",
         main_category:"Otra",
         categories:["Energía",""],
         state:"Rechazado",
@@ -24,7 +24,7 @@ const ApplicationStudents = () =>{
         
         {id:'3',
         title: "Hydroplant",
-        state:"Activo",
+        project_state:"Activo",
         main_category:"Otra",
         state:"Revision",
         categories:["Energía",""],
@@ -32,7 +32,7 @@ const ApplicationStudents = () =>{
         
         {id:'4',
         title: "Hydroplant",
-        state:"Activo",
+        project_state:"Activo",
         main_category:"Otra",
         state:"Aprobado",
         categories:["Energía",""],
@@ -42,17 +42,19 @@ const ApplicationStudents = () =>{
     return(
 
     <>
-        <NavBarSPOOL/>
+        <NavBar2 userType='student' isLoggedIn = 'true'/>
         <div className="container">
             <div className="row">
 
         
             {datos && datos.map(dato => (
-                  <ApplicationCard {...dato} key={dato.id} className="col-12"/>
-                 ))}
+                <ApplicationCard {...dato} key={dato.id} className="col-12"/>
+            ))}
 
             </div>
         </div>
+
+        <Footer/>
 
     </>
     )

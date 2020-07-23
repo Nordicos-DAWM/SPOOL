@@ -38,7 +38,7 @@ function ApplicationCard (props){
 
                 <p className={colorText()+" font-weight-bold col-12"}>{props.state}</p>    
                 <p className="card-text col-12 text-justify">{props.description}</p>
-                <a href="#" className="card-link col-12" onClick={handleOpen}>Ver más</a>   
+                <a href=" " className="card-link col-12" onClick={handleOpen}>Ver más</a>   
             </div>
             
         </div>

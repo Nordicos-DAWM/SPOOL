@@ -1,5 +1,5 @@
 import React, { Fragment,useState } from "react";
-import {NavBarSPOOL, ProjectInfo, Footer} from '../../components';
+import {NavBar2, ProjectInfo, Footer} from '../../components';
 
 let project = {
   description : "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita ab fuga natus laborum, nihil earum nostrum porro, magnam laudantium eaque, eos quisquam! Molestiae consequatur assumenda suscipit ipsa blanditiis corporis eveniet.",
@@ -18,7 +18,7 @@ function Project(props) {
   const [data, setData] = useState(project);
     return (
     <Fragment>
-      <NavBarSPOOL/>
+      <NavBar2 userType='student'/>
       <ProjectInfo data={data} setData={setData}/>
       <Footer/>
     </Fragment>

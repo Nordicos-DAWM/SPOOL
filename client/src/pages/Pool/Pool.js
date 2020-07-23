@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import '../../index.css';
-import {NavBar2, ProjectCard} from '../../components';
+import {NavBar2, ProjectCard,Footer} from '../../components';
 
 
 function Pool() {
@@ -69,7 +69,7 @@ function Pool() {
 
     return(
         <>
-        <NavBar2/>
+        <NavBar2 userType='student' isLoggedIn={true}/>
         <div id="contenido">
 
             <section className="section pt-5 pb-0">
@@ -112,6 +112,7 @@ function Pool() {
                 </div>
             </section>
         </div>
+        <Footer/>
         </>
     )
 }

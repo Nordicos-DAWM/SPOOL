@@ -26,7 +26,10 @@ export class IntroSpool extends Component {
                 intro: "Proyectos te dará acceso a nuestro Pool de proyectos donde podrás visitar las propuestas que más te interesen."},
 
                 {element: ".help",
-                intro: "¡Si tienes dudas no dejes de vistar nuestra página de Ayuda!"}
+                intro: "¡Si tienes dudas no dudes en vistar nuestra página de Ayuda!"},
+
+                {element: '.register-btn',
+                intro:'!Únete y se parte de SPOOL!'}
             ],
             hintsEnabled: false,
             hints: [] 

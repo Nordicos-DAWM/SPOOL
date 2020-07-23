@@ -44,14 +44,14 @@ function ClientPool() {
 
     return(
         <>
-        <NavBar2/>
+        <NavBar2 userType='client' isLoggedIn={true}/>
         <div id="contenido">
 
             <section className="section pt-5 pb-0">
                 <div className="container">
                     <div className="row mx-0 mb-4 d-md-flex d-sm-block justify-content-between">
-                        <h2 className="d-md-inline-flex d-sm-block text-secondary">Mis Proyectos</h2>
-                        <a className="btn btn-primary d-md-inline-flex d-sm-block px-2" href="">
+                        <h2 className="d-md-inline-flex d-sm-block text-primary">Mis Proyectos</h2>
+                        <a className="btn btn-primary d-md-inline-flex d-sm-block px-2" href="/create-project">
                             <i className="fa fa-plus text-light pr-2 my-0"></i>
                             Nuevo Proyecto
                         </a>

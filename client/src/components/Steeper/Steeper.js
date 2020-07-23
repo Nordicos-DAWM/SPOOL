@@ -29,8 +29,8 @@ const Steeper = () =>{
     function handleAddCategories(value){
         value = value.toLowerCase();
         if(!inputs['subcategories'].includes(value) && inputs['subcategories'].length < 7 ){
-            setInputs(inputs => ({...inputs,['subcategories']:[...inputs['subcategories'],value]}));
-            setnAtrr(nAtrr => ({ ...nAtrr, ['categoriesNum']: inputs['subcategories'].length + 1 }));
+            setInputs(inputs => ({...inputs,'subcategories':[...inputs['subcategories'],value]}));
+            setnAtrr(nAtrr => ({ ...nAtrr, 'categoriesNum': inputs['subcategories'].length + 1 }));
         }
     }
 
@@ -38,16 +38,16 @@ const Steeper = () =>{
         value = value.toLowerCase();
         if(inputs['subcategories'].includes(value) && inputs['subcategories'].length < 7 ){
             let newValues = inputs['subcategories'].filter(cat => cat !== value);
-            setInputs(inputs => ({...inputs,['subcategories']:newValues}));
-            setnAtrr(nAtrr => ({ ...nAtrr, ['categoriesNum']: inputs['subcategories'].length - 1 }));
+            setInputs(inputs => ({...inputs,'subcategories':newValues}));
+            setnAtrr(nAtrr => ({ ...nAtrr, 'categoriesNum': inputs['subcategories'].length - 1 }));
         }
     }
 
     function handleAddSkill(value){
         value = value.toLowerCase();
         if(!inputs['skills'].includes(value) && inputs['skills'].length < 7){
-            setInputs(inputs => ({...inputs,['skills']:[...inputs['skills'],value]}));
-            setnAtrr(nAtrr => ({ ...nAtrr, ['skillsNum']: inputs['skills'].length + 1 }));
+            setInputs(inputs => ({...inputs,'skills':[...inputs['skills'],value]}));
+            setnAtrr(nAtrr => ({ ...nAtrr, 'skillsNum': inputs['skills'].length + 1 }));
         }
         
     }
@@ -56,8 +56,8 @@ const Steeper = () =>{
         value = value.toLowerCase();
         if(inputs['skills'].includes(value) && inputs['skills'].length < 7 ){
             let newValues = inputs['skills'].filter(skill => skill !== value);
-            setInputs(inputs => ({...inputs,['skills']:newValues}));
-            setnAtrr(nAtrr => ({ ...nAtrr, ['skillsNum']: inputs['skills'].length - 1 }));
+            setInputs(inputs => ({...inputs,'skills':newValues}));
+            setnAtrr(nAtrr => ({ ...nAtrr, 'skillsNum': inputs['skills'].length - 1 }));
         }
     }
 

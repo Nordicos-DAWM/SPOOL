@@ -1,12 +1,12 @@
 import React from 'react';
-import {NavBarSPOOL} from '../../components';
+import {NavBar2,Footer} from '../../components';
 import Client from '../../assets/client-hw.jpg';
 import Student from '../../assets/student-hw.jpg';
 
 const HowWorks = ()=>{
     return (
         <>
-        <NavBarSPOOL/>
+        <NavBar2/>
         <section className="section">
             <div className="container">
                 <h2 className="text-9 text-center">
@@ -53,9 +53,9 @@ const HowWorks = ()=>{
             <div className="container">
                 <div className="row">
                     <div className="col-12 col-md-6">
-                        <img src={Student} className="img-fluid" alt="Responsive image"/>
+                        <img src={Student} className="img-fluid" alt="Student hero"/>
                         <h2 className="text-7 text-center py-3">Estudiantes</h2>
-                        <p className="text-4" style={{lineHeight:"1.3em"}}>
+                        <p className="text-4 text-justify" style={{lineHeight:"1.3em"}}>
                             Estudiantes buscan dentro de los proyectos
                             y aplican según el proyecto que les llame la 
                             atención. Si son aceptados se contactan con el
@@ -65,9 +65,9 @@ const HowWorks = ()=>{
                         </p>
                     </div>
                     <div className="col-12 col-md-6">
-                        <img src={Client} className="img-fluid" alt="Responsive image"/>
+                        <img src={Client} className="img-fluid" alt="Client Hero"/>
                         <h2 className="text-7 text-center py-3">Organizadores</h2>
-                        <p className="text-4" style={{lineHeight:"1.3em"}}>
+                        <p className="text-4 text-justify" style={{lineHeight:"1.3em"}}>
                             Organizadores serán encargados de proponer
                             una idea de proyecto que estará disponible para
                             que los estudiantes opten por aplicar en ellas.
@@ -77,6 +77,7 @@ const HowWorks = ()=>{
                 </div>
             </div>
         </section>
+        <Footer/>
         </>
     );
 }

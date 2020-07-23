@@ -43,7 +43,7 @@ function ProjectInfoEditable(props) {
             let {name} = e.target;
             if (name==="titleOpt"){
                 let value = nameRef.current.value;
-                props.setData(data => ({ ...data, ["name"]: value }));
+                props.setData(data => ({ ...data, "name": value }));
                 setEditableTitle(false);
             }
             if (name==="secondaryOpt"){

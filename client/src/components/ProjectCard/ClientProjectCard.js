@@ -19,14 +19,14 @@ function ClientProjectCard(props) {
                         <div className="d-inline-flex pt-2">
                             <label htmlFor="campana" className="text-3 bell">Aplicaciones</label>
                             <div id="campana" style={{float:"left"}}>
-                                <a href="#" style={{float:"left"}}>
+                                <a href=" " style={{float:"left"}}>
                                     <i className="fa fa-bell bell pl-2"></i>
                                 </a>
                                 <span className="badge badge-info">{props.applications}</span>
                             </div>
                         </div>
                         <div className="d-inline-flex">
-                            <a href="#" className="btn btn-primary px-2 py-2">
+                            <a href="/proposer/project" className="btn btn-primary px-2 py-2">
                                 <i className="fas fa-eye text-3 mr-2"></i>
                                 Ver
                             </a>

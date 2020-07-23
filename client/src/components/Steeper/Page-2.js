@@ -17,7 +17,7 @@ const Page2 = (props) =>{
     
     function handleAddSkill(){
         props.handleAddSkill(skill);
-        setInputs(inputs =>({ ...inputs, ['skill']: '' }));
+        setInputs(inputs =>({ ...inputs, 'skill': '' }));
     }
 
     function handleChange(e) {
@@ -27,30 +27,30 @@ const Page2 = (props) =>{
 
     function handleAddCategories(){
         props.handleAddCategories(category);
-        setInputs(inputs =>({ ...inputs, ['category']: '' }));
+        setInputs(inputs =>({ ...inputs, 'category': '' }));
     }
 
     function setSelectedCategory(e){
         let value = e.target.innerText;
-        setSelected(selected =>({ ...selected, ['selCategory']: value }));
+        setSelected(selected =>({ ...selected, 'selCategory': value }));
     }
 
     function handleRemoveSkill(){
         if(selSkill){
             props.handleRemoveSkill(selSkill);
-            setSelected(selected =>({ ...selected, ['selSkill']: '' }));
+            setSelected(selected =>({ ...selected, 'selSkill': '' }));
         }       
     }
 
     function setSelectedSkill(e){
         let value = e.target.innerText;
-        setSelected(selected =>({ ...selected, ['selSkill']: value }));
+        setSelected(selected =>({ ...selected, 'selSkill': value }));
     }
 
     function handleRemoveCategories(){
         if(selCategory){
             props.handleRemoveCategories(selCategory);
-            setSelected(selected =>({ ...selected, ['selCategory']: '' }));
+            setSelected(selected =>({ ...selected, 'selCategory': '' }));
         }       
     }
 
