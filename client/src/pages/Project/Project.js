@@ -1,17 +1,19 @@
 import React, { Fragment,useState } from "react";
 import {NavBar2, ProjectInfo, Footer} from '../../components';
 
+
 let project = {
-  description : "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita ab fuga natus laborum, nihil earum nostrum porro, magnam laudantium eaque, eos quisquam! Molestiae consequatur assumenda suscipit ipsa blanditiis corporis eveniet.",
+  id:'2',
+  title: "BioGears",
+  state:"Activo",
+  mainCategory:"Medicina",
+  categories:["Biología Computacional","Modelos Farmacológicos"],
+  description:"La librería BioGears incluye modelos matemáticos para un amplia gama de sistemas, interfaces médicas y sustancias para la recuperación en tiempo real de un estado fisiológico preciso. Colabora con nosotros en GitHub y usa los tutoriales para guiar la integración de BioGears.",
   proposer : "Taika Waititi",
-  email : "example.gmail.com",
+  email : "robertmorenoc.gmail.com",
   maxParticipants : 0,
-  mainCategory: "Desarrollo web",
-  state : "Activo",
-  name : "Ejemplo de un título de proyectooo",
   color : "5ED46A",
-  categories: ["Category 1","category2","cat3","cat4"],
-  skills:["Habilidad 1", "Habilidad2", "abilidad sin h"]
+  skills:["R", "SQL", "Python"]
 }
 
 function Project(props) {

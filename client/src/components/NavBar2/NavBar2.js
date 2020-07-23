@@ -59,7 +59,7 @@ function NavBar2(props) {
                                             <a href="/pool">Proyectos</a>
                                         </li>
                                         <li>
-                                            <a href="/applications">Aplicaciones</a> 
+                                            <a href="/student/applications">Aplicaciones</a> 
                                         </li>
                                     </>
                                     }

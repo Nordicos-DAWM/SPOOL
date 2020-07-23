@@ -10,7 +10,7 @@ function ProjectInfo(props) {
     <div className="container-fluid">
         <div className=" jumbotron p-4 p-md-5 bg-dark text-white title">
             <div className="col-md-9 px-0">
-            <h1 className="text-white display-5 ">{props.data.name}</h1>
+            <h1 className="text-white display-5 ">{props.data.title}</h1>
             </div>
         </div>
 

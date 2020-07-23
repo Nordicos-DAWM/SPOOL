@@ -6,46 +6,46 @@ import {NavBar2, ProjectCard,Footer} from '../../components';
 function Pool() {
 
     const projects = [
-
+        
         {id:'1',
         title: "Hydroplant",
         state:"Activo",
-        main_category:"Otra",
+        mainCategory:"Otra",
         categories:["Energía","Ecología"],
         description:"Tecnología de punta para el control de cultivos hidropónicos, considerando un sistema para el control del aire que requiere la planta y otro para entregar el agua y nutrientes. El sistema incluye electrobombas diseñadas por la propia empresa y además, todo puede ser monitoreado desde el celular."},
         
         {id:'2',
         title: "BioGears",
         state:"Activo",
-        main_category:"Medicina",
+        mainCategory:"Medicina",
         categories:["Biología Computacional","Modelos Farmacológicos"],
         description:"La librería BioGears incluye modelos matemáticos para un amplia gama de sistemas, interfaces médicas y sustancias para la recuperación en tiempo real de un estado fisiológico preciso. Colabora con nosotros en GitHub y usa los tutoriales para guiar la integración de BioGears."},
         
         {id:'3',
         title: "Inkscape",
         state:"Activo",
-        main_category:"Gráficos y Multimedia",
+        mainCategory:"Gráficos y Multimedia",
         categories:["Web","SVG","Diseño Gráfico"],
         description:"Es un editor de gráficos vectoriales con capacidades similares a Illustrator, CorelDraw o Xara X, utiliza el formato SVG para manejar funcionalidades como marcadores, clones y mezclas alpha. Es muy fácil editar nodos, realizar operaciones de ruta complejas, trazar mapas de bits y mucho más."},
         
         {id:'4',
         title: "Danni Seguridad",
         state:"Activo",
-        main_category:"IoT",
+        mainCategory:"IoT",
         categories:["Arduino","Domótica","Desarrollo Móvil"],
         description:"Iniciativa que ofrece una solución tecnológica para la seguridad y comodidad en el hogar, espacios públicos o privados; a través, de un sistema domótico con una red de sensores (fuego, alarma, luces, etc.) controlados con Arduino y con una interfaz de control por audio en cualquier tipo de dispositivo móvil."},
         
         {id:'5',
         title: "Electrobits",
         state:"Activo",
-        main_category:"IoT",
+        mainCategory:"IoT",
         categories:["Sensores","Domótica","Desarrollo Móvil"],
         description:"Ya no es necesario levantarse para saber si se quedó una luz encendida, puesto que gracias a Electrobits existe un nuevo producto tecnológico para el control total con un celular del encendido y apagado de las luces del hogar. La app creada se basó en una plataforma de desarrollo utilizada en el MIT."},
         
         {id:'6',
         title: "Flashing Lights",
         state:"Activo",
-        main_category:"Desarrollo Web y Móvil",
+        mainCategory:"Desarrollo Web y Móvil",
         categories:["Sociedad","Inclusión"],
         description:"Esta propuesta de innovación social ofrece una solución tecnológica para mejorar la calidad de vida de las personas con discapacidad auditiva, a través de un innovador sistema de mensajes basado en un código luminoso para mejorar la comunicación con su entorno y crear sociedad más centrada en la inclusión."}
     
@@ -59,7 +59,7 @@ function Pool() {
         let category = event.target.value;
         
         let filtered = projects.filter( (val) =>{
-            return val.main_category.includes(category);
+            return val.mainCategory.includes(category);
         })
 
         setFilteredProjects(filtered);

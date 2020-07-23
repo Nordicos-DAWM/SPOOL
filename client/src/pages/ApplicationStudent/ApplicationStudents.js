@@ -42,8 +42,13 @@ const ApplicationStudents = () =>{
     return(
 
     <>
+        
         <NavBar2 userType='student' isLoggedIn = 'true'/>
+        
         <div className="container">
+            <div className="row mx-0 mb-4 d-md-flex d-sm-block justify-content-between">
+                <h1 className="d-md-inline-flex d-sm-block text-primary text-9 mb-0">Mis Aplicaciones</h1>
+            </div>
             <div className="row">
 
         

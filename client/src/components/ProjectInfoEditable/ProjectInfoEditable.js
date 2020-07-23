@@ -85,8 +85,8 @@ function ProjectInfoEditable(props) {
                         <p className="p_sm">Título</p>
                         
                         {editableTitle
-                        ? <input ref={nameRef} type="text" class="form-control"  defaultValue ={props.data.name} />
-                        : <h5 >{ props.data.name }</h5>
+                        ? <input ref={nameRef} type="text" class="form-control"  defaultValue ={props.data.title} />
+                        : <h5 >{ props.data.title }</h5>
                         }
                         
 

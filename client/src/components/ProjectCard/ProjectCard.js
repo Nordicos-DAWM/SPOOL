@@ -11,7 +11,7 @@ function ProjectCard(props) {
                     <h3>{props.title}</h3>
                     <div className="row mb-3 mx-1 d-flex justify-content-between">
                         <span className="text-2 d-inline-flex d-sm-block text-center py-1 px-2 rounded bg-primary text-light">{props.state}</span>
-                        <span id="project-category" className="text-2 d-inline-flex d-sm-block text-center py-1 px-2 rounded bg-primary text-light">{props.main_category}</span>
+                        <span id="project-category" className="text-2 d-inline-flex d-sm-block text-center py-1 px-2 rounded bg-primary text-light">{props.mainCategory}</span>
                     </div>
                     <p className="text-2 line-height-4 text-justify">{props.description}</p>
                     <a href="/project" className="text-muted btn-link text-3">
