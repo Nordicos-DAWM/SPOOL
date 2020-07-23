@@ -11,10 +11,22 @@ const CategoriesPlot = () =>{
                 labels: ['Ciencia de Datos', 'Desarrollo Web', 'Estadísitica', 'IOT','BioTecnología','Desarrollo de Videojuegos'],
                 datasets: [{
                     label:'Categorías',
-                    data: [15, 10, 13, 11,5,10]
+                    data: [15, 10, 13, 11,5,10],
+                    backgroundColor:['rgba(0, 16, 151, 0.18)']
                 }]
             }
         )
+    }
+    const options = {
+        legend: {
+            display: false,
+        },
+        title: {
+            display: true,
+            text: 'Categorias',
+            fontFamily:'sans-serif'
+
+        }    
     }
 
     useEffect(()=>{
@@ -22,7 +34,7 @@ const CategoriesPlot = () =>{
     },[]);
 
     return(
-        <Radar data={chartData}/>
+        <Radar data={chartData} options={options}/>
     )
 }
 

@@ -12,7 +12,17 @@ const SkillsPlot = () =>{
                 beginAtZero: true
             }
         }]
-    }}
+        },
+        legend: {
+            display: false,
+        },
+        title: {
+            display: true,
+            text: 'Top 5 habilidades requeridas',
+            fontFamily:'sans-serif'
+
+        }    
+    }
     const chart = () =>{
         setChartData(
             {
@@ -22,11 +32,12 @@ const SkillsPlot = () =>{
                     label:'Top 5 Habilidades Requeridas',
                     data:[10,8,11,15,10],
                     backgroundColor:[
-                    'rgba(0, 140, 255, 0.18)',
-                    'rgba(216, 50, 255, 0.18)',
-                    'rgba(255, 247, 0, 0.18)',
-                    'rgba(255, 71, 0, 0.18)',
-                    'rgba(59, 179, 0, 0.18)']
+                    'rgba(169, 0, 80, 0.72)',
+                    'rgba(97, 42, 176, 0.72)',
+                    'rgba(14, 191, 176, 0.72)',
+                    'rgba(14, 42, 176, 0.72)',
+                    'rgba(169, 191, 80, 0.72)']
+                    
                 }
             ],
             
