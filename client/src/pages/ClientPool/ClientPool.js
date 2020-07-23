@@ -12,7 +12,7 @@ function ClientPool() {
         state:"Activo",
         mainCategory:"Medicina",
         categories:["Biología Computacional","Modelos Farmacológicos"],
-        description:"La librería BioGears incluye modelos matemáticos para un amplia gama de sistemas, interfaces médicas y sustancias para la recuperación en tiempo real de un estado fisiológico preciso. Colabora con nosotros en GitHub y usa los tutoriales para guiar la integración de BioGears.",
+        description:"La librería BioGears incluye modelos matemáticos para un amplia gama de sistemas, interfaces médicas y sustancias para la recuperación en tiempo real de un estado fisiológico preciso. Colabora con nosotros en GitHub y usa los tutoriales para guiar la integración de nuevas funcionalidades  de BioGears.",
         applications: 2},
         
         {id:'3',

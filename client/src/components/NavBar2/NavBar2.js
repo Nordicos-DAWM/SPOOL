@@ -47,9 +47,8 @@ function NavBar2(props) {
                                         <li className={"howStart"+ (isActive==='howStart'?' active':'')}>
                                             <a href="/how-start">¿Cómo Empezar?</a> 
                                         </li>
-                                        <li className={"projects"+ (isActive==='projects'?' active':'')}>
-                                            <a href="student/pool">Proyectos</a>
-                                        </li>
+                                        
+
                                         <li className={"ourTeam"+ (isActive==='ourTeam'?' active':'')}>
                                             <a href="/our-team">Team SPOOL</a>
                                         </li>

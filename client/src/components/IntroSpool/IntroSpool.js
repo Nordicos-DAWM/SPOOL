@@ -21,10 +21,10 @@ export class IntroSpool extends Component {
 
                 {element: ".howStart",
                 intro: "En la página ¿Cómo Empezar? podrás aprender más sobre las opciones que tienes en Spool."},
-
+/*
                 {element: ".projects",
                 intro: "Proyectos te dará acceso a nuestro Pool de proyectos donde podrás visitar las propuestas que más te interesen."},
-
+*/
                 {element: '.ourTeam',
                 intro:'Descubre quiénes están detrás de SPOOL'},
 
