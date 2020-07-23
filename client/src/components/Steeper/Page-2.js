@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-
+import './Steeper.css';
 const Page2 = (props) =>{
     const [inputs,setInputs] = useState({
         category:'',
@@ -33,6 +33,8 @@ const Page2 = (props) =>{
     function setSelectedCategory(e){
         let value = e.target.innerText;
         setSelected(selected =>({ ...selected, 'selCategory': value }));
+        e.target.style.setProperty('background-color','#fe9004', 'important');
+        e.target.style.setProperty('color','black', 'important');
     }
 
     function handleRemoveSkill(){
@@ -45,6 +47,8 @@ const Page2 = (props) =>{
     function setSelectedSkill(e){
         let value = e.target.innerText;
         setSelected(selected =>({ ...selected, 'selSkill': value }));
+        e.target.style.setProperty('background-color','#fe9004', 'important');
+        e.target.style.setProperty('color','black', 'important');
     }
 
     function handleRemoveCategories(){
@@ -61,8 +65,8 @@ const Page2 = (props) =>{
                     <div className="form-group">
                         <label htmlFor="category">Categorías ({props.categoriesNum}/7)</label>
                         <input type="text" value={category} className="form-control" id="category" name="category" placeholder="Categorías" onChange={handleChange}/>
-                        <button type="button" className="btn btn-primary px-3 " disabled={category?false:true} onClick={handleAddCategories}><i className="fas fa-plus"></i></button>
-                        <button type="button" className="btn btn-danger px-3" disabled={selCategory?false:true} onClick={handleRemoveCategories}><i className="fas fa-minus"></i></button>
+                        <button type="button" className="btn btn-primary px-2 py-1 " disabled={category?false:true} onClick={handleAddCategories}><i className="fas fa-plus"></i></button>
+                        <button type="button" className="btn btn-danger px-2 py-1" disabled={selCategory?false:true} onClick={handleRemoveCategories}><i className="fas fa-minus"></i></button>
                     </div>
                 </div>
                 <div className="col-12 col-lg-7 bg-light">
@@ -71,7 +75,7 @@ const Page2 = (props) =>{
                         props.values['subcategories'].map((val)=>{
                             return(
                                 <div className="col-6 col-md-4 px-1 py-2" key={val}>
-                                    <span className="py-2 px-2 rounded bg-primary text-light" onClick={setSelectedCategory}>
+                                    <span className="py-2 px-2 rounded bg-primary text-light tag-project" onClick={setSelectedCategory}>
                                         {val}
                                     </span>
                                 </div>
@@ -86,8 +90,8 @@ const Page2 = (props) =>{
                     <div className="form-group">
                         <label htmlFor="skill">Habilidades ({props.skillsNum}/7)</label>
                         <input type="text" value={skill} className="form-control" id="skill" name="skill" placeholder="Habilidades" onChange={handleChange}/>
-                        <button type="button" className="btn btn-primary px-3" disabled={skill?false:true} onClick={handleAddSkill}><i className="fas fa-plus"></i></button>
-                        <button type="button" className="btn btn-danger px-3" disabled={selSkill?false:true} onClick={handleRemoveSkill}><i className="fas fa-minus"></i></button>
+                        <button type="button" className="btn btn-primary px-2 py-1" disabled={skill?false:true} onClick={handleAddSkill}><i className="fas fa-plus"></i></button>
+                        <button type="button" className="btn btn-danger px-2 py-1" disabled={selSkill?false:true} onClick={handleRemoveSkill}><i className="fas fa-minus"></i></button>
                     </div>
                 </div>
                 <div className="col-12 col-lg-7 bg-light">
@@ -96,7 +100,7 @@ const Page2 = (props) =>{
                         props.values['skills'].map((val)=>{
                             return(
                                 <div className="col-6 col-md-4 px-1 py-2" key={val}>
-                                    <span className="py-2 px-2 rounded bg-primary text-light" onClick={setSelectedSkill}>
+                                    <span className="py-2 px-2 rounded bg-primary text-light tag-project" onClick={setSelectedSkill}>
                                         {val}
                                     </span>
                                 </div>

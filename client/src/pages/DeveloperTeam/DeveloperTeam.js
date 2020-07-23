@@ -9,7 +9,7 @@ import cAvatar from '../../assets/abimaell95.jpg'
 const DeveloperTeam = ()=>{
     return(
         <> 
-        <NavBar2/>
+        <NavBar2 activePage='ourTeam'/>
         <section className="page-header page-header-text-light py-0 mb-0">
                 <section className="hero-wrap section">
                         <div className="hero-mask opacity-7 bg-dark"></div>

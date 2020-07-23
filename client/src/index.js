@@ -6,7 +6,6 @@ import "shards-ui/dist/css/shards.min.css";
 import './index.css';
 import { Provider } from 'react-redux';
 import { store} from './_helpers';
-
 import * as serviceWorker from './serviceWorker';
 import MainRouter from './router';
 

@@ -43,7 +43,7 @@ const ApplicationStudents = () =>{
 
     <>
         
-        <NavBar2 userType='student' isLoggedIn = 'true'/>
+        <NavBar2 userType='student' isLoggedIn = 'true' activePage='studentApply'/>
         
         <div className="container">
             <div className="row mx-0 mb-4 d-md-flex d-sm-block justify-content-between">

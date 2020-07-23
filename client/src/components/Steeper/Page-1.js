@@ -25,8 +25,12 @@ const Page1 = (props) =>{
                             <div className="form-group">
                                 <label htmlFor="category">Categoría principal</label>
                                 <select id="category" name='category' defaultValue={values.category} className="form-control" onChange={props.handleChange}>
-                                    <option>Choose...</option>
-                                    <option>...</option>
+                                    <option>Desarrollo Web y Móvil</option>
+                                    <option>IoT</option>
+                                    <option>Ciencia de datos</option>
+                                    <option>Robotica</option>
+                                    <option>Gráficos y Multimedia</option>
+                                    <option>Medicina</option>                                
                                 </select>
                             </div>
                         </div>

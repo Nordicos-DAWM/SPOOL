@@ -1,0 +1,5 @@
+.tag-project:hover{
+    background-color: #fe9004 !important;
+    color: black !important;
+    cursor: pointer;
+}

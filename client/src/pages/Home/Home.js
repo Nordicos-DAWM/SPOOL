@@ -4,7 +4,7 @@ const Home = () =>{
     return(
         <>  
             <IntroSpool/>
-            <NavBar2/>
+            <NavBar2 activePage='home'/>
             <Hero/>
             <CardIcon/>
             <Banner/>

@@ -9,7 +9,7 @@ function CardIcon() {
         <div className="row">
           <div className="col" id="doSpool">
             <h2 className="text-9">¿Qué puedes hacer en Spool?</h2>
-            <p className="text-4">En SPOOL encontrás un espacio en donde podrás navegar a través de proyectos, e incluso añadir uno si lo deseas.</p>
+            <p className="text-4 text-justify">En SPOOL encontrás un espacio en donde podrás navegar a través de proyectos, e incluso añadir uno si lo deseas.</p>
           </div>
         </div>
         <div className="row">

@@ -2,7 +2,7 @@ import React,{useState, useEffect} from 'react';
 import logo from '../../assets/Brand-01.png';
 //import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-
+import {history} from '../../_helpers';
 import { userActions } from '../../_actions';
 /*
     function useQuery(){
@@ -51,7 +51,9 @@ const Login = () =>{
                 <div className="row d-flex justify-content-center py-5">
                     <div className="col-lg-6">
                         <div id="form-container" className="text-center py-4 px-5">
-                        <img src={logo} alt="Spool's logo" className="img-fluid mx-auto d-block" style={{maxWidth: "100%"}}/>
+                        <a href="/">
+                            <img src={logo} alt="Spool's logo" className="img-fluid mx-auto d-block" style={{maxWidth: "100%"}}/>
+                        </a>
                         <form name="form" onSubmit={handleSubmit}>
                             <div className="form-group">
                             <input
@@ -77,7 +79,12 @@ const Login = () =>{
                                     <div className="invalid-feedback">Password is required</div>
                                 }
                             </div>
-                            <button className="btn btn-primary">
+                            <button className="btn btn-primary"
+                                onClick={()=>{
+                                    history.push('/client/pool');
+                                    window.location.reload();
+                                }}
+                            >
                             {loggingIn && <span className="spinner-border spinner-border-sm mr-1"></span>}
                             Ingresar
                             </button>

@@ -69,7 +69,7 @@ function Pool() {
 
     return(
         <>
-        <NavBar2 userType='student' isLoggedIn={true}/>
+        <NavBar2 userType='student' isLoggedIn={true} activePage='studentPool'/>
         <div id="contenido">
 
             <section className="section pt-5 pb-0">

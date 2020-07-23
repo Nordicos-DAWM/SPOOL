@@ -4,7 +4,7 @@ import {NavBar2,Footer} from '../../components'
 const PageNews = ()=>{
     return(
         <>
-        <NavBar2/>
+        <NavBar2 activePage='news'/>
             <section className="page-header page-header-text-dark bg-white py-5 mb-0">
                 <div className="container">
                     <div className="row align-items-center">

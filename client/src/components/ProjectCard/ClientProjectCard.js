@@ -26,7 +26,7 @@ function ClientProjectCard(props) {
                             </div>
                         </div>
                         <div className="d-inline-flex">
-                            <a href="/proposer/project" className="btn btn-primary px-2 py-2">
+                            <a href="/client/project" className="btn btn-primary px-2 py-2">
                                 <i className="fas fa-eye text-3 mr-2"></i>
                                 Ver
                             </a>

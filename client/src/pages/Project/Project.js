@@ -20,7 +20,7 @@ function Project(props) {
   const [data, setData] = useState(project);
     return (
     <Fragment>
-      <NavBar2 userType='student'/>
+      <NavBar2 userType='student' activePage='studentPool' isLoggedIn={true}/>
       <ProjectInfo data={data} setData={setData}/>
       <Footer/>
     </Fragment>

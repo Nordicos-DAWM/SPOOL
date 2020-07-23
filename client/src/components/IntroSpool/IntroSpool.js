@@ -19,14 +19,17 @@ export class IntroSpool extends Component {
                 {element: ".doSpool",
                 intro: "Spool es una página web que te permitirá participar en proyectos propuestos por clientes reales."},
 
-                {element: ".howItWorks",
-                intro: "En la página ¿Cómo funciona? podrás aprender más sobre las opciones que tienes en Spool."},
+                {element: ".howStart",
+                intro: "En la página ¿Cómo Empezar? podrás aprender más sobre las opciones que tienes en Spool."},
 
                 {element: ".projects",
                 intro: "Proyectos te dará acceso a nuestro Pool de proyectos donde podrás visitar las propuestas que más te interesen."},
 
-                {element: ".help",
-                intro: "¡Si tienes dudas no dudes en vistar nuestra página de Ayuda!"},
+                {element: '.ourTeam',
+                intro:'Descubre quiénes están detrás de SPOOL'},
+
+                {element: ".news",
+                intro: "¡Mantente actualizado con todos los cambios de la página!"},
 
                 {element: '.register-btn',
                 intro:'!Únete y se parte de SPOOL!'}

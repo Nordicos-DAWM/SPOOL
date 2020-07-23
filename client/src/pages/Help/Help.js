@@ -6,15 +6,15 @@ function Help(props) {
     return (
     <Fragment>
         
-        <NavBar2 userType = 'guest'/>
+        <NavBar2/>
 
         <div class="container mt-5">
             <h3 >Acerca de SPOOL</h3>
-            <p className="p_md">
+            <p className="p_md text-justify">
                 <b>SPOOL</b> es una plataforma desarrollada por estudiantes de ESPOL para estudiantes de ESPOL, mediante esta plataforma buscamos conectar clientes y problemas reales a los proyectos que son desarrollados en nuestras materias. 
             </p>
             <p>Confiamos firmemente en las capacidades que poseen los estudiantes de ESPOL, y esperamos estas capacidades puedan ser utilizadas en proyectos que no se queden en el olvido, en proyectos que busquen resolver una problemática real, y que estas soluciones puedan ser compartidas dentro de nuestra comunidad. </p>
-            <hr class="mb-4"/>
+            <hr class="mb-4 text-justify"/>
             <h3>Contáctanos</h3>
             <ContactUs/>
             <h3>Ubicación</h3>

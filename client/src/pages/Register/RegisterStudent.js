@@ -73,7 +73,9 @@ const RegisterStudent = () =>{
                 <div className="row d-flex justify-content-center py-5">
                     <div className="col-lg-12">
                         <div id="form-container" className="text-center py-4 px-5">
-                            <img src={logo} alt="Spool's logo" className="img-fluid mx-auto d-block" style={{maxWidth: "70%"}}/>
+                            <a href="/">
+                                <img src={logo} alt="Spool's logo" className="img-fluid mx-auto d-block" style={{maxWidth: "70%"}}/>
+                            </a>
                             <h3 className="my-4">ESTUDIANTE</h3>
                             <form name="form" onSubmit={handleSubmit}>
                                 <div class="form-row">

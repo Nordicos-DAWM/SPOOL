@@ -14,7 +14,7 @@ function ProjectCard(props) {
                         <span id="project-category" className="text-2 d-inline-flex d-sm-block text-center py-1 px-2 rounded bg-primary text-light">{props.mainCategory}</span>
                     </div>
                     <p className="text-2 line-height-4 text-justify">{props.description}</p>
-                    <a href="/project" className="text-muted btn-link text-3">
+                    <a href="/student/project" className="text-muted btn-link text-3">
                         Ver más
                         <i className="fas fa-chevron-right text-2 ml-2"></i>
                     </a>

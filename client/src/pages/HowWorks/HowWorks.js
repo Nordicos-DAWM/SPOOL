@@ -6,7 +6,7 @@ import Student from '../../assets/student-hw.jpg';
 const HowWorks = ()=>{
     return (
         <>
-        <NavBar2/>
+        <NavBar2 activePage='howStart'/>
         <section className="section">
             <div className="container">
                 <h2 className="text-9 text-center">

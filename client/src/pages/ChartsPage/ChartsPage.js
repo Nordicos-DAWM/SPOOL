@@ -3,7 +3,7 @@ import {CategoriesPlot,SkillsPlot,FacultyGraph,MatterGraph,NavBar2,Footer} from 
 const ChartsPage = () =>{
     return(
         <>
-            <NavBar2 userType='client' isLoggedIn={true}/>
+            <NavBar2 userType='client' isLoggedIn={true} activePage='clientCharts'/>
             <section className="page-header page-header-text-dark bg-white py-5 mb-0">
                 <div className="container">
                     <div className="row align-items-center">

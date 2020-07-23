@@ -22,7 +22,7 @@ const Page3 = (props) =>{
                 </div>
                 <div className="col-12 col-md-6">
                     <div className="form-group">
-                        <label htmlFor="color">Color</label>
+                        <label htmlFor="color">Color de la tarjeta</label>
                         <input type="color" className="form-control-range" name="color" id="color" defaultValue={values.color} onChange={props.handleChange}/>
                     </div>
                 </div>

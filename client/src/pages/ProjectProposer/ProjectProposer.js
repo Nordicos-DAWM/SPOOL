@@ -48,9 +48,8 @@ function ProjectProposer(props) {
   const [data, setData] = useState(project);
     return (
     <Fragment>
-      <NavBar2 userType='client' isLoggedIn={true}/>
-      <div className="container">
-      <h4 class="mb-3">Información del proyecto</h4>
+      <NavBar2 userType='client' isLoggedIn={true} activePage='clientPool'/>
+      <div className="container mt-5">
       <ProjectInfoEditable data={data} setData={setData}/>
       <hr class="mb-4"/>
       <h4 class="mb-3">Propuestas</h4>

@@ -13,8 +13,8 @@ function Banner(){
                 <div className='col-lg-5 col-xl-6 d-flex'>
                     <div className='my-auto pb-5 pb-lg-0'>
                         <h2 className='text-9'>Spool es para todos</h2>
-                        <p className='text-4'>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione blanditiis quae commodi veritatis modi perferendis. Porro ab eos ea magni facere necessitatibus molestias voluptates, vero voluptatibus hic amet animi autem adipisci officia, aliquam dolores, dignissimos earum nobis sapiente sed quod.
+                        <p className='text-4 text-justify'>
+                            Spool es un entorno digital dirigido hacia personas con problemas reales que necesitan desarrollar soluciones tecnológicas y desean compartir sus ideas de proyectos; y hacia los estudiantes de ESPOL que tendrán la capacidad de ver y escoger un proyecto disponible en nuestra página, poder contactarse con un cliente real y acordar el desarrollo de la solución.
                         </p>
                     </div>
                 </div>

@@ -82,7 +82,7 @@ function ProjectInfoEditable(props) {
                         }
                         </span>
 
-                        <p className="p_sm">Título</p>
+                        <p className="text-4 mb-0">Título</p>
                         
                         {editableTitle
                         ? <input ref={nameRef} type="text" class="form-control"  defaultValue ={props.data.title} />
@@ -109,7 +109,7 @@ function ProjectInfoEditable(props) {
 
                             </div>
                             <div className="col-md-4 col-lg-5 col-sm-12 ">
-                                <p className="p_sm">Propuesto por</p>
+                                <p className="text-4 mb-0">Propuesto por</p>
                                 {editableSecondaryInfo
                                     ? <input ref={proposerRef} type="text" class="form-control"  defaultValue ={props.data.proposer} />
                                     : <h6 >{ props.data.proposer }</h6>
@@ -117,14 +117,14 @@ function ProjectInfoEditable(props) {
                             </div>
 
                             <div className="col-md-4 col-lg-5 col-sm-12">
-                                <p className="p_sm">Categoría principal</p>
+                                <p className="text-4 mb-0">Categoría principal</p>
                                 <h6 >{ props.data.mainCategory }</h6>
                                 
                             </div>
                             
                             <div className="col-md-3 col-lg-2 col-sm-12">
-                                <p className="p_sm">Estado</p>
-                                <span id="state" className="badge badge-secondary badge-pill">{props.data.state}</span>
+                                <p className="text-4 mb-0">Estado</p>
+                                <span className="text-success">{props.data.state}</span>
                             </div>
                         
                 </div>
@@ -137,7 +137,7 @@ function ProjectInfoEditable(props) {
                         </div>
                         <div className="category_skills_div">
                             <h5 className="text-white">Habilidades</h5>
-                            {props.data.skills.map(i => <span className="badge badge-light badge-pill category"> {i}</span>)}
+                            {props.data.skills.map(i => <span className="badge badge-light badge-pill text-dark category"> {i}</span>)}
                         </div>
                     </div>
 

@@ -1,9 +1,19 @@
-import React from 'react';
+import React,{useState} from 'react';
 import logo from "../../assets/Brand-01.png";
 
 function NavBar2(props) {
     const user = props.userType;
     const isLoggedIn = props.isLoggedIn;
+    const isActive = props.activePage;
+    const [isOpen, setIsOpen] = useState(false)
+
+    const  toggleOpen = (e) =>{
+        e.preventDefault();
+        console.log('f')
+        setIsOpen(!isOpen);
+    }
+
+
     return (
         <div id="header">
             <div className="container pl-0 pr-0">
@@ -17,7 +27,7 @@ function NavBar2(props) {
                         </div>
 
 
-                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#header-nav">
+                        <button className="navbar-toggler collapsed" type="button" onClick={toggleOpen}>
                             <span></span>
                             <span></span>
                             <span></span>
@@ -25,25 +35,25 @@ function NavBar2(props) {
 
 
                         <nav className="primary-menu navbar navbar-expand-lg">
-                            <div id="header-nav" className="collapse navbar-collapse">
+                            <div id="header-nav" className={"collapse navbar-collapse"+(isOpen?' show':'')}>
                                 <ul className="navbar-nav mr-auto">
                                     {
                                     !isLoggedIn
                                         &&
                                     <>
-                                        <li className="home active">
+                                        <li className={"home"+ (isActive==='home'?' active':'')}>
                                             <a href="/">Inicio</a>
                                         </li>
-                                        <li>
+                                        <li className={"howStart"+ (isActive==='howStart'?' active':'')}>
                                             <a href="/how-start">¿Cómo Empezar?</a> 
                                         </li>
-                                        <li className="projects">
-                                            <a href="/pool">Proyectos</a>
+                                        <li className={"projects"+ (isActive==='projects'?' active':'')}>
+                                            <a href="student/pool">Proyectos</a>
                                         </li>
-                                        <li className="ourTeam">
+                                        <li className={"ourTeam"+ (isActive==='ourTeam'?' active':'')}>
                                             <a href="/our-team">Team SPOOL</a>
                                         </li>
-                                        <li className="news">
+                                        <li className={"news"+ (isActive==='news'?' active':'')}>
                                             <a href="/news">Noticias</a>
                                         </li>
                                     </>
@@ -55,10 +65,10 @@ function NavBar2(props) {
                                             &&
                                         
                                     <>
-                                        <li className="home active">
-                                            <a href="/pool">Proyectos</a>
+                                        <li className={"studentPool"+ (isActive==='studentPool'?' active':'')}>
+                                            <a href="/student/pool">Proyectos</a>
                                         </li>
-                                        <li>
+                                        <li className={"studentApply"+ (isActive==='studentApply'?' active':'')}> 
                                             <a href="/student/applications">Aplicaciones</a> 
                                         </li>
                                     </>
@@ -69,11 +79,11 @@ function NavBar2(props) {
                                         isLoggedIn
                                             &&
                                     <>
-                                        <li className="home active">
-                                            <a href="/clientPool">Proyectos</a>
+                                        <li className={"clientPool"+ (isActive==='clientPool'?' active':'')}>
+                                            <a href="/client/pool">Proyectos</a>
                                         </li>
-                                        <li>
-                                            <a href="/charts">Gráficos</a> 
+                                        <li className={"clientCharts"+ (isActive==='clientCharts'?' active':'')}>
+                                            <a href="/client/charts">Gráficos</a> 
                                         </li>
                                     </>    
                                     }

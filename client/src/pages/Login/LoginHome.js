@@ -7,9 +7,9 @@ const LoginHome = () =>{
     return(
         <Fragment>
         <div className="container">
-            
-            <img src={logo} alt="Spool's logo" className="img-fluid mx-auto d-block" style={{maxWidth: "40%"}}/>
-            
+            <a href="/">
+                <img src={logo} alt="Spool's logo" className="img-fluid mx-auto d-block" style={{maxWidth: "40%"}}/>
+            </a>
             <h2 className="text-center  text-primary my-4" style={{fontWeight:"400"}}>Ingresa como: </h2>
 
             <div className="row">
