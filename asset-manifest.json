@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/SPOOL/static/css/main.ad04ac6e.chunk.css",
-    "main.js": "/SPOOL/static/js/main.aa1b77af.chunk.js",
-    "main.js.map": "/SPOOL/static/js/main.aa1b77af.chunk.js.map",
+    "main.js": "/SPOOL/static/js/main.b0b77182.chunk.js",
+    "main.js.map": "/SPOOL/static/js/main.b0b77182.chunk.js.map",
     "runtime-main.js": "/SPOOL/static/js/runtime-main.449e9464.js",
     "runtime-main.js.map": "/SPOOL/static/js/runtime-main.449e9464.js.map",
     "static/css/2.c4291fd2.chunk.css": "/SPOOL/static/css/2.c4291fd2.chunk.css",
     "static/js/2.1db2686d.chunk.js": "/SPOOL/static/js/2.1db2686d.chunk.js",
     "static/js/2.1db2686d.chunk.js.map": "/SPOOL/static/js/2.1db2686d.chunk.js.map",
     "index.html": "/SPOOL/index.html",
-    "precache-manifest.90b4d3245d4777f0ed2769a008245ea7.js": "/SPOOL/precache-manifest.90b4d3245d4777f0ed2769a008245ea7.js",
+    "precache-manifest.3b62fb32a2d4e6dff62a47dd97a18264.js": "/SPOOL/precache-manifest.3b62fb32a2d4e6dff62a47dd97a18264.js",
     "service-worker.js": "/SPOOL/service-worker.js",
     "static/css/2.c4291fd2.chunk.css.map": "/SPOOL/static/css/2.c4291fd2.chunk.css.map",
     "static/css/main.ad04ac6e.chunk.css.map": "/SPOOL/static/css/main.ad04ac6e.chunk.css.map",
@@ -34,6 +34,6 @@
     "static/css/2.c4291fd2.chunk.css",
     "static/js/2.1db2686d.chunk.js",
     "static/css/main.ad04ac6e.chunk.css",
-    "static/js/main.aa1b77af.chunk.js"
+    "static/js/main.b0b77182.chunk.js"
   ]
 }
