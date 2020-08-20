@@ -2,11 +2,13 @@
 const express = require('express');
 //Requiero morgan y lo guardo en una constante
 const morgan = require('morgan');
-//Requiero cors y lo guardo en una constante
 //Llamo al objeto express y lo guardo en una constante
 const app = express();
-//Requiero mongoose de la db y lo guardo en una constante
-const { mongoose } = require('./database');
+
+require('dotenv').config();
+
+
+const mailerRouter = require('./routes/contact');
 
 
 /*Configuracion del servidor*/
@@ -16,9 +18,11 @@ app.set('port' , process.env.PORT || 3000);
 /*Middlewares*/
 app.use(morgan('dev'));
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 /*Rutas*/
-app.use('/api/***' ,require('./routes/***'));
+app.use('/api/contact' ,mailerRouter);
 
 
 /*Iniciando con el servidor*/
