@@ -7,9 +7,11 @@ const app = express();
 
 require('dotenv').config();
 
-const connection = require('./models/index')
+const connection = require('./models/index');
 
 const mailerRouter = require('./routes/contact');
+const applicationRouter = require('./routes/application');
+const projectRouter = require('./routes/project');
 const userRouter = require('./routes/user')
 const newsRouter = require('./routes/news')
 
@@ -21,15 +23,15 @@ app.set('port' , process.env.PORT || 3000);
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+
 
 /*Rutas*/
 app.use('/api/contact' ,mailerRouter);
+app.use('/api/application',applicationRouter);
+app.use('/api/projects', projectRouter);
 app.use('/api/user' ,userRouter);
 app.use('/api/news' ,newsRouter);
 
-/*Iniciando con el servidor*/
-//Le digo que escucha al puerto 3000 y coloco un mensaje por consola
 app.listen(app.get('port') , () => {
 	console.log('Server on port' , app.get('port'));
 });
