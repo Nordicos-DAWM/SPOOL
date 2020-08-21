@@ -15,14 +15,14 @@ router.get('/id/:id', async (req, res, next) => {
         user = await User.findOne({ id: req.params.id }).orFail();
     } catch {
         res.status(404)
-        res.send({ error: "User does not exist" })
+        res.send({ error: "Usuario no existe." })
     }
 
     if (user.logicState) {
         res.send(user)
     } else {
         res.status(404)
-        res.send({ error: "User does not exist" })
+        res.send({ error: "Usuario no existe." })
     }
 
 });
@@ -34,7 +34,7 @@ router.put('/update/:id', async (req, res, next) => {
         user = await User.findOne({ id: req.params.id }).orFail();
     } catch {
         res.status(404);
-        res.send({ error: "User does not exist" });
+        res.send({ error: "Usuario no existe." });
     }
 
     if (user.logicState) {
@@ -49,7 +49,7 @@ router.put('/update/:id', async (req, res, next) => {
         });
     } else {
         res.status(404);
-        res.send({ error: "User does not exist" });
+        res.send({ error: "Usuario no existe." });
     }
 });
 
@@ -73,7 +73,7 @@ router.delete('/delete/:id', async (req, res, next) => {
         user = await User.findOne({ id: req.params.id }).orFail(); 
     } catch{
         res.status(404);
-        res.send({ error: "User does not exist" });
+        res.send({ error: "Usuario no existe." });
 
     }
     await user.update({logicState: false}, (err,updated)=>{
@@ -82,7 +82,7 @@ router.delete('/delete/:id', async (req, res, next) => {
             res.send(err);
         } else {
             res.status(200);
-            res.send(updated);
+            res.send({message:"Se eliminó el usuario existosamente"});
         }
     });
 });

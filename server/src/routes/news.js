@@ -15,14 +15,14 @@ router.get('/id/:id', async (req, res, next) => {
         notice= await News.findOne({ id: req.params.id }).orFail();
     } catch {
         res.status(404)
-        res.send({ error: "This notice does not exist" })
+        res.send({ error: "Noticia no existe." })
     }
 
     if (notice.logicState) {
         res.send(notice)
     } else {
         res.status(404)
-        res.send({ error: "This notice does not exist" })
+        res.send({ error: "Noticia no existe." })
     }
 
 });
@@ -34,7 +34,7 @@ router.put('/update/:id', async (req, res, next) => {
         notice = await News.findOne({ id: req.params.id }).orFail();
     } catch {
         res.status(404);
-        res.send({ error: "This notice does not exist" });
+        res.send({ error: "Noticia no existe." });
     }
 
     if (notice.logicState) {
@@ -49,7 +49,7 @@ router.put('/update/:id', async (req, res, next) => {
         });
     } else {
         res.status(404);
-        res.send({ error: "This notice does not exist" });
+        res.send({ error: "Noticia no existe." });
     }
 
 });
@@ -74,7 +74,7 @@ router.delete('/delete/:id', async (req, res, next) => {
         notice = await News.findOne({ id: req.params.id }).orFail(); 
     } catch{
         res.status(404);
-        res.send({ error: "This notice does not exist" });
+        res.send({ error: "Noticia no existe." });
 
     }
     await notice.update({logicState: false}, (err,updated)=>{

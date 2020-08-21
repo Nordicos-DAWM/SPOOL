@@ -7,7 +7,7 @@ const app = express();
 
 require('dotenv').config();
 
-const connection = require('./routes/index')
+const connection = require('./models/index')
 
 const mailerRouter = require('./routes/contact');
 const userRouter = require('./routes/user')
