@@ -28,6 +28,17 @@ router.get('/id/:id', async (req,res,next)=>{
     }
 });
 
+router.get('/mainCategory/:mainCategory', async (req,res,next)=>{
+    try {
+        const projects = await Project.find({ mainCategory: req.params.mainCategory });
+        res.status(200).send(projects);
+
+    } catch {
+        res.status(404).send([]);
+    }
+});
+
+
 router.post('/', async (req, res) => {
     try{
         const project = new Project({
