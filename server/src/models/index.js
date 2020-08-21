@@ -1,4 +1,6 @@
 var mongoose = require('mongoose');
+var User = require('./user')
+var News = require('./news')
 
 DATABASE_URL = "mongodb://localhost:27017/spool"
 
