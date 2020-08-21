@@ -1,25 +1,30 @@
 var mongoose = require('mongoose');
 
 const applicationSchema =  new mongoose.Schema({
-    id_student:{
+    idStudent:{
         type: String
     },
-    id_project:{
-        type:String
+    idProject:{
+        type:String,
+        required: true
     },
     state:{
-        type:String
+        type:String,
+        required:true
     },
-    is_subject:{
-        type: Boolean
+    isSubject:{
+        type: Boolean,
+        required: true
     },
     reason:{
-        type: String
+        type: String,
+        required: true
     },
     proposal:{
-        type:String
+        type:String,
+        required: true
     },
-    logic_state:{
+    logicState:{
         type:Boolean
     }
 })

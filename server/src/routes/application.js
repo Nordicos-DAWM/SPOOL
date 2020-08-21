@@ -9,17 +9,17 @@ var router = express.Router();
 router.get('/', async (req, res, next) => {
     let applications = await Application.find()
     applications = applications.filter((a)=>{
-        if(a.logic_state){
+        if(a.logicState){
             return a; 
         }
     })
     applications = applications.map(async(app)=>{
-        let student = await User.findOne({_id:app.id_student});
-        let project = await Project.findOne({_id:app.id_project});
+        let student = await User.findOne({_id:app.idStudent});
+        let project = await Project.findOne({_id:app.idProject});
         let proposer = await User.findOne({_id:project.id_proposer});
         project = {...project,id_proposer:proposer}
         //project = {...{id_proposer,...project},id_proposer:proposer}
-        return {...app,id_student:student,id_project:project}
+        return {...app,idStudent:student,idProject:project}
     })
     res.send(applications)
 });
@@ -27,13 +27,13 @@ router.get('/', async (req, res, next) => {
 router.get('/id/:id',async (req,res,next)=>{
     try{
         let application = await Application.findOne({_id:req.params.id}).orFail();
-        let student = await User.findOne({_id:application.id_student});
-        let project = await Project.findOne({_id:application.id_project});
+        let student = await User.findOne({_id:application.idStudent});
+        let project = await Project.findOne({_id:application.idProject});
         let proposer = await User.findOne({_id:project.id_proposer});
         project = {...project,id_proposer:proposer}
-        application={...application,id_student:student,id_project:project}
+        application={...application,idStudent:student,idProject:project}
 
-        if(application.logic_state){
+        if(application.logicState){
             res.send(application);
         }else{
             res.status(400);
@@ -47,13 +47,13 @@ router.get('/id/:id',async (req,res,next)=>{
 
 router.post('/create/', async (req,res,next)=>{
     await Application.create(
-        {...req.body,'logic_state':true},(err,newApplication)=>{
+        {...req.body,'logicState':true},(err,newApplication)=>{
             if(err){
                 res.status(403);
                 res.send(err.message);
             }else{
                 res.status(201);
-                res.send(newApplication);
+                res.send({message:"Se ha creado una aplicacion exitosamente"});
             }
         }
     );
@@ -70,7 +70,7 @@ router.put('/update/:id', async (req,res,next)=>{
                         res.send(err);
                     }else{
                         res.status(201);
-                        res.send(updApplication);
+                        res.send({message:"Se ha actualizado una aplicacion exitosamente"});
                     }
                 }
             )
@@ -85,14 +85,14 @@ router.delete('/delete/:id',async(req,res,next)=>{
     try{
         let application = await Application.findOne({_id:req.params.id}).orFail();
             await application.updateOne(
-                {logic_state:false},
+                {logicState:false},
                 (err,delApplication)=>{
                     if(err){
                         res.status(403);
                         res.send(err);
                     }else{
                         res.status(201);
-                        res.send(delApplication);
+                        res.send({message:"Se ha eliminado una aplicacion exitosamente"});
                     }
                 }
             );
