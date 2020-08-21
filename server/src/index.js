@@ -7,9 +7,11 @@ const app = express();
 
 require('dotenv').config();
 
+const connection = require('./routes/index')
 
 const mailerRouter = require('./routes/contact');
-
+const userRouter = require('./routes/user')
+const newsRouter = require('./routes/news')
 
 /*Configuracion del servidor*/
 //Le asigno una variable y una constante que asume el puerto 3000 por defecto
@@ -23,7 +25,8 @@ app.use(express.json());
 
 /*Rutas*/
 app.use('/api/contact' ,mailerRouter);
-
+app.use('/api/user' ,userRouter);
+app.use('/api/news' ,newsRouter);
 
 /*Iniciando con el servidor*/
 //Le digo que escucha al puerto 3000 y coloco un mensaje por consola
