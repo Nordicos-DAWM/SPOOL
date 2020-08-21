@@ -33,16 +33,16 @@ router.post('/', async (req, res) => {
         const project = new Project({
                 title: req.body.title,
                 state: req.body.state,
-                main_category: req.body.main_category,
+                mainCategory: req.body.mainCategory,
                 categories: req.body.categories,
                 description: req.body.description,
                 proposer: req.body.proposer,
-                contact_email: req.body.contact_email,
-                max_participants: req.body.max_participants,
+                contactEmail: req.body.contactEmail,
+                maxParticipants: req.body.maxParticipants,
                 color: req.body.color,
                 skills: req.body.skills,
                 url_repository: req.body.url_repository,
-                logic_state : true,
+                logicState : true,
             
 
             });
@@ -62,8 +62,8 @@ router.put("/id/:id" , async (req, res) => {
         if (req.body.state)
             project.state = req.body.state;
         
-        if (req.body.main_category)
-            project.main_category = req.body.main_category;
+        if (req.body.mainCategory)
+            project.mainCategory = req.body.mainCategory;
         
         if (req.body.categories)
             project.categories = req.body.categories;
@@ -74,11 +74,11 @@ router.put("/id/:id" , async (req, res) => {
         if (req.body.proposer)
             project.proposer = req.body.proposer;
 
-        if (req.body.contact_email)
-            project.contact_email = req.body.contact_email;
+        if (req.body.contactEmail)
+            project.contactEmail = req.body.contactEmail;
         
-        if (req.body.max_participants)
-            project.max_participants = req.body.max_participants;
+        if (req.body.maxParticipants)
+            project.maxParticipants = req.body.maxParticipants;
 
         if (req.body.color) 
             project.color = req.body.color;
@@ -101,7 +101,7 @@ router.put("/id/:id" , async (req, res) => {
 router.delete('/id/:id', async (req, res, next) => {
     try{
         const project = await Project.findOne({ _id: req.params.id });
-        project.logic_state = false; 
+        project.logicState = false; 
         await project.save();
         res.status(200).send({message:"Se elimino el registro exitosamente"});
     } catch {
