@@ -7,8 +7,10 @@ const app = express();
 
 require('dotenv').config();
 
+const connection = require('./models/index');
 
 const mailerRouter = require('./routes/contact');
+const applicationRouter = require('./routes/application');
 
 
 /*Configuracion del servidor*/
@@ -23,6 +25,7 @@ app.use(express.json());
 
 /*Rutas*/
 app.use('/api/contact' ,mailerRouter);
+app.use('/api/application',applicationRouter);
 
 
 /*Iniciando con el servidor*/
