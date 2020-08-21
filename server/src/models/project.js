@@ -10,7 +10,7 @@ const projectSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    main_category: {
+    mainCategory: {
         type: String,
         required: true,
     },
@@ -26,11 +26,11 @@ const projectSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    contact_email: {
+    contactEmail: {
         type: String, 
         required: true,
     },
-    max_participants: {
+    maxParticipants: {
         required: true,
         type: String
     }, 
@@ -43,7 +43,7 @@ const projectSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    logical_state:{
+    logicState:{
         type: Boolean
     },
     url_repository: {
