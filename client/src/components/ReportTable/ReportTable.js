@@ -18,28 +18,12 @@ const ReportTable = (props) => {
                         {data.map((dat)=>{
                             return(
                                 <tr>
-                                    {...dat}
+                                    {Object.values(dat).map((value)=>{
+                                        return <td>value</td>
+                                    })}
                                 </tr>
                             );
                         })}
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Aaron</td>
-                            <td>Seth</td>
-                            <td>@aaron</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Daichi</td>
-                            <td>Barbal</td>
-                            <td>@daichi</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Tabor</td>
-                            <td>Guju</td>
-                            <td>@tabor</td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
