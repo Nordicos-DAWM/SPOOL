@@ -20,3 +20,4 @@ export * from './Steeper/Steeper';
 export * from './CategoriesPlot/CategoriesPlot';
 export * from './SkillsPlot/SkillsPlot';
 export * from './Preloader/Preloader';
+export * from './ReportTable/ReportTable';

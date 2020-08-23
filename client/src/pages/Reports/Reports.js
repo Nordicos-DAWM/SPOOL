@@ -1,6 +1,17 @@
-import React from 'react';
-
+import React,{useState} from 'react';
+import {ReportTable} from '../../components';
 const Reports = () => {
+    const [selectOp,setSelectOp] = useState('users');
+    const [filter,setFilter] = useState('');
+    const handleChange = (e) => {
+        setSelectOp(e.target.value);
+    }
+
+    const handleFilterChange = (e) => {
+        setFilter(e.target.value);
+    }
+
+
     return (
         <>
             <section className="page-header page-header-text-dark bg-white py-5 mb-0">
@@ -14,23 +25,47 @@ const Reports = () => {
                 </div>
             </section>
             <div id="content">
-                <section className="section pt-5 pb-0">
+                <section className="section pt-3 pb-0">
                     <div className="container bg-light">
-                        <div id="horizontalTab" class="resp-htabs" style={{display: 'block', width: '100%', margin: '0px'}}>
-                            <ul class="resp-tabs-list">
-                                <li class="resp-tab-item resp-tab-active" aria-controls="tab_item-0" role="tab">Usuarios</li>
-                                <li class="resp-tab-item" aria-controls="tab_item-1" role="tab">Proyectos</li>
-                            </ul>
-                            <div class="resp-tabs-container">
-                                <h2 class="resp-accordion resp-tab-active" role="tab" aria-controls="tab_item-0"><i class="resp-arrow"></i>Responsive Tab-1</h2><div class="resp-tab-content resp-tab-content-active" style={{display:'block'}} aria-labelledby="tab_item-0">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna, euismod ut ornare non, volutpat vel tortor. Integer laoreet placerat suscipit. Sed sodales scelerisque commodo. Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis urna gravida mollis.</p>
+                        <div className="row">
+                            <div className="col-6">
+                                <div className="form-row">
+                                    <div className="form-group col-md-6">
+                                        <p className="lead mb-0">Tabla</p>
+                                        <select className="form-control" id="table" onChange={handleChange}>
+                                            <option value='users'>Usuarios</option>
+                                            <option value='projects'>Proyectos</option>
+                                        </select>
+                                    </div>
+                                    <div className="form-group col-md-6">
+                                        <p className="lead mb-0">Tipo</p>
+                                        <select className="form-control" id="type" onChange={handleFilterChange}>
+                                            { selectOp==='users' &&
+                                                <>
+                                                    <option value='admin'>Admin</option>
+                                                    <option value='student'>Student</option>
+                                                    <option value='client'>Client</option>
+                                                </> 
+                                            }
+                                            { selectOp==='projects' &&
+                                                <>
+                                                    <option value='cs'>Computer Science</option>
+                                                    <option value='math'>Math</option>
+                                                    <option value='bd'>Big Data</option>
+                                                </> 
+                                            }  
+                                        </select>
+                                    </div>
                                 </div>
-                                <h2 class="resp-accordion" role="tab" aria-controls="tab_item-1"><i class="resp-arrow"></i>Responsive Tab-2</h2><div class="resp-tab-content" aria-labelledby="tab_item-1">
-                                    <p>This tab has icon in consectetur adipiscing eliconse consectetur adipiscing elit. Vestibulum nibh urna, ctetur adipiscing elit. Vestibulum nibh urna, t.consectetur adipiscing elit. Vestibulum nibh urna,  Vestibulum nibh urna,it.</p>
-                                </div>
-                                <h2 class="resp-accordion" role="tab" aria-controls="tab_item-2"><i class="resp-arrow"></i>Responsive Tab-3</h2><div class="resp-tab-content" aria-labelledby="tab_item-2">
-                                    <p>Suspendisse blandit velit Integer laoreet placerat suscipit. Sed sodales scelerisque commodo. Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis Integer laoreet placerat suscipit. Sed sodales scelerisque commodo. Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis urna gravid urna gravid eget erat suscipit in malesuada odio venenatis.</p>
-                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section className="section pt-2 pb-0">
+                    <div className="container bg-light">
+                        <div className="row">
+                            <div className="col">
+                                <ReportTable columns={['#','FirstName','LastName','Type']} data={[{id:1,fn:'Aaron',ln:'Seth',type:'Student'},{id:3,fn:'Rubops',ln:'Omg',type:'Admin'},{id:4,fn:'Lero',ln:'Roo',type:'Client'}]} filter={filter}/>
                             </div>
                         </div>
                     </div>

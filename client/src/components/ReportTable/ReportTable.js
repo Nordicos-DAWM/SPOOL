@@ -1,8 +1,13 @@
 import React from 'react';
 
 const ReportTable = (props) => {
-    const colums = props.columns;
-    const data = props.data;
+    const columns = props.columns;
+    let data = props.data;
+    const filter = props.filter;
+
+    //Filtramos los datos antes de pasar los datos
+    data = data.filter((obj)=>obj['type'].toLowerCase() === filter)
+
     return (
         <>
             <div class="table-responsive">
@@ -19,7 +24,7 @@ const ReportTable = (props) => {
                             return(
                                 <tr>
                                     {Object.values(dat).map((value)=>{
-                                        return <td>value</td>
+                                        return <td>{value}</td>
                                     })}
                                 </tr>
                             );
