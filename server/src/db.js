@@ -28,6 +28,8 @@ Project.belongsToMany(Category, {through: 'Projects-Categories', timestamps: fal
 Category.belongsToMany(Project, {through: 'Projects-Categories', timestamps: false});
 
 
+Project.hasMany(Application);
+Application.belongsTo(Project);
 
 
 conn.sync({force:false})
