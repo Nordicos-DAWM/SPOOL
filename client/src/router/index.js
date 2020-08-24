@@ -4,8 +4,8 @@ import {history} from '../_helpers';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import {Preloader} from '../components';
-import {Home,HowWorks,CreateProject,DeveloperTeam,PageNews,ChartsPage,LoginHome,RegisterHome,RegisterStudent,RegisterClient,Login,ApplicationStudents,Project,Help,ProjectProposer
-,Pool,ClientPool,Reports} from '../pages';
+import {Home,HowWorks,CreateProject,DeveloperTeam,PageNews,ChartsPage,RegisterHome,RegisterStudent,RegisterClient,Login,ApplicationStudents,Project,Help,ProjectProposer
+,Pool,ClientPool,NewsAdmin,Reports} from '../pages';
 
 
 const MainRouter = () =>{
@@ -37,13 +37,13 @@ const MainRouter = () =>{
                 <Route path="/register/student" component={RegisterStudent}/>
                 <Route path="/register/client" component={RegisterClient}/>
                 <Route path="/register" component={RegisterHome}/>
-                <Route path="/login/home" component={LoginHome}/>
                 <Route path="/login" component={Login}/>
 
                 <Route exact path="/help" component={Help}/>
                 <Route path="/how-start" component={HowWorks}/>
                 <Route path="/our-team" component={DeveloperTeam}/>
                 <Route path="/news" component={PageNews}/>
+                <Route path="/admin/news" component={NewsAdmin}/>
                 <Route exact path="/pool" component={Pool}/>
                 <Route path="/" component={Home}/>
                 

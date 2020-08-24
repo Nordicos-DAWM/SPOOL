@@ -103,7 +103,7 @@ function NavBar2(props) {
                                         &&
                                 <>
                                     <li> 
-                                        <a href="/login/home">Login</a>
+                                        <a href="/login/">Login</a>
                                     </li>
                                     <li className="align-items-center h-auto ml-sm-3">
                                         <a className="btn btn-primary d-none d-sm-block" href="/register">Sign Up</a>

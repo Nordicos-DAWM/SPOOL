@@ -21,3 +21,5 @@ export * from './CategoriesPlot/CategoriesPlot';
 export * from './SkillsPlot/SkillsPlot';
 export * from './Preloader/Preloader';
 export * from './ReportTable/ReportTable';
+export * from './NewCard/NewCard';
+export * from './NewModal/NewModal';

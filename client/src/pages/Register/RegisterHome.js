@@ -42,7 +42,7 @@ const RegisterHome = () =>{
 
             <div className="row">
 
-                <div className="text-center col-12 text-3">Ya tienes cuenta? <Link to="/login/home">Ingresa aquí!</Link></div>
+                <div className="text-center col-12 text-3">Ya tienes cuenta? <Link to="/login/">Ingresa aquí!</Link></div>
             </div>
         </div>
         </Fragment>
