@@ -1,3 +1,4 @@
+/** 
 var mongoose = require('mongoose');
 
 const applicationSchema =  new mongoose.Schema({
@@ -30,3 +31,5 @@ const applicationSchema =  new mongoose.Schema({
 })
 
 module.exports = mongoose.model('applications',applicationSchema);
+
+*/
