@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {history} from '../../_helpers';
 import { userActions } from '../../_actions';
+import { Link } from 'react-router-dom';
 
     function useQuery(){
         return new URLSearchParams(useLocation().search)
@@ -99,6 +100,9 @@ const Login = () =>{
                         </div>
                     </div>
                 </div>
+                <div className="row">
+                <div className="text-center col-12 text-3">No tienes cuenta? <Link to="/register">Regístrate aquí!</Link></div>
+            </div>
             </div>
         </div>
     );
