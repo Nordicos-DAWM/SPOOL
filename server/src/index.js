@@ -9,16 +9,12 @@ require('dotenv').config();
 
 
 require("./db");
-/** 
-const mailerRouter = require('./routes/contact');
-const applicationRouter = require('./routes/application');
 
-const userRouter = require('./routes/user')
-const newsRouter = require('./routes/news')
-*/
 const projectRouter = require('./routes/project');
+const newsRouter = require('./routes/news');
+const { DataTypes } = require('sequelize/types');
+
 /*Configuracion del servidor*/
-//Le asigno una variable y una constante que asume el puerto 3000 por defecto
 app.set('port' , process.env.PORT || 3000);
 
 /*Middlewares*/
@@ -29,6 +25,11 @@ app.use(express.urlencoded({ extended: false }));
 
 /*Rutas*/
 app.use("/api/project",projectRouter );
+app.use("/api/news",newsRouter);
+
 app.listen(app.get('port') , () => {
 	console.log('Server on port' , app.get('port'));
 });
+
+
+

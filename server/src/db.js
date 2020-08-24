@@ -5,9 +5,11 @@ const UserModel = require("./models/user");
 const UserTypeModel = require("./models/userType");
 const ProjectModel = require("./models/project");
 const SkillModel = require("./models/skill");
+const CategoryModel = require("./models/category");
 const ApplicationModel = require("./models/application");
 const NewsModel = require("./models/news");
 const StudentDetailsModel = require("./models/studentDetails");
+
 
 const conn = new Sequelize("spool","root", "root", {
     host: "localhost",
@@ -19,6 +21,7 @@ const User = UserModel(conn,Sequelize);
 const UserType = UserTypeModel(conn,Sequelize);
 const Project = ProjectModel(conn,Sequelize);
 const Skill = SkillModel(conn,Sequelize);
+const Category = CategoryModel(conn,Sequelize);
 const Application = ApplicationModel(conn,Sequelize);
 const News = NewsModel(conn,Sequelize);
 const StudentDetails = StudentDetailsModel(conn,Sequelize);
@@ -27,10 +30,6 @@ const StudentDetails = StudentDetailsModel(conn,Sequelize);
 // Un usuario tiene un tipo de usuario
 UserType.hasMany(User);
 User.belongsTo(UserType);
-
-//Un proyecto tiene muchas skills
-Project.belongsToMany(Skill, {through: 'Projects-Skills'});
-Skill.belongsToMany(Project, {through: 'Projects-Skills'});
 
 // Relacion uno a uno user - studentDetails
 User.hasOne(StudentDetails);
@@ -48,6 +47,17 @@ Application.belongsTo(User);
 User.hasMany(Project);
 Project.belongsTo(User);
 
+//Un proyecto tiene muchas skills
+Project.belongsToMany(Skill, {through: 'Projects-Skills', timestamps: false});
+Skill.belongsToMany(Project, {through: 'Projects-Skills', timestamps: false});
+
+//Un proyecto tiene muchas categories
+Project.belongsToMany(Category, {through: 'Projects-Categories', timestamps: false});
+Category.belongsToMany(Project, {through: 'Projects-Categories', timestamps: false});
+
+//Un proyecto tiene muchas applications
+Project.hasMany(Application);
+Application.belongsTo(Project);
 
 
 conn.sync({force:false})
@@ -58,9 +68,5 @@ conn.sync({force:false})
 
 
 module.exports = {
-    User, Project, UserType, Skill, Application, News, StudentDetails
+    User, Project, UserType, Skill, Category, Application, News, StudentDetails
 }
-
-
-
-
