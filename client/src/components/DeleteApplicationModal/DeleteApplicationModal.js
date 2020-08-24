@@ -10,11 +10,11 @@ function DeleteApplicationModal (props) {
     return(
         <Modal {...props}>
             <Modal.Header closeButton>
-                <Modal.Title>Eliminar Aplicación</Modal.Title>
+                <Modal.Title>Eliminar {props.type}</Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
-                <h5>¿Estas seguro de que deseas eliminar esta Aplicación?</h5>
+                <h5>¿Estas seguro de que deseas eliminar esta {props.type}</h5>
             </Modal.Body>
 
             <Modal.Footer>
