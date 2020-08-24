@@ -27,8 +27,6 @@ Skill.belongsToMany(Project, {through: 'Projects-Skills', timestamps: false});
 Project.belongsToMany(Category, {through: 'Projects-Categories', timestamps: false});
 Category.belongsToMany(Project, {through: 'Projects-Categories', timestamps: false});
 
-User.hasMany(Project);
-Project.belongsTo(User);
 
 
 

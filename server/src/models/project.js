@@ -41,12 +41,12 @@ const Project = (sequelize, type) =>{
         }
     },
     state: {
-        type: type.INTEGER,
+        type: type.STRING,
         allowNull: true,
     },
-    logical_state: {
-        type: type.INTEGER,
-        allowNull: true
+    logicState: {
+        type: type.BOOLEAN,
+        allowNull: false
     }
     }, {timestamps: false});
 }
