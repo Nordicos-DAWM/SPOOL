@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import {Preloader} from '../components';
 import {Home,HowWorks,CreateProject,DeveloperTeam,PageNews,ChartsPage,RegisterHome,RegisterStudent,RegisterClient,Login,ApplicationStudents,Project,Help,ProjectProposer
-,Pool,ClientPool,NewsAdmin} from '../pages';
+,Pool,ClientPool,NewsAdmin,Reports} from '../pages';
 
 
 const MainRouter = () =>{
@@ -31,6 +31,7 @@ const MainRouter = () =>{
                 <Route path="/client/charts" component={ChartsPage}/>
                 <Route exact path="/client/project" component={ProjectProposer}/>
                 <Route path="/client/newproject" component={CreateProject}/>
+                <Route path="/client/reports" component={Reports}/>
                 <Route exact path="/client/pool" component={ClientPool}/>
 
                 <Route path="/register/student" component={RegisterStudent}/>
