@@ -4,6 +4,7 @@ const UserModel = require("./models/user");
 const UserTypeModel = require("./models/userType");
 const ProjectModel = require("./models/project");
 const SkillModel = require("./models/skill");
+const CategoryModel = require("./models/category");
 
 const conn = new Sequelize("spool","root", "password", {
     host: "localhost",
@@ -14,15 +15,20 @@ const User = UserModel(conn,Sequelize);
 const UserType = UserTypeModel(conn,Sequelize);
 const Project = ProjectModel(conn,Sequelize);
 const Skill = SkillModel(conn,Sequelize);
+const Category = CategoryModel(conn,Sequelize);
 
-// Un usuario tiene un tipo de usuario
 
 UserType.hasMany(User);
 User.belongsTo(UserType);
 
-Project.belongsToMany(Skill, {through: 'Projects-Skills'});
-Skill.belongsToMany(Project, {through: 'Projects-Skills'});
+Project.belongsToMany(Skill, {through: 'Projects-Skills', timestamps: false});
+Skill.belongsToMany(Project, {through: 'Projects-Skills', timestamps: false});
 
+Project.belongsToMany(Category, {through: 'Projects-Categories', timestamps: false});
+Category.belongsToMany(Project, {through: 'Projects-Categories', timestamps: false});
+
+User.hasMany(Project);
+Project.belongsTo(User);
 
 
 
@@ -37,7 +43,8 @@ module.exports = {
     User,
     Project,
     UserType,
-    Skill
+    Skill,
+    Category
 }
 
 
