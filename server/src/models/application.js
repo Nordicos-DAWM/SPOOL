@@ -1,35 +1,32 @@
-/** 
-var mongoose = require('mongoose');
-
-const applicationSchema =  new mongoose.Schema({
-    idStudent:{
-        type: String
-    },
-    idProject:{
-        type:String,
-        required: true
+const Application = (sequelize, type) =>{
+    return sequelize.define('Application', {
+    id: {
+        type: type.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
     },
     state:{
-        type:String,
-        required:true
+        type: type.STRING,
+        allowNull: false
     },
     isSubject:{
-        type: Boolean,
-        required: true
+        type: type.BOOLEAN,
+        allowNull: false
     },
     reason:{
-        type: String,
-        required: true
+        type: type.STRING,
+        allowNull: false
     },
     proposal:{
-        type:String,
-        required: true
+        type: type.STRING,
+        allowNull: false
     },
     logicState:{
-        type:Boolean
+        type: type.BOOLEAN,
+        allowNull: false
     }
-})
 
-module.exports = mongoose.model('applications',applicationSchema);
+    }, {timestamps: false});
+}
 
-*/
+module.exports = Application; 

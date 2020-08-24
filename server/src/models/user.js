@@ -15,7 +15,10 @@ const User = (sequelize, type) =>{
     }, 
     email:{
         type: type.STRING,
-        allowNull: false
+        allowNull: false,
+        validate:{
+            isEmail: true
+        }
     },
     password:{
         type: type.STRING,
@@ -23,6 +26,10 @@ const User = (sequelize, type) =>{
     },
     birthday:{
         type: type.DATE,
+        allowNull: false
+    },
+    logicState:{
+        type: type.BOOLEAN,
         allowNull: false
     }
 
