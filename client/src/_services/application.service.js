@@ -2,10 +2,12 @@ import { authHeader } from '../_helpers';
 import { userService } from './user.service';
 
 export const applicationService = {
-    add
+    add,
+    getByUserId,
+    delete:_delete
 }
 
-function add(){
+function add(_new){
     const requestOptions = {
         method:'POST',
         headers:{...authHeader,'Content-Type':'application/json'},
@@ -13,6 +15,24 @@ function add(){
     }
 
     return fetch('/api/application/',requestOptions).then(handleResponse)
+}
+
+function _delete(id){
+    const requestOptions = {
+        method:'POST',
+        headers:{...authHeader,'Content-Type':'application/json'},
+    }
+
+    return fetch(`/api/application/${id}`,requestOptions).then(handleResponse)
+}
+
+function getByUserId(user_id){
+    const requestOptions = {
+        method:'GET',
+        headers:{...authHeader,'Content-Type':'application/json'},
+    }
+
+    return fetch(`/api/application/by_student/${user_id}`,requestOptions).then(handleResponse)
 }
 
 function handleResponse(response) {

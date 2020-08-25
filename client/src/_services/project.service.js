@@ -3,7 +3,12 @@ import { userService } from './user.service';
 
 export const projectService = {
     add,
-    getById
+    get,
+    update,
+    delete:_delete,
+    getById,
+    getByUserId,
+    getReports
 };
 
 function add(project){
@@ -16,12 +21,53 @@ function add(project){
     return fetch('/api/project/',requestOptions).then(handleResponse)
 }
 
+function get(){
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+    return fetch(`/api/project/`,requestOptions).then(handleResponse)
+}
+
+function update(id){
+    const requestOptions = {
+        method: 'PUT',
+        headers: authHeader()
+    };
+    return fetch(`/api/project/${id}`,requestOptions).then(handleResponse)
+}
+
+function _delete(id){
+    const requestOptions = {
+        method: 'DELETE',
+        headers: authHeader()
+    };
+    return fetch(`/api/project/${id}`,requestOptions).then(handleResponse)
+}
+
+
 function getById(id){
     const requestOptions = {
         method: 'GET',
         headers: authHeader()
     };
     return fetch(`/api/project/by_id/${id}`,requestOptions).then(handleResponse)
+}
+
+function getByUserId(user_id){
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+    return fetch(`/api/project/by_user/${user_id}`,requestOptions).then(handleResponse)
+}
+
+function getReports(){
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+    return fetch(`/api/project/reports`,requestOptions).then(handleResponse)
 }
 
 function handleResponse(response) {
