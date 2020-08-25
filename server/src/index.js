@@ -12,7 +12,6 @@ require("./db");
 
 const projectRouter = require('./routes/project');
 const newsRouter = require('./routes/news');
-const { DataTypes } = require('sequelize/types');
 
 /*Configuracion del servidor*/
 app.set('port' , process.env.PORT || 3000);

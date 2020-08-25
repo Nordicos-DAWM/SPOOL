@@ -27,12 +27,7 @@ const User = (sequelize, type) =>{
     birthday:{
         type: type.DATE,
         allowNull: false
-    },
-    logicState:{
-        type: type.BOOLEAN,
-        allowNull: false
     }
-
     }, {timestamps: false});
 }
 

@@ -2,11 +2,11 @@ var express = require('express');
 var router = express.Router();
 
 
-router.get('/chart/skills', async (req, res, next) => {
+router.get('/skills', async (req, res, next) => {
 
 });
 
-router.get('/chart/categories', async (req, res, next) => {
+router.get('/categories', async (req, res, next) => {
 
 });
 

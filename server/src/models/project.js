@@ -26,7 +26,7 @@ const Project = (sequelize, type) =>{
         type: type.STRING,
         allowNull: false 
     }, 
-    contact_email: {
+    contactEmail: {
         type: type.STRING,
         allowNull: false, 
         validate: {
