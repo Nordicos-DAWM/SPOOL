@@ -1,6 +1,6 @@
 
 const News = (sequelize, type) =>{
-    return sequelize.define('News', {
+    return sequelize.define('news', {
     id: {
         type: type.INTEGER,
         primaryKey: true,

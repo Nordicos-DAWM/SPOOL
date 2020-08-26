@@ -1,6 +1,6 @@
 
 const UserType = (sequelize, type) =>{
-    return sequelize.define('UserType', {
+    return sequelize.define('userType', {
     id: {
         type: type.INTEGER,
         primaryKey: true,
@@ -13,3 +13,4 @@ const UserType = (sequelize, type) =>{
 }
 
 module.exports = UserType; 
+

@@ -1,6 +1,6 @@
 
 const Category = (sequelize, type) =>{
-    return sequelize.define('Category', {
+    return sequelize.define('category', {
     id: {
         type: type.INTEGER,
         primaryKey: true,

@@ -1,6 +1,6 @@
 
 const Project = (sequelize, type) =>{
-    return sequelize.define('Project', {
+    return sequelize.define('project', {
     id: {
         type: type.INTEGER,
         primaryKey: true,
@@ -11,7 +11,7 @@ const Project = (sequelize, type) =>{
         allowNull: false
     },
     description:{
-        type: type.STRING,
+        type: type.STRING(400),
         allowNull: false
     }, 
     mainCategory: {
@@ -46,7 +46,8 @@ const Project = (sequelize, type) =>{
     },
     logicState: {
         type: type.BOOLEAN,
-        allowNull: false
+        allowNull: false,
+        defaultValue: true, 
     }
     }, {timestamps: false});
 }

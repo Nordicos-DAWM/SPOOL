@@ -11,7 +11,7 @@ const NewsModel = require("./models/news");
 const StudentDetailsModel = require("./models/studentDetails");
 
 
-const conn = new Sequelize("spool","root", "root", {
+const conn = new Sequelize("spool","root", "password", {
     host: "localhost",
     dialect: "mysql"
 });
@@ -48,12 +48,12 @@ User.hasMany(Project);
 Project.belongsTo(User);
 
 //Un proyecto tiene muchas skills
-Project.belongsToMany(Skill, {through: 'Projects-Skills', timestamps: false});
-Skill.belongsToMany(Project, {through: 'Projects-Skills', timestamps: false});
+Project.belongsToMany(Skill, {through: 'projects-skills', timestamps: false});
+Skill.belongsToMany(Project, {through: 'projects-skills', timestamps: false});
 
 //Un proyecto tiene muchas categories
-Project.belongsToMany(Category, {through: 'Projects-Categories', timestamps: false});
-Category.belongsToMany(Project, {through: 'Projects-Categories', timestamps: false});
+Project.belongsToMany(Category, {through: 'projects-categories', timestamps: false});
+Category.belongsToMany(Project, {through: 'projects-categories', timestamps: false});
 
 //Un proyecto tiene muchas applications
 Project.hasMany(Application);
@@ -64,7 +64,6 @@ conn.sync({force:false})
 .then(()=> {
     console.log("Conexion exitosa");
 })
-
 
 
 module.exports = {

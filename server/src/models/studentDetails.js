@@ -1,5 +1,5 @@
 const StudentDetails = (sequelize, type) =>{
-    return sequelize.define('StudentDetails', {
+    return sequelize.define('studentDetails', {
     id: {
         type: type.INTEGER,
         primaryKey: true,

@@ -1,5 +1,5 @@
 const Application = (sequelize, type) =>{
-    return sequelize.define('Application', {
+    return sequelize.define('application', {
     id: {
         type: type.INTEGER,
         primaryKey: true,

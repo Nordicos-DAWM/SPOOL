@@ -6,7 +6,7 @@ router.get('/skills', async (req, res, next) => {
 
 });
 
-router.get('/categories', async (req, res, next) => {
+router.get('/categories' ,async (req, res, next) => {
 
 });
 
