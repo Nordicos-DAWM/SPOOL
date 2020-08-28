@@ -1,125 +1,166 @@
 
 
-const mongoose = require("../models/index");
-
-const Project = require("../models/project");
-
 const { Router } = require('express');
 
 const router = Router();
+const { Project, Skill, Category, User } = require("../db");
 
 
-router.get('/', (req,res,next)=>{
-    Project.find((err, project) => {
-        console.log(project);
-        if (err) throw err;
-        res.status(200).send(project);
-    });
-})
+router.get('/', async (req,res,next)=>{
+   const projects =  await Project.findAll({
+                    where: {
+                        logicState: true
+                    },
+                    include:[{
+                        model: Skill,
+                        attributes: ['name'],
+                        through: { attributes: [] } 
 
-router.get('/id/:id', async (req,res,next)=>{
-    try {
-        const project = await Project.findOne({ _id: req.params.id }).orFail();
-        res.send(project);
+                    }, {
+                        model: Category,
+                        attributes: ['name'],
+                        through: { attributes: [] } 
+                    }, {
+                        model: User
+                    }],
+                    });
+    res.status(200).send(projects);
 
-    } catch {
-        res.status(404);
-        res.send({ error: "Proyecto no existe" });
-    }
 });
 
-router.get('/mainCategory/:mainCategory', async (req,res,next)=>{
-    try {
-        const projects = await Project.find({ mainCategory: req.params.mainCategory });
-        res.status(200).send(projects);
+router.get('/by_id/:id', async (req,res,next)=>{
+    const project =  await Project.findOne({
+        where: {
+            id: req.params.id,
+            logicState: true,
+        },
+        include:[{
+            model: Skill,
+            attributes: ['name'],
+            through: { attributes: [] } 
 
-    } catch {
-        res.status(404).send([]);
-    }
+        }, {
+            model: Category,
+            attributes: ['name'],
+            through: { attributes: [] } 
+        }, {
+            model: User
+        }],
+        });    
+    res.status(200).send(project);
+
 });
 
+router.post('/', async (req,res,next)=>{
+    const project = await Project.create(req.body);
+    const projectId = project.id;
 
-router.post('/', async (req, res) => {
-    try{
-        const project = new Project({
-                title: req.body.title,
-                state: req.body.state,
-                mainCategory: req.body.mainCategory,
-                categories: req.body.categories,
-                description: req.body.description,
-                proposer: req.body.proposer,
-                contactEmail: req.body.contactEmail,
-                maxParticipants: req.body.maxParticipants,
-                color: req.body.color,
-                skills: req.body.skills,
-                url_repository: req.body.url_repository,
-                logicState : true,
-            
+    req.body.categories.map((cat)=>{
+        Category.count({ where: {name: cat} }).then(async function(count){
+            let categoryId;
+            if (count != 0) {
+                let category = await Category.findOne({where: {name:cat }});
+                categoryId = category.id;
 
+            } else {
+                categoryId = await Category.create({name:cat});
+             }
+             Project.findByPk(projectId).then(category=>{
+                category.setCategories([categoryId]);
             });
-            await project.save();
-            res.status(200).send({data: project});
-        }catch(error){
-            res.status(404).send({"error":error["message"]});
-        }
         });
-router.put("/id/:id" , async (req, res) => {
-    try{
-        const project = await Project.findOne({ _id: req.params.id });
-        
-        if (req.body.title)
-            project.title = req.body.title;
-        
-        if (req.body.state)
-            project.state = req.body.state;
-        
-        if (req.body.mainCategory)
-            project.mainCategory = req.body.mainCategory;
-        
-        if (req.body.categories)
-            project.categories = req.body.categories;
+    } );  
 
-        if (req.body.description)
-            project.description = req.body.description;
+    req.body.skills.map((skill)=>{
+        Skill.count({ where: {name: skill} }).then(async function(count){
+            let skillId;
+            if (count != 0) {
+                let skillObj = await Skill.findOne({where: {name:skill }});
+                skillId = skillObj.id;
 
-        if (req.body.proposer)
-            project.proposer = req.body.proposer;
+            } else {
+                skillId = await Skill.create({name:cat});
+                console.log(cat);
+             }
+             Project.findByPk(projectId).then(skill=>{
+                skill.setSkills([skillId]);
+            });
+        });
+    } );  
 
-        if (req.body.contactEmail)
-            project.contactEmail = req.body.contactEmail;
-        
-        if (req.body.maxParticipants)
-            project.maxParticipants = req.body.maxParticipants;
-
-        if (req.body.color) 
-            project.color = req.body.color;
-
-        if (req.body.skills) 
-            project.skills = req.body.skills;
-
-        if (req.body.url_repository)
-            project.url_repository = req.body.url_repository;
-
-        await project.save();
-        res.status(200).send({update: true, data: project});
-
-    } catch(error) {
-        res.status(404);
-        res.send({ update: false, error: error});
-    }
+    res.status(200).send(projects);
 });
 
-router.delete('/id/:id', async (req, res, next) => {
-    try{
-        const project = await Project.findOne({ _id: req.params.id });
-        project.logicState = false; 
-        await project.save();
-        res.status(200).send({message:"Se elimino el registro exitosamente"});
-    } catch {
-        res.status(404).send({ error: "Registro no existe" });
+
+router.put('/:id', async (req,res,next)=>{
+    try{ 
+        const projectsUpdated = await Project.update(req.body, {
+            where: {
+                id:req.params.id
+            }    
+        });
+        if (projectsUpdated[0]){
+            res.status(200).send({updated: true, message: "Se ha modificado correctamente"});
+        }else{
+        res.status(200).send({updated: false, message: "No se encontró elemento a actualizar"})
+        }
+    }catch{
+        res.status(500).send({updated: false, message: "Error al procesar la solicitud"});
+
     }
 
+
 });
+
+
+router.delete('/:id', async (req,res,next)=>{
+    try{ 
+        const projectsDeleted = await Project.update({logicState:false}, {
+            where: {
+                id:req.params.id
+            }    
+        });
+        if (projectsDeleted[0]){
+            res.status(200).json({deleted: true, message: "Se ha eliminado correctamente"});
+        }
+        else{
+        res.status(200).json({deleted: false, message: "No se encontró elemento a eliminar"});
+        }
+    }catch{
+        res.statusCode = 500;
+        res.status(500).json({deleted: false, message: "Error al procesar la solicitud"});
+    }
+
+
+
+});
+
+
+router.get('/by_user/:userId', async (req,res,next)=>{
+    const project =  await Project.findAll({
+        where: {
+            logicState: true,
+        },
+        include:[{
+            model: Skill,
+            attributes: ['name'],
+            through: { attributes: [] } 
+
+        }, {
+            model: Category,
+            attributes: ['name'],
+            through: { attributes: [] } 
+        }, {
+            model: User,
+            where:{
+                id: req.params.userId
+            }
+        }],
+        });    
+    res.status(200).send(project);
+
+
+})
 
 module.exports = router;
 

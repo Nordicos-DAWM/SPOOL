@@ -1,27 +1,29 @@
-var mongoose = require('mongoose');
 
-const newsSchema = new mongoose.Schema({
+const News = (sequelize, type) =>{
+    return sequelize.define('news', {
     id: {
-        type: String,
-        unique: true,
-        required: true,
+        type: type.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
     },
     title: {
-        type: String,
-        required: true
-    },
-    date: {
-        type:  Date, //Date? String?
-        required: true
+        type: type.STRING,
+        allowNull: false
     },
     description: {
-        type: String,
-        required: true
+        type: type.STRING,
+        allowNull: false
+    },
+    date: {
+        type: type.DATE,
+        allowNull: false
     },
     logicState: {
-        type: Boolean,
-        required: true
-    },
-});
+        type: type.BOOLEAN,
+        allowNull: false
+    }
 
-module.exports = mongoose.model('news', newsSchema);
+    }, {timestamps: false});
+}
+
+module.exports = News; 

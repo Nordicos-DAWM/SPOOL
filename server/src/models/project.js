@@ -1,57 +1,55 @@
-var mongoose = require('mongoose');
-// define el esquema de los documentos que van a estar dentro de esa colección
-const projectSchema = new mongoose.Schema({
 
+const Project = (sequelize, type) =>{
+    return sequelize.define('project', {
+    id: {
+        type: type.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    },
     title: {
-        type: String,
-        required: true,
+        type: type.STRING,
+        allowNull: false
     },
-    state: {
-        type: String,
-        required: true,
-    },
+    description:{
+        type: type.STRING(400),
+        allowNull: false
+    }, 
     mainCategory: {
-        type: String,
-        required: true,
-    },
-    categories: {
-        type: Array,
-        required: true,
-    },
-    description: {
-        type: String,
-        required: true,
-    },
-    proposer: {
-        type: String,
-        required: true,
-    },
-    contactEmail: {
-        type: String, 
-        required: true,
+        type: type.STRING,
+        allowNull: false 
     },
     maxParticipants: {
-        required: true,
-        type: String
-    }, 
-    skills:{
-        type: Array,
-        required: true
-        
-    }, 
-    color:{
-        type: String,
-        required: true
+        type: type.INTEGER,
+        allowNull: false 
     },
-    logicState:{
-        type: Boolean
+    color: {
+        type: type.STRING,
+        allowNull: false 
+    }, 
+    contactEmail: {
+        type: type.STRING,
+        allowNull: false, 
+        validate: {
+            isEmail: true,
+        }
     },
-    url_repository: {
-        type: String, 
-        required: true,
+    urlRepository: {
+        type: type.STRING,
+        allowNull: true,
+        validate: {
+            isUrl: false
+        }
+    },
+    state: {
+        type: type.STRING,
+        allowNull: true,
+    },
+    logicState: {
+        type: type.BOOLEAN,
+        allowNull: false,
+        defaultValue: true, 
     }
+    }, {timestamps: false});
+}
 
-    
-});
-
-module.exports = mongoose.model('projects', projectSchema);
+module.exports = Project; 
