@@ -5,6 +5,7 @@ import {history} from '../../_helpers';
 import { userActions } from '../../_actions';
 import { Link } from 'react-router-dom';
 
+import { userService } from '../../_services';
     
 
 const Login = () =>{
@@ -34,7 +35,8 @@ const Login = () =>{
         
         setSubmitted(true);
         if(email && password){
-            dispatch(userActions.login(email,password));
+            const data = userService.login(email,password);
+            console.log(data);
         }
         
     }

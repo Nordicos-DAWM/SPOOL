@@ -1,6 +1,7 @@
 import React  from 'react';
 
 import { NavBar2, ApplicationCard, Footer } from '../../components';
+import { applicationService } from '../../_services'
 
 const ApplicationStudents = () =>{
 
@@ -39,6 +40,8 @@ const ApplicationStudents = () =>{
         description:"Tecnología de punta para el control de cultivos hidropónicos, considerando un sistema para el control del aire que requiere la planta y otro para entregar el agua y nutrientes. El sistema incluye electrobombas diseñadas por la propia empresa y además, todo puede ser monitoreado desde el celular."}
     
     ]
+
+    const getApplicatinos = applicationService()
     return(
 
     <>
