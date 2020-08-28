@@ -5,7 +5,7 @@ export const applicationService = {
     add
 }
 
-function add(){
+function add(_new){
     const requestOptions = {
         method:'POST',
         headers:{...authHeader,'Content-Type':'application/json'},

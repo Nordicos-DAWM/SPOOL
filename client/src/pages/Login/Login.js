@@ -1,17 +1,13 @@
 import React,{useState, useEffect} from 'react';
 import logo from '../../assets/Brand-01.png';
-import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {history} from '../../_helpers';
 import { userActions } from '../../_actions';
 import { Link } from 'react-router-dom';
 
-    function useQuery(){
-        return new URLSearchParams(useLocation().search)
-    }
+    
 
 const Login = () =>{
-    const query = useQuery();
     
     const [inputs,setInputs] = useState({
         email:'',
@@ -37,9 +33,9 @@ const Login = () =>{
         e.preventDefault();
         
         setSubmitted(true);
-        /*if(email && password){
-            dispatch(userActions.login(email,password,slug));
-        }*/
+        if(email && password){
+            dispatch(userActions.login(email,password));
+        }
         
     }
 
@@ -83,14 +79,14 @@ const Login = () =>{
                             </div>
                             <button className="btn btn-primary"
                                 onClick={()=>{
-                                    let slug = query.get("slug");
+                                    /*let slug = query.get("slug");
                                     console.log(slug);
                                     if(slug === 'client'){
                                         history.push('/client/pool');
                                     }else{
                                         history.push('/student/pool');
-                                    }
-                                    window.location.reload()
+                                    }*/
+                                    //window.location.reload()
                                 }}
                             >
                             {loggingIn && <span className="spinner-border spinner-border-sm mr-1"></span>}

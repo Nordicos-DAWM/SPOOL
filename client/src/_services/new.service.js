@@ -41,7 +41,6 @@ function _delete(id) {
     const requestOptions = {
         method:'PUT',
         headers:authHeader(),
-        body:JSON.stringify(_new)
     };
 
     return(`/api/new/${id}`,requestOptions).then(handleResponse);
