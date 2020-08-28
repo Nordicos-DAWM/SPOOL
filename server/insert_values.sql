@@ -80,11 +80,11 @@ INSERT INTO spool.`projects-categories`(ProjectId, categoryId) VALUES
 (3,3);
 
 # Insert applications
-INSERT INTO spool.applications(state,isSubject,reason,proposal,logicState,userId) VALUES
-("En espera", false, "Obtener experiencia", "Propongo lalalalalalal", TRUE, 4),
-("Aceptada", true, "Llevar este proyecto para mi materia de DAWM", "Propongo lalalalalalal", TRUE, 5),
-("En espera", true, "Llevar este proyecto para IHC","lalalalalalallalalala", TRUE, 4),
-("En espera", true, "Me llama mucho la antención la idea de este proyecto", "Propongo lalalalalalal", TRUE, 6);
+INSERT INTO spool.applications(state,isSubject,reason,proposal,logicState,userId,projectId) VALUES
+("En espera", false, "Obtener experiencia", "Propongo lalalalalalal", TRUE, 4,1),
+("Aceptada", true, "Llevar este proyecto para mi materia de DAWM", "Propongo lalalalalalal", TRUE, 5,3),
+("En espera", true, "Llevar este proyecto para IHC","lalalalalalallalalala", TRUE, 4,2),
+("En espera", true, "Me llama mucho la antención la idea de este proyecto", "Propongo lalalalalalal", TRUE, 6,3);
 
 #Insert news
 INSERT INTO spool.news(title, description, date, logicState, userId) VALUES 

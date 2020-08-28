@@ -3,6 +3,7 @@ const express = require('express');
 //Requiero morgan y lo guardo en una constante
 const morgan = require('morgan');
 //Llamo al objeto express y lo guardo en una constante
+const cors = require('cors')
 const app = express();
 
 require('dotenv').config();
@@ -22,7 +23,8 @@ app.set('port' , process.env.PORT || 3000);
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
+app.use(cors())
+app.options('*',cors())
 
 /*Rutas*/
 app.use("/api/project",projectRouter );
