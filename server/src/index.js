@@ -7,16 +7,15 @@ const app = express();
 
 require('dotenv').config();
 
-const connection = require('./models/index');
 
-const mailerRouter = require('./routes/contact');
-const applicationRouter = require('./routes/application');
+require("./db");
+
 const projectRouter = require('./routes/project');
-const userRouter = require('./routes/user')
-const newsRouter = require('./routes/news')
+const newsRouter = require('./routes/news');
+const userRouter = require('./routes/user');
+const applicationRouter = require('./routes/application');
 
 /*Configuracion del servidor*/
-//Le asigno una variable y una constante que asume el puerto 3000 por defecto
 app.set('port' , process.env.PORT || 3000);
 
 /*Middlewares*/
@@ -26,12 +25,15 @@ app.use(express.urlencoded({ extended: false }));
 
 
 /*Rutas*/
-app.use('/api/contact' ,mailerRouter);
-app.use('/api/application',applicationRouter);
-app.use('/api/projects', projectRouter);
-app.use('/api/user' ,userRouter);
-app.use('/api/news' ,newsRouter);
+app.use("/api/project",projectRouter );
+app.use("/api/new",newsRouter);
+app.use("/api/user",userRouter);
+app.use("/api/application",applicationRouter)
+
 
 app.listen(app.get('port') , () => {
 	console.log('Server on port' , app.get('port'));
 });
+
+
+

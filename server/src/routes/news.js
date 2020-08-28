@@ -1,91 +1,54 @@
 var express = require('express');
-var News = require("../models/news");
-
 var router = express.Router();
 
+const {User, News} = require("../db");
+
+
 router.get('/', async (req, res, next) => {
-    const news = await News.find()
-    res.send(news)
-});
-
-
-router.get('/id/:id', async (req, res, next) => {
-    let notice;
-    try {
-        notice= await News.findOne({ id: req.params.id }).orFail();
-    } catch {
-        res.status(404)
-        res.send({ error: "Noticia no existe." })
-    }
-
-    if (notice.logicState) {
-        res.send(notice)
-    } else {
-        res.status(404)
-        res.send({ error: "Noticia no existe." })
-    }
-
-});
-
-
-router.put('/update/:id', async (req, res, next) => {
-    let notice;
-    try {
-        notice = await News.findOne({ id: req.params.id }).orFail();
-    } catch {
-        res.status(404);
-        res.send({ error: "Noticia no existe." });
-    }
-
-    if (notice.logicState) {
-        await notice.update(req.body, (err,updated)=>{
-            if (err) {
-                res.status(400);
-                res.send(err);
-            } else {
-                res.status(200);
-                res.send(updated);
-            }
-        });
-    } else {
-        res.status(404);
-        res.send({ error: "Noticia no existe." });
-    }
-
-});
-
-
-router.post('/create', async (req, res, next) => {
-    const newNotice = await News.create(req.body, (err, created)=>{
-        if(err){
-            res.status(400);
-            res.send(err);
-        }else{
-            res.status(200);
-            res.send(created);
+    const news = await News.findAll({
+        where: {
+            logicState: true
         }
-    });  
+    })
+    res.status(200).send(news);
+});
+
+router.post('/', async (req, res, next) => {
+    const newNotice = await News.create(req.body);
+
+    if(!newNotice){
+        res.status(404).send({error:'No se pudo crear nueva Noticia.'});
+    }else{
+        res.status(200).send(newNotice);
+    }
+
 });
 
 
-router.delete('/delete/:id', async (req, res, next) => {
-    let notice;
-    try {
-        notice = await News.findOne({ id: req.params.id }).orFail(); 
-    } catch{
-        res.status(404);
-        res.send({ error: "Noticia no existe." });
-
-    }
-    await notice.update({logicState: false}, (err,updated)=>{
-        if (err) {
-            res.status(400);
-            res.send(err);
-        } else {
-            res.status(200);
-            res.send(updated);
+router.put('/:id', async (req, res, next) => {
+    const notice = await News.update(req.body, {
+        where: {
+          id: req.params.id
         }
     });
+
+    res.status(200).send(notice);
 });
+
+router.delete('/:id', async (req, res, next) => {
+
+    const notice = await News.update({ logicState: false }, {
+        where: {
+          id: req.params.id
+        }
+      });
+
+    if(!notice){
+        res.status(404).send({error:'Noticia no pudo ser eliminada.'})
+    }else{
+        res.status(200).send({message:'Noticia se eliminó exitosamente.'})
+    }
+});
+
 
 module.exports = router;
