@@ -26,7 +26,7 @@ function get(){
         method: 'GET',
         headers: authHeader()
     };
-    return fetch(`/api/project/`,requestOptions).then(handleResponse)
+    return fetch(`https://raw.githubusercontent.com/abimaell95/fake-backend/master/projects.json`,requestOptions).then(handleResponse)
 }
 
 function update(id){

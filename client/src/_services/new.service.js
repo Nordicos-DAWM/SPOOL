@@ -24,7 +24,7 @@ function add(_new) {
         body:JSON.stringify(_new)
     };
 
-    return fetch('/api/new/',requestOptions) .then(handleResponse)
+    return fetch('/api/new/',requestOptions).then(handleResponse)
 }
 
 function update(_new) {
@@ -41,7 +41,6 @@ function _delete(id) {
     const requestOptions = {
         method:'PUT',
         headers:authHeader(),
-        body:JSON.stringify(_new)
     };
 
     return(`/api/new/${id}`,requestOptions).then(handleResponse);
