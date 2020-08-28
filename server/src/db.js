@@ -67,5 +67,5 @@ conn.sync({force:false})
 
 
 module.exports = {
-    User, Project, UserType, Skill, Category, Application, News, StudentDetails
+    conn, User, Project, UserType, Skill, Category, Application, News, StudentDetails
 }

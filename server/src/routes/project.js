@@ -1,5 +1,3 @@
-
-
 const { Router } = require('express');
 
 const router = Router();
@@ -88,7 +86,7 @@ router.post('/', async (req,res,next)=>{
         });
     } );  
 
-    res.status(200).send(projects);
+    res.send(project);
 });
 
 
@@ -163,5 +161,3 @@ router.get('/by_user/:userId', async (req,res,next)=>{
 })
 
 module.exports = router;
-
-

@@ -15,7 +15,7 @@ const projectRouter = require('./routes/project');
 const newsRouter = require('./routes/news');
 const userRouter = require('./routes/user');
 const applicationRouter = require('./routes/application');
-
+uter = require('./routes/charts');
 /*Configuracion del servidor*/
 app.set('port' , process.env.PORT || 3000);
 
@@ -28,9 +28,12 @@ app.options('*',cors())
 
 /*Rutas*/
 app.use("/api/project",projectRouter );
+
 app.use("/api/new",newsRouter);
 app.use("/api/user",userRouter);
 app.use("/api/application",applicationRouter)
+app.use("/api/chart/", chartRouter);
+app.use("/api/news",newsRouter);
 
 
 app.listen(app.get('port') , () => {
