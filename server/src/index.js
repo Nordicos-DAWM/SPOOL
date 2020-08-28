@@ -12,7 +12,7 @@ require("./db");
 
 const projectRouter = require('./routes/project');
 const newsRouter = require('./routes/news');
-
+const chartRouter = require('./routes/charts');
 /*Configuracion del servidor*/
 app.set('port' , process.env.PORT || 3000);
 
@@ -24,6 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 
 /*Rutas*/
 app.use("/api/project",projectRouter );
+app.use("/api/chart/", chartRouter);
 app.use("/api/news",newsRouter);
 
 app.listen(app.get('port') , () => {
