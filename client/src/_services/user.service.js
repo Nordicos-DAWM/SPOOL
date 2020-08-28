@@ -7,7 +7,8 @@ export const userService = {
     getAll,
     getById,
     update,
-    delete: _delete
+    delete: _delete,
+    getReports
 };
 
 function login(username, password) {
@@ -31,7 +32,7 @@ function getAll() {
         headers: authHeader()
     };
 
-    return fetch(`/user`, requestOptions).then(handleResponse);
+    return fetch(`/api/user`, requestOptions).then(handleResponse);
 }
 
 function getById(id) {
@@ -40,7 +41,7 @@ function getById(id) {
         headers: authHeader()
     };
 
-    return fetch(`/user/${id}`, requestOptions).then(handleResponse);
+    return fetch(`/api/user/${id}`, requestOptions).then(handleResponse);
 }
 
 function register(user) {
@@ -50,7 +51,7 @@ function register(user) {
         body: JSON.stringify(user)
     };
 
-    return fetch(`/user/`, requestOptions).then(handleResponse);
+    return fetch(`/api/user/`, requestOptions).then(handleResponse);
 }
 
 function update(user) {
@@ -60,7 +61,7 @@ function update(user) {
         body: JSON.stringify(user)
     };
 
-    return fetch(`/user/${user.id}`, requestOptions).then(handleResponse);;
+    return fetch(`/api/user/${user.id}`, requestOptions).then(handleResponse);;
 }
 
 // prefixed function name with underscore because delete is a reserved word in javascript
@@ -70,8 +71,18 @@ function _delete(id) {
         headers: authHeader()
     };
 
-    return fetch(`/user/${id}`, requestOptions).then(handleResponse);
+    return fetch(`/api/user/${id}`, requestOptions).then(handleResponse);
 }
+
+function getReports(){
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+
+    return fetch(`/api/user/reports`, requestOptions).then(handleResponse);
+}
+
 
 
 function handleResponse(response) {
