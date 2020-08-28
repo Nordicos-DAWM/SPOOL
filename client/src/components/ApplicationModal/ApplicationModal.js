@@ -1,5 +1,7 @@
 import React  from 'react';
 import Modal from 'react-bootstrap/Modal';
+import { Route,Link } from 'react-router-dom';
+import { Project } from '../../pages/';
 
 function ApplicationModal (props){
 const datos = {
@@ -23,7 +25,7 @@ const datos = {
     }
 
     return(
-  
+        <>
         <Modal {...props}>
             <Modal.Header closeButton className="container"> 
                 <Modal.Title>Aplicación</Modal.Title>  
@@ -33,15 +35,18 @@ const datos = {
                 <h5>Estado</h5>
                 <p className={colorText()+" font-weight-bold"}>{props.state}</p>
                 <h5>Motivo</h5>
-                <p className="text-justify">{datos.reason}</p>
+                <p className="text-justify">{props.reason}</p>
                 <h5>Propuesta</h5>
-                <p className="text-justify">{datos.proposal}</p>
+                <p className="text-justify">{props.proposal}</p>
                 <h5>¿Es parte de una materia?</h5>
                 {datos.isSubject ? <p>Si</p> :<p>No</p> }
                 <h5>Proyecto</h5>
-                <a href={datos.project.link}>{datos.project.title}</a>
+                <Link to={`/project/${props.projectId}`}>{props.project.title}</Link>
+                
             </Modal.Body>
         </Modal>
+        <Route path="/project/:projectId" component={Project}/>
+        </>
     )
 
 }

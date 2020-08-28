@@ -35,8 +35,8 @@ const Login = () =>{
         
         setSubmitted(true);
         if(email && password){
-            const data = userService.login(email,password);
-            console.log(data);
+            //const data = userService.login(email,password);
+            //console.log(data);
         }
         
     }

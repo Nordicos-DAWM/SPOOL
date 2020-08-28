@@ -32,7 +32,7 @@ function getByUserId(user_id){
         headers:{...authHeader,'Content-Type':'application/json'},
     }
 
-    return fetch(`/api/application/by_student/${user_id}`,requestOptions).then(handleResponse)
+    return fetch(`http://localhost:3000/api/application/by_student/${user_id}`,requestOptions).then(handleResponse)
 }
 
 function handleResponse(response) {

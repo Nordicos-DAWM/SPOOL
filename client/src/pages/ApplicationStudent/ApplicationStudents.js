@@ -2,10 +2,12 @@ import React  from 'react';
 
 import { NavBar2, ApplicationCard, Footer } from '../../components';
 import { applicationService } from '../../_services'
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 const ApplicationStudents = () =>{
 
-    const datos = [
+    /*const datos = [
 
         {id:'1',
         title: "Hydroplant",
@@ -39,9 +41,25 @@ const ApplicationStudents = () =>{
         categories:["Energía",""],
         description:"Tecnología de punta para el control de cultivos hidropónicos, considerando un sistema para el control del aire que requiere la planta y otro para entregar el agua y nutrientes. El sistema incluye electrobombas diseñadas por la propia empresa y además, todo puede ser monitoreado desde el celular."}
     
-    ]
+    ]*/
+    const [datos,setDatos] = useState([]);
 
-    const getApplicatinos = applicationService()
+    useEffect(()=>{
+        function fetchApplicationData() {
+            applicationService.getByUserId(4)
+            .then(
+                application=>{
+                    setDatos(application)
+                },
+                error=>{
+                    console.log(error)
+                }
+            );
+        }
+
+        fetchApplicationData()
+    },[])
+    
     return(
 
     <>

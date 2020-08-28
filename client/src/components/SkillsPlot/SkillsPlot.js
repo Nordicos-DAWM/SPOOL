@@ -1,9 +1,11 @@
 import React,{useState, useEffect} from 'react';
 import {Bar} from 'react-chartjs-2';
-
+import {chatService, chartService} from '../../_services';
 
 const SkillsPlot = () =>{
     const [chartData,setChartData] = useState({});
+    const [labels,setLabels]=useState({});
+    const [data,setData] = useState({})
     const options = {
         responsive:true,
         scales:{  
@@ -26,7 +28,7 @@ const SkillsPlot = () =>{
     const chart = () =>{
         setChartData(
             {
-            labels:["React","Angular","GraphQL","Vue.Js","Svelte"],
+            labels:labels,
             datasets:[
                 {
                     label:'Top 5 Habilidades Requeridas',
@@ -46,6 +48,18 @@ const SkillsPlot = () =>{
     }
 
     useEffect(()=>{
+        function fetchSkills(){
+            chartService.getSkills()
+            .then(
+                skills=>{
+                    setLabels(skills)
+                },
+                error=>{
+                    console.log(error)
+                }
+            )
+        }
+        fetchSkills();
         chart();
     },[]);
 
