@@ -1,6 +1,6 @@
 
 const News = (sequelize, type) =>{
-    return sequelize.define('News', {
+    return sequelize.define('news', {
     id: {
         type: type.INTEGER,
         primaryKey: true,
@@ -20,7 +20,8 @@ const News = (sequelize, type) =>{
     },
     logicState: {
         type: type.BOOLEAN,
-        allowNull: false
+        allowNull: false,
+        defaultValue: true,
     }
 
     }, {timestamps: false});

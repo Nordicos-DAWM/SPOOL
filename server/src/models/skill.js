@@ -1,6 +1,6 @@
 
 const Skill = (sequelize, type) =>{
-    return sequelize.define('Skill', {
+    return sequelize.define('skill', {
     id: {
         type: type.INTEGER,
         primaryKey: true,

@@ -1,5 +1,5 @@
 const Application = (sequelize, type) =>{
-    return sequelize.define('Application', {
+    return sequelize.define('application', {
     id: {
         type: type.INTEGER,
         primaryKey: true,
@@ -18,12 +18,13 @@ const Application = (sequelize, type) =>{
         allowNull: false
     },
     proposal:{
-        type: type.STRING,
+        type: type.STRING(500),
         allowNull: false
     },
     logicState:{
         type: type.BOOLEAN,
-        allowNull: false
+        allowNull: false,
+        defaultValue: true,
     }
 
     }, {timestamps: false});
