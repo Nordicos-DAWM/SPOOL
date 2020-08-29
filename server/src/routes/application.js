@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+const {check, validationResult} = require('express-validator');
 const {Application, User, Project} = require("../db");
 
 // devuelve todas las aplicaciones
@@ -21,15 +21,21 @@ router.get('/', async (req, res, next) => {
 });
 
 
-router.post('/', async (req, res, next) => {
+router.post('/', [
+    check('state','El estado de la aplicación es un campo obligatorio.').notEmpty(),
+    check('isSubject','Este es un campo obligatorio.').notEmpty().isBoolean(),
+    check('reason','La razón de su aplicación es un campo obligatorio.').notEmpty(),
+    check('proposal','La propuesta es un campo obligatorio.').isEmail()
+], async (req, res, next) => {
     
-    const newApp = await Application.create(req.body);
+    const errors = validationResult(req);
 
-    if(!newApp){
-        res.status(404).send({error:'No se pudo crear la aplicación.'});
-    }else{
-        res.status(200).send(newApp);
+    if (!errors.isEmpty()) {
+        return res.status(422).json({message:errors["errors"][0]["msg"]});
     }
+
+    const newApp = await Application.create(req.body);
+    res.status(200).send(newApp);
 
 });
 
@@ -50,7 +56,7 @@ router.get('/by_student/:studentId',async (req,res,next)=>{
     });
 
     if(!app){
-        res.status(404).send({error:'Usuario no encontrado.'})
+        res.status(404).send({message:'No se pudo encontrar al Usuario.'})
     }else{
         res.status(200).send(app)
     }
@@ -66,7 +72,7 @@ router.delete('/:id', async (req,res,next)=>{
       });
 
     if(!app){
-        res.status(404).send({error:'Aplicación no pudo ser eliminada.'})
+        res.status(404).send({message:'Aplicación no pudo ser eliminada.'})
     }else{
         res.status(200).send({message:'Aplicación se eliminó exitosamente.'})
     }

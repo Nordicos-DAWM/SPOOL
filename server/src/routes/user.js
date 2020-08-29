@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const {check, validationResult} = require('express-validator');
 const {User, UserType} = require("../db");
 const e = require('express');
 
@@ -16,16 +17,25 @@ router.get('/', async (req, res, next) => {
 });
 
 
-router.post('/', async (req, res, next) => {
+router.post('/',[
+    check('firstName','El nombre del usuario es un campo obligatorio.').notEmpty(),
+    check('lastName','El apellido del usuario es un campo obligatorio.').notEmpty(),
+    check('email','El email es un campo obligatorio.').notEmpty(),
+    check('email','El email proporcionado no es válido.').isEmail(),
+    check('password','La contraseña es un campo obligatorio.').notEmpty(),
+    check('birthday','La fecha de nacimiento es un campo obligatorio.').notEmpty(),
+    check('birthday','Debe ingresar una fecha válida.').isDate()
+], async (req, res, next) => {
     
-    const newUser = await User.create(req.body);
+    const errors = validationResult(req);
 
-    if(!newUser){
-        res.status(404).send({error:'No se pudo ingresar usuario.'});
-    }else{
-        res.status(200).send(newUser);
+    if (!errors.isEmpty()) {
+        return res.status(422).json({message:errors["errors"][0]["msg"]});
     }
 
+    const newUser = await User.create(req.body);
+    res.status(200).send(newUser);
+    
 });
 
 
