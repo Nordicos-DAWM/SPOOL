@@ -18,7 +18,7 @@ router.get('/skills', async (req, res, next) => {
 
         }
     ).then(()=>{
-        res.send({"skill":skills, "count":count});
+        res.status(200).send({"skill":skills, "count":count});
         
     })  
 });
@@ -37,7 +37,7 @@ router.get('/categories' , (req, res, next) => {
                 });
             }
         ).then(()=>{
-            res.send({"category":categories, "count":count});
+            res.status(200).send({"category":categories, "count":count});
             
         })    
 });
@@ -57,7 +57,7 @@ router.get('/is_subject',async (req,res,next)=>{
             });
         }
     ).then(()=>{
-        res.send({"isSubject":isSubject, "count":count});
+        res.status(200).send({"isSubject":isSubject, "count":count});
         
     })    
 
@@ -79,7 +79,7 @@ router.get('/school',async (req,res,next)=>{
 
         }
     ).then(()=>{
-        res.send({"faculty":faculty, "count":count});
+        res.status(200).send({"faculty":faculty, "count":count});
         
     }) 
 
