@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const {check, validationResult} = require('express-validator');
-const {Application, User, Project} = require("../db");
+const {Application, User, Project} = require("../database/db");
 
 // devuelve todas las aplicaciones
 router.get('/', async (req, res, next) => {

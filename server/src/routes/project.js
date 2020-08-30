@@ -1,7 +1,7 @@
 const { Router } = require('express');
 
 const router = Router();
-const { Project, Skill, Category, User } = require("../db");
+const { Project, Skill, Category, User } = require("../database/db");
 
 
 

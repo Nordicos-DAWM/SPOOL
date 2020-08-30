@@ -1,19 +1,20 @@
 
 const Sequelize = require("sequelize");
 // Modelos
-const UserModel = require("./models/user");
-const UserTypeModel = require("./models/userType");
-const ProjectModel = require("./models/project");
-const SkillModel = require("./models/skill");
-const CategoryModel = require("./models/category");
-const ApplicationModel = require("./models/application");
-const NewsModel = require("./models/news");
-const StudentDetailsModel = require("./models/studentDetails");
+const UserModel = require("../models/user");
+const UserTypeModel = require("../models/userType");
+const ProjectModel = require("../models/project");
+const SkillModel = require("../models/skill");
+const CategoryModel = require("../models/category");
+const ApplicationModel = require("../models/application");
+const NewsModel = require("../models/news");
+const StudentDetailsModel = require("../models/studentDetails");
 
 
 const conn = new Sequelize("spool","root", "password", {
     host: "localhost",
-    dialect: "mysql"
+    dialect: "mysql",
+    logging: false
 });
 
 // Tablas en BD

@@ -6,7 +6,7 @@ const morgan = require('morgan');
 const app = express();
 
 require('dotenv').config();
-require("./db");
+require("./database/db");
 
 const projectRouter = require('./routes/project');
 const newsRouter = require('./routes/news');

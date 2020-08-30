@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 const {check, validationResult} = require('express-validator');
-const {User, UserType} = require("../db");
-const e = require('express');
+const {User, UserType} = require("../database/db");
+
 
 
 router.get('/', async (req, res, next) => {
