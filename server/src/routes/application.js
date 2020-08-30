@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const {check, validationResult} = require('express-validator');
-const {Application, User, Project} = require("../database/db");
+const {Application, User, Project} = require("../databases/db");
 
 // devuelve todas las aplicaciones
 router.get('/', async (req, res, next) => {
@@ -60,6 +60,23 @@ router.get('/by_student/:studentId',async (req,res,next)=>{
     }else{
         res.status(200).send(app)
     }
+});
+
+router.put('/:id', async (req,res,next)=>{
+
+    const app = await Application.update({ state: req.body.state }, {
+        where: {
+          id: req.params.id
+        }
+      });
+
+    if(!app){
+        res.status(404).send({message:'Aplicación no pudo ser actualizada.'})
+    }else{
+        // Enviar correo 
+        res.status(200).send({message:'Aplicación se actualizó exitosamente.'})
+    }
+
 });
 
 // Elimina una aplicacion dado su id. 

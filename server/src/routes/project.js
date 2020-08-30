@@ -1,7 +1,7 @@
 const { Router } = require('express');
 
 const router = Router();
-const { Project, Skill, Category, User } = require("../database/db");
+const { Project, Skill, Category, User } = require("../databases/db");
 
 
 
@@ -98,8 +98,7 @@ router.post('/',[
                 skillId = skillObj.id;
 
             } else {
-                skillId = await Skill.create({name:cat});
-                console.log(cat);
+                skillId = await Skill.create({name:skill});
             }
             Project.findByPk(projectId).then(skill=>{
                 skill.setSkills([skillId]);
@@ -122,26 +121,24 @@ router.put('/:id',[
     check('skills', 'Las habilidades son un campo obligatorio.').isArray(),
     check('urlRepository', 'El link del repositorio debe ser un link válido.').optional().isURL()
     ], async (req,res,next)=>{
-    try{ 
+
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(422).json({updated: true,message:errors["errors"][0]["msg"]});
         }
-
+        
         const projectsUpdated = await Project.update(req.body, {
             where: {
                 id:req.params.id
             }    
         });
+
         if (projectsUpdated[0]){
             res.status(200).send({updated: true, message: "Se ha modificado correctamente"});
         }else{
-        res.status(200).send({updated: false, message: "No se encontró elemento a actualizar"})
+            res.status(200).send({updated: false, message: "No se actualizó el elemento"})
         }
-    }catch{
-        res.status(500).send({updated: false, message: "Error al procesar la solicitud"});
 
-    }
 
 
 });

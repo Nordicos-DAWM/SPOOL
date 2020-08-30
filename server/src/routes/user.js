@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 const {check, validationResult} = require('express-validator');
-const {User, UserType} = require("../database/db");
+const {User, UserType} = require("../databases/db");
+const bcrypt = require("bcryptjs"); 
 
 
 
@@ -26,7 +27,7 @@ router.post('/',[
     check('birthday','La fecha de nacimiento es un campo obligatorio.').notEmpty(),
     check('birthday','Debe ingresar una fecha válida.').isDate()
 ], async (req, res, next) => {
-    
+    req.body.password = bcrypt.hashSync(req.body.password,7);
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {

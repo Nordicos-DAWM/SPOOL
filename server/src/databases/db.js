@@ -63,7 +63,7 @@ Application.belongsTo(Project);
 
 conn.sync({force:false})
 .then(()=> {
-    console.log("Conexion exitosa");
+    console.log("MySQL connnection successful");
 })
 
 
