@@ -47,7 +47,7 @@ const Project = (sequelize, type) =>{
     logicState: {
         type: type.BOOLEAN,
         allowNull: false,
-        defaultValue: true, 
+        defaultValue: true,
     }
     }, {timestamps: false});
 }

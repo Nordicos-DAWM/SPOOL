@@ -18,12 +18,13 @@ const Application = (sequelize, type) =>{
         allowNull: false
     },
     proposal:{
-        type: type.STRING,
+        type: type.STRING(500),
         allowNull: false
     },
     logicState:{
         type: type.BOOLEAN,
-        allowNull: false
+        allowNull: false,
+        defaultValue: true,
     }
 
     }, {timestamps: false});
