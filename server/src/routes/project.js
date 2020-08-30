@@ -111,22 +111,21 @@ router.post('/',[
 
 
 router.put('/:id',[
-    check('title', 'El título del proyecto es un campo obligatorio.').notEmpty(),
-    check('description', 'La descripción del proyecto es un campo obligatorio.').notEmpty(),
-    check('mainCategory', 'La categoría principal es un campo obligatorio.').notEmpty(),
-    check('maxParticipants', 'El número de participantes es un campo obligatorio.').notEmpty(),
+    check('title', 'El título del proyecto es un campo obligatorio.').isString(),
+    check('description', 'La descripción del proyecto es un campo obligatorio.').isString(),
+    check('mainCategory', 'La categoría principal es un campo obligatorio.').isString(),
     check('maxParticipants', 'El número de participantes debe ser un número entero válido.').isInt( {min: 1, max: 10} ),
-    check('color', 'El color es un campo obligatorio.').notEmpty(),
-    check('contactEmail', 'El email de contacto es un campo obligatorio.').notEmpty(),
+    check('color', 'El color es un campo obligatorio.').isString(),
+    check('contactEmail', 'El email de contacto es un campo obligatorio.').isString(),
     check('contactEmail', 'El email proporcionado no es válido.').isEmail(),
-    check('categories', 'Las categorías son un campo obligatorio.').notEmpty().isArray(),
-    check('skills', 'Las habilidades son un campo obligatorio.').notEmpty().isArray(),
+    check('categories', 'Las categorías son un campo obligatorio.').isArray(),
+    check('skills', 'Las habilidades son un campo obligatorio.').isArray(),
     check('urlRepository', 'El link del repositorio debe ser un link válido.').optional().isURL()
     ], async (req,res,next)=>{
     try{ 
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(422).json({message:errors["errors"][0]["msg"]});
+            return res.status(422).json({updated: true,message:errors["errors"][0]["msg"]});
         }
 
         const projectsUpdated = await Project.update(req.body, {
