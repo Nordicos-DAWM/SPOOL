@@ -13,12 +13,13 @@ const newsRouter = require('./routes/news');
 const chartRouter = require('./routes/charts');
 const userRouter = require('./routes/user');
 const applicationRouter = require('./routes/application');
-
+const contactRouter = require('./routes/contact');
 /*Configuracion del servidor*/
 app.set('port' , process.env.PORT || 3000);
 
 /*Middlewares*/
 app.use(morgan('dev'));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -28,8 +29,8 @@ app.use("/api/project",projectRouter );
 app.use("/api/chart/", chartRouter);
 app.use("/api/new",newsRouter);
 app.use("/api/user",userRouter);
-app.use("/api/application",applicationRouter)
-
+app.use("/api/application", applicationRouter);
+app.use("/api/contact",contactRouter );
 
 app.listen(app.get('port') , () => {
 	console.log('Server on port' , app.get('port'));

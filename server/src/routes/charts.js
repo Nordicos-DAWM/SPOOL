@@ -3,7 +3,7 @@ const { conn } = require('../databases/db');
 var router = express.Router();
 
 
-router.get('/skills', async (req, res, next) => {
+router.get('/skills', (req, res, next) => {
     let skills;
     let count;
     conn.query('SELECT s.name as skill, count(p.id) as count FROM `projects` as p, `projects-skills` as ps, `skills` as s WHERE (p.id = ps.projectId) AND (s.id = ps.skillId) group by (s.name);')
@@ -43,7 +43,7 @@ router.get('/categories' , (req, res, next) => {
 });
 
 
-router.get('/is_subject',async (req,res,next)=>{
+router.get('/is_subject',(req,res,next)=>{
     let isSubject;
     let count;
     conn.query('SELECT isSubject,count(id) as count from applications as a group by ( a.isSubject);')
@@ -64,7 +64,7 @@ router.get('/is_subject',async (req,res,next)=>{
     
 });
 
-router.get('/school',async (req,res,next)=>{
+router.get('/school', (req,res,next)=>{
     let faculty;
     let count;
     conn.query('SELECT sd.faculty, count(u.id) as count FROM users as u, studentDetails as sd WHERE (u.id = sd.id) GROUP BY (faculty) ;')

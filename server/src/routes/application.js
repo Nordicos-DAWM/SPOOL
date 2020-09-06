@@ -3,6 +3,8 @@ var router = express.Router();
 const {check, validationResult} = require('express-validator');
 const {Application, User, Project} = require("../databases/db");
 
+const {updateApplication} = require('../mailer');
+
 // devuelve todas las aplicaciones
 router.get('/', async (req, res, next) => {
     const apps =  await Application.findAll({ 
@@ -73,11 +75,10 @@ router.put('/:id', async (req,res,next)=>{
     if(!app){
         res.status(404).send({message:'Aplicación no pudo ser actualizada.'})
     }else{
-        // Enviar correo 
-        res.status(200).send({message:'Aplicación se actualizó exitosamente.'})
+        next();
     }
 
-});
+}, updateApplication);
 
 // Elimina una aplicacion dado su id. 
 router.delete('/:id', async (req,res,next)=>{
@@ -91,6 +92,7 @@ router.delete('/:id', async (req,res,next)=>{
     if(!app){
         res.status(404).send({message:'Aplicación no pudo ser eliminada.'})
     }else{
+        sendEmail(app.user.firstName, app.project.title, "Rechazado",app.user.email,req.body.rejectedReaso);
         res.status(200).send({message:'Aplicación se eliminó exitosamente.'})
     }
 

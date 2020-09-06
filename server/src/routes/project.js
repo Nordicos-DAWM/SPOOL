@@ -1,8 +1,8 @@
 const { Router } = require('express');
 
 const router = Router();
-const { Project, Skill, Category, User } = require("../databases/db");
-
+const { Project, Skill, Category, User } = require('../databases/db');
+const { deleteProject} = require('../mailer');
 
 
 router.get('/', async (req,res,next)=>{
@@ -145,26 +145,20 @@ router.put('/:id',[
 
 
 router.delete('/:id', async (req,res,next)=>{
-    try{ 
         const projectsDeleted = await Project.update({logicState:false}, {
             where: {
                 id:req.params.id
             }    
         });
-        if (projectsDeleted[0]){
-            res.status(200).json({deleted: true, message: "Se ha eliminado correctamente"});
+
+
+        if (projectsDeleted[0]){      
+            next();
         }
         else{
-        res.status(200).json({deleted: false, message: "No se encontró elemento a eliminar"});
+        res.status(500).json({deleted: false, message: "No se encontró elemento a eliminar"});
         }
-    }catch{
-        res.statusCode = 500;
-        res.status(500).json({deleted: false, message: "Error al procesar la solicitud"});
-    }
-
-
-
-});
+}, deleteProject);
 
 
 router.get('/by_user/:userId', async (req,res,next)=>{
@@ -189,8 +183,6 @@ router.get('/by_user/:userId', async (req,res,next)=>{
         }],
         });    
     res.status(200).send(project);
-
-
-})
+});
 
 module.exports = router;
