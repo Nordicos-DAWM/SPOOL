@@ -2,7 +2,7 @@ const { Router } = require('express');
 
 const router = Router();
 const { Project, Skill, Category, User } = require("../databases/db");
-
+const {projectLogs} = require("../middlewares/reports");
 
 
 router.get('/', async (req,res,next)=>{
@@ -119,13 +119,15 @@ router.put('/:id',[
     check('contactEmail', 'El email proporcionado no es válido.').isEmail(),
     check('categories', 'Las categorías son un campo obligatorio.').isArray(),
     check('skills', 'Las habilidades son un campo obligatorio.').isArray(),
-    check('urlRepository', 'El link del repositorio debe ser un link válido.').optional().isURL()
-    ], async (req,res,next)=>{
-
+    check('urlRepository', 'El link del repositorio debe ser un link válido.').optional().isURL(),
+    check('state', 'El estado del proyecto es un campo obligatorio.').isString()
+    ], (req,res,next)=>{
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(422).json({updated: true,message:errors["errors"][0]["msg"]});
         }
+        next();
+    },projectLogs, async (req,res,next)=>{
         
         const projectsUpdated = await Project.update(req.body, {
             where: {
@@ -134,13 +136,10 @@ router.put('/:id',[
         });
 
         if (projectsUpdated[0]){
-            res.status(200).send({updated: true, message: "Se ha modificado correctamente"});
+            res.status(200).send({updated: true, message: "Se actualizó el elemento correctamente"})
         }else{
             res.status(200).send({updated: false, message: "No se actualizó el elemento"})
         }
-
-
-
 });
 
 

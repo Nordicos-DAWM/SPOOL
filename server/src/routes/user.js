@@ -27,13 +27,13 @@ router.post('/',[
     check('birthday','La fecha de nacimiento es un campo obligatorio.').notEmpty(),
     check('birthday','Debe ingresar una fecha válida.').isDate()
 ], async (req, res, next) => {
-    req.body.password = bcrypt.hashSync(req.body.password,7);
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
         return res.status(422).json({message:errors["errors"][0]["msg"]});
     }
-
+    
+    req.body.password = bcrypt.hashSync(req.body.password,7);
     const newUser = await User.create(req.body);
     res.status(200).send(newUser);
     

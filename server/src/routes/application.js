@@ -40,7 +40,7 @@ router.post('/', [
 });
 
 // Devuelve las aplicaciones de un estudiante dado el id del estudiante
-router.get('/by_student/:studentId',async (req,res,next)=>{
+router.get('/by_student/:studentId', async (req,res,next)=>{
     const app = await Application.findAll({
         where: {
             userId: req.params.studentId,
