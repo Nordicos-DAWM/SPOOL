@@ -119,7 +119,9 @@ router.put('/:id',[
     check('contactEmail', 'El email proporcionado no es válido.').isEmail(),
     check('categories', 'Las categorías son un campo obligatorio.').isArray(),
     check('skills', 'Las habilidades son un campo obligatorio.').isArray(),
-    check('urlRepository', 'El link del repositorio debe ser un link válido.').optional().isURL()
+    check('urlRepository', 'El link del repositorio debe ser un link válido.').optional().isURL(),
+    
+
     ], async (req,res,next)=>{
 
         const errors = validationResult(req);

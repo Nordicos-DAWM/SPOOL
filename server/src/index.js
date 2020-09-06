@@ -29,6 +29,7 @@ app.use(express.urlencoded({ extended: false }));
 
 /*Rutas*/
 
+
 app.use("/api/project",projectRouter );
 app.use("/api/chart/", chartRouter);
 app.use("/api/new",newsRouter);
@@ -38,7 +39,9 @@ app.use("/api/contact",contactRouter );
 
 app.use("/", (req, res)=>{
 	res.send("Bienvenido a SPOOL API");
-})
+});
+
+
 app.listen(app.get('port') , () => {
 	console.log('Server on port' , app.get('port'));
 });
