@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
+const config = require('config');
 
-
-DATABASE_URL = "mongodb://localhost:27017/spoolReports"
+DATABASE_URL = config.get('dbConfig.mongodb.url')
 
 mongoose.connect(DATABASE_URL, {
         useNewUrlParser: true,

@@ -1,5 +1,5 @@
-#DROP DATABASE spool;
-#CREATE DATABASE spool;
+DROP DATABASE spool;
+CREATE DATABASE spool;
 
 # Inserts userType
 INSERT INTO spool.userTypes (id, type) VALUES 
@@ -88,8 +88,8 @@ INSERT INTO spool.applications(state,isSubject,reason,proposal,logicState,userId
 
 #Insert news
 INSERT INTO spool.news(title, description, date, logicState, userId) VALUES 
-("Nueva Actualización", "Hemos añadido nuevas funcionalidades a la aplicación", NOW(),TRUE, 3),
-("Nueva Actualización", "Matenimiento de la aplicacióń este 30 de Agosto", NOW(),TRUE, 3);
+("Nueva Actualización", "Hemos agregado nuevas funcionalidades a la aplicación", NOW(),TRUE, 3),
+("Nueva Actualización", "Matenimiento de la aplicación este 30 de Agosto", NOW(),TRUE, 3);
 
 
 INSERT INTO spool.studentDetails( faculty, career, userId) VALUES 

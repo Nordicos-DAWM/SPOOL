@@ -1,14 +1,11 @@
 
 const nodemailer = require('nodemailer');
 const {Application, User, Project} = require('./databases/db');
-
+const config = require('config');
 
 let transporter = nodemailer.createTransport({
     service: 'gmail',
-    auth : {
-        user: "robertmorenoc@gmail.com",
-        pass: "RDMC0954190823"
-    }
+    auth : config.get("mailer")
 });
 
 let contactEmail = async (req, res) => {
@@ -107,7 +104,7 @@ let updateApplication = async (req,res,next) =>{
 
     sendEmail(app.user.firstName, app.project.title, req.body.state, app.user.email, req.body.rejectionReason);
     
-    res.status(200).json({deleted: true, message: "Se ha actulizado correctamente"});
+    res.status(200).json({deleted: true, message: "Se ha actualizado correctamente"});
 
 }
 

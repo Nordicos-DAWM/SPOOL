@@ -1,0 +1,23 @@
+{
+    "dbConfig": {
+        "mysql": {
+            "db": "spool",
+            "user": "root",
+            "password": "password",
+            "sequelizeOpt":{
+                "host": "localhost",
+                "dialect": "mysql",
+                "logging": false
+            }
+        },
+        "mongodb":{
+            "url": "mongodb://localhost:27017/spoolReports"
+        }
+    },
+    "mailer": {
+        "user": "robertmorenoc@gmail.com",
+        "pass": "RDMC0954190823"
+    },
+    "secretToken": "mySecretToken"
+
+}
