@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 const userReportSchema = new mongoose.Schema({
-    id: {
+    userId: {
         type: Number
     },
     email: {

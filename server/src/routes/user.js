@@ -4,9 +4,9 @@ const {check, validationResult} = require('express-validator');
 const {User, UserType} = require("../databases/db");
 const bcrypt = require("bcryptjs"); 
 
+const {validarToken} = require('../middlewares/auth')
 
-
-router.get('/', async (req, res, next) => {
+router.get('/', validarToken,async (req, res, next) => {
 
     const users =  await User.findAll({
         include:[{
@@ -34,8 +34,15 @@ router.post('/',[
     }
     
     req.body.password = bcrypt.hashSync(req.body.password,7);
-    const newUser = await User.create(req.body);
-    res.status(200).send(newUser);
+    
+    try{
+        const newUser = await User.create(req.body)
+        res.status(200).send(newUser);
+    } catch (error){    
+        return res.status(400).send({message:"El correo ingresado ya está registrado en la aplicación."})      
+    }
+
+    
     
 });
 

@@ -2,7 +2,7 @@ const { Router } = require('express');
 
 const router = Router();
 const { Project, Skill, Category, User } = require("../databases/db");
-const {projectLogs} = require("../middlewares/reports");
+const { projectLogs, projectCreated} = require("../middlewares/reports");
 
 
 router.get('/', async (req,res,next)=>{
@@ -63,14 +63,12 @@ router.post('/',[
     check('categories', 'Las categorías son un campo obligatorio.').notEmpty().isArray(),
     check('skills', 'Las habilidades son un campo obligatorio.').notEmpty().isArray(),
     check('urlRepository', 'El link del repositorio debe ser un link válido.').optional().isURL()
-],[    
-], async (req,res,next)=>{
-    
+    ],
+    async (req,res,next)=>{
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(422).json({message:errors["errors"][0]["msg"]});
+            return res.status(422).json({message:errors["errors"][0]["msg"]});
     }
-
     const project = await Project.create(req.body);
     const projectId = project.id;
 
@@ -105,22 +103,23 @@ router.post('/',[
             });
         });
     } );  
+    next();
     res.send(project);
-});
+},projectCreated);
 
 
 router.put('/:id',[
-    check('title', 'El título del proyecto es un campo obligatorio.').isString(),
-    check('description', 'La descripción del proyecto es un campo obligatorio.').isString(),
-    check('mainCategory', 'La categoría principal es un campo obligatorio.').isString(),
-    check('maxParticipants', 'El número de participantes debe ser un número entero válido.').isInt( {min: 1, max: 10} ),
-    check('color', 'El color es un campo obligatorio.').isString(),
-    check('contactEmail', 'El email de contacto es un campo obligatorio.').isString(),
-    check('contactEmail', 'El email proporcionado no es válido.').isEmail(),
-    check('categories', 'Las categorías son un campo obligatorio.').isArray(),
-    check('skills', 'Las habilidades son un campo obligatorio.').isArray(),
+    check('title', 'El título del proyecto es un campo obligatorio.').optional().isString(),
+    check('description', 'La descripción del proyecto es un campo obligatorio.').optional().isString(),
+    check('mainCategory', 'La categoría principal es un campo obligatorio.').optional().isString(),
+    check('maxParticipants', 'El número de participantes debe ser un número entero válido.').optional().isInt( {min: 1, max: 10} ),
+    check('color', 'El color es un campo obligatorio.').optional().isString(),
+    check('contactEmail', 'El email de contacto es un campo obligatorio.').optional().isString(),
+    check('contactEmail', 'El email proporcionado no es válido.').optional().isEmail(),
+    check('categories', 'Las categorías son un campo obligatorio.').optional().isArray(),
+    check('skills', 'Las habilidades son un campo obligatorio.').optional().isArray(),
     check('urlRepository', 'El link del repositorio debe ser un link válido.').optional().isURL(),
-    check('state', 'El estado del proyecto es un campo obligatorio.').isString()
+    check('state', 'El estado del proyecto es un campo obligatorio.').optional().isString()
     ], (req,res,next)=>{
         const errors = validationResult(req);
         if (!errors.isEmpty()) {

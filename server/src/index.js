@@ -31,7 +31,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/api/project",validarToken,projectRouter);
 app.use("/api/chart/",validarToken,chartRouter);
 app.use("/api/new",validarToken,newsRouter);
-app.use("/api/user",validarToken,userRouter);
+app.use("/api/user",userRouter);
 app.use("/api/application",validarToken,applicationRouter);
 app.use("/api/reports",validarToken,reportsRouter);
 app.use("/api/auth",authRouter);

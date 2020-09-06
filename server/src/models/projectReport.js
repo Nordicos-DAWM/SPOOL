@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 const projectReportSchema = new mongoose.Schema({
-    id: {
+    projectId: {
         type: Number
     },
     stateBefore: {

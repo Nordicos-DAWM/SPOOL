@@ -1,9 +1,10 @@
-var express = require('express');
+let express = require('express');
 
-var projectReport = require("../models/projectReport");
-var userReport = require("../models/userReport");
+let projectReport = require("../models/projectReport");
+let userReport = require("../models/userReport");
 
-var router = express.Router();
+
+let router = express.Router();
 
 router.get('/project', async (req, res, next) => {
     const projects = await projectReport.find()

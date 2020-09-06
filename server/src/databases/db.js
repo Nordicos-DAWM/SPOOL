@@ -11,7 +11,7 @@ const NewsModel = require("../models/news");
 const StudentDetailsModel = require("../models/studentDetails");
 
 
-const conn = new Sequelize("spool","root", "root", {
+const conn = new Sequelize("spool","root", "password", {
     host: "localhost",
     dialect: "mysql",
     logging: false
