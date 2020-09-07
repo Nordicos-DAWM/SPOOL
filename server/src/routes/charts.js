@@ -43,7 +43,7 @@ router.get('/categories' , (req, res, next) => {
 });
 
 
-router.get('/is_subject',(req,res,next)=>{
+router.get('/is_subject', (req,res,next)=>{
     let isSubject;
     let count;
     conn.query('SELECT isSubject,count(id) as count from applications as a group by ( a.isSubject);')

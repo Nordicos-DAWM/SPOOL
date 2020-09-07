@@ -3,7 +3,7 @@ var router = express.Router();
 const {check, validationResult} = require('express-validator');
 const {Application, User, Project} = require("../databases/db");
 
-const {updateApplication} = require('../mailer');
+const {updateApplication} = require('../middlewares/mailer');
 
 // devuelve todas las aplicaciones
 router.get('/', async (req, res, next) => {
@@ -42,7 +42,7 @@ router.post('/', [
 });
 
 // Devuelve las aplicaciones de un estudiante dado el id del estudiante
-router.get('/by_student/:studentId',async (req,res,next)=>{
+router.get('/by_student/:studentId', async (req,res,next)=>{
     const app = await Application.findAll({
         where: {
             userId: req.params.studentId,

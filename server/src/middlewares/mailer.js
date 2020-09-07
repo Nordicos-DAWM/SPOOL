@@ -1,6 +1,6 @@
 
 const nodemailer = require('nodemailer');
-const {Application, User, Project} = require('./databases/db');
+const {Application, User, Project} = require('../databases/db');
 const config = require('config');
 
 let transporter = nodemailer.createTransport({

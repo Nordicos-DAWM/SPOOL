@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const {contactEmail} = require('../mailer');
+const {contactEmail} = require('../middlewares/mailer');
 
 const router = Router();
 

@@ -4,10 +4,9 @@ const {check, validationResult} = require('express-validator');
 const {User, UserType} = require("../databases/db");
 const bcrypt = require("bcryptjs"); 
 
+const {validarToken} = require('../middlewares/auth')
 
-
-router.get('/',async (req, res, next) => {
-
+router.get('/', validarToken,async (req, res, next) => {
     const users =  await User.findAll({
         include:[{
             model: UserType,
@@ -32,9 +31,17 @@ router.post('/',[
     if (!errors.isEmpty()) {
         return res.status(422).json({message:errors["errors"][0]["msg"]});
     }
+    
+    req.body.password = bcrypt.hashSync(req.body.password,7);
+    
+    try{
+        const newUser = await User.create(req.body)
+        res.status(200).send(newUser);
+    } catch (error){    
+        return res.status(400).send({message:"El correo ingresado ya está registrado en la aplicación."})      
+    }
 
-    const newUser = await User.create(req.body);
-    res.status(200).send(newUser);
+    
     
 });
 
