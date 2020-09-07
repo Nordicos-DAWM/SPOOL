@@ -6,7 +6,7 @@ const bcrypt = require("bcryptjs");
 
 const {validarToken} = require('../middlewares/auth')
 
-router.get('/', validarToken,async (req, res, next) => {
+router.get('/',async (req, res, next) => {
     const users =  await User.findAll({
         include:[{
             model: UserType,
@@ -27,7 +27,7 @@ router.post('/',[
     check('birthday','Debe ingresar una fecha válida.').isDate()
 ], async (req, res, next) => {
     const errors = validationResult(req);
-    req.body.password = bcrypt.hashSync(req.body.password,7);
+
     if (!errors.isEmpty()) {
         return res.status(422).json({message:errors["errors"][0]["msg"]});
     }

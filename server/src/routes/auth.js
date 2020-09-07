@@ -24,6 +24,7 @@ router.post('/', async (req, res, next)=>{
     }
 
     if(!bcrypt.compareSync(req.body.password,user.password)){
+        console.log(req.body.password);
         return res.status(404).send({message:"Usuario o contraseña incorrectos."});
     }
 
