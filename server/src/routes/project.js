@@ -1,7 +1,10 @@
 const { Router } = require('express');
 
 const router = Router();
-const { Project, Skill, Category, User } = require("../db");
+
+const { Project, Skill, Category, User } = require("../databases/db");
+const { projectLogs, projectCreated} = require("../middlewares/reports");
+const { deleteProject} = require('../middlewares/mailer');
 
 
 router.get('/', async (req,res,next)=>{
@@ -49,7 +52,25 @@ router.get('/by_id/:id', async (req,res,next)=>{
 
 });
 
-router.post('/', async (req,res,next)=>{
+const {check, validationResult} = require('express-validator');
+router.post('/',[
+    check('title', 'El título del proyecto es un campo obligatorio.').notEmpty(),
+    check('description', 'La descripción del proyecto es un campo obligatorio.').notEmpty(),
+    check('mainCategory', 'La categoría principal es un campo obligatorio.').notEmpty(),
+    check('maxParticipants', 'El número de participantes es un campo obligatorio.').notEmpty(),
+    check('maxParticipants', 'El número de participantes debe ser un número entero válido.').isInt( {min: 1, max: 10} ),
+    check('color', 'El color es un campo obligatorio.').notEmpty(),
+    check('contactEmail', 'El email de contacto es un campo obligatorio.').notEmpty(),
+    check('contactEmail', 'El email proporcionado no es válido.').isEmail(),
+    check('categories', 'Las categorías son un campo obligatorio.').notEmpty().isArray(),
+    check('skills', 'Las habilidades son un campo obligatorio.').notEmpty().isArray(),
+    check('urlRepository', 'El link del repositorio debe ser un link válido.').optional().isURL()
+    ],
+    async (req,res,next)=>{
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+            return res.status(422).json({message:errors["errors"][0]["msg"]});
+    }
     const project = await Project.create(req.body);
     const projectId = project.id;
 
@@ -62,8 +83,8 @@ router.post('/', async (req,res,next)=>{
 
             } else {
                 categoryId = await Category.create({name:cat});
-             }
-             Project.findByPk(projectId).then(category=>{
+            }
+            Project.findByPk(projectId).then(category=>{
                 category.setCategories([categoryId]);
             });
         });
@@ -77,61 +98,67 @@ router.post('/', async (req,res,next)=>{
                 skillId = skillObj.id;
 
             } else {
-                skillId = await Skill.create({name:cat});
-                console.log(cat);
-             }
-             Project.findByPk(projectId).then(skill=>{
+                skillId = await Skill.create({name:skill});
+            }
+            Project.findByPk(projectId).then(skill=>{
                 skill.setSkills([skillId]);
             });
         });
     } );  
-
+    next();
     res.send(project);
-});
+},projectCreated);
 
 
-router.put('/:id', async (req,res,next)=>{
-    try{ 
+router.put('/:id',[
+    check('title', 'El título del proyecto es un campo obligatorio.').optional().isString(),
+    check('description', 'La descripción del proyecto es un campo obligatorio.').optional().isString(),
+    check('mainCategory', 'La categoría principal es un campo obligatorio.').optional().isString(),
+    check('maxParticipants', 'El número de participantes debe ser un número entero válido.').optional().isInt( {min: 1, max: 10} ),
+    check('color', 'El color es un campo obligatorio.').optional().isString(),
+    check('contactEmail', 'El email de contacto es un campo obligatorio.').optional().isString(),
+    check('contactEmail', 'El email proporcionado no es válido.').optional().isEmail(),
+    check('categories', 'Las categorías son un campo obligatorio.').optional().isArray(),
+    check('skills', 'Las habilidades son un campo obligatorio.').optional().isArray(),
+    check('urlRepository', 'El link del repositorio debe ser un link válido.').optional().isURL(),
+    check('state', 'El estado del proyecto es un campo obligatorio.').optional().isString()
+    ], (req,res,next)=>{
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(422).json({updated: true,message:errors["errors"][0]["msg"]});
+        }
+        next();
+    },projectLogs, async (req,res,next)=>{
+        
         const projectsUpdated = await Project.update(req.body, {
             where: {
                 id:req.params.id
             }    
         });
+
         if (projectsUpdated[0]){
-            res.status(200).send({updated: true, message: "Se ha modificado correctamente"});
+            res.status(200).send({updated: true, message: "Se actualizó el elemento correctamente"})
         }else{
-        res.status(200).send({updated: false, message: "No se encontró elemento a actualizar"})
+            res.status(200).send({updated: false, message: "No se actualizó el elemento"})
         }
-    }catch{
-        res.status(500).send({updated: false, message: "Error al procesar la solicitud"});
-
-    }
-
-
 });
 
 
 router.delete('/:id', async (req,res,next)=>{
-    try{ 
         const projectsDeleted = await Project.update({logicState:false}, {
             where: {
                 id:req.params.id
             }    
         });
-        if (projectsDeleted[0]){
-            res.status(200).json({deleted: true, message: "Se ha eliminado correctamente"});
+
+
+        if (projectsDeleted[0]){      
+            next();
         }
         else{
-        res.status(200).json({deleted: false, message: "No se encontró elemento a eliminar"});
+        res.status(500).json({deleted: false, message: "No se encontró elemento a eliminar"});
         }
-    }catch{
-        res.statusCode = 500;
-        res.status(500).json({deleted: false, message: "Error al procesar la solicitud"});
-    }
-
-
-
-});
+}, deleteProject);
 
 
 router.get('/by_user/:userId', async (req,res,next)=>{
@@ -156,8 +183,6 @@ router.get('/by_user/:userId', async (req,res,next)=>{
         }],
         });    
     res.status(200).send(project);
-
-
-})
+});
 
 module.exports = router;

@@ -1,7 +1,9 @@
 var express = require('express');
 var router = express.Router();
+const {check, validationResult} = require('express-validator');
+const {Application, User, Project} = require("../databases/db");
 
-const {Application, User, Project} = require("../db");
+const {updateApplication} = require('../middlewares/mailer');
 
 // devuelve todas las aplicaciones
 router.get('/', async (req, res, next) => {
@@ -21,20 +23,26 @@ router.get('/', async (req, res, next) => {
 });
 
 
-router.post('/', async (req, res, next) => {
+router.post('/', [
+    check('state','El estado de la aplicación es un campo obligatorio.').notEmpty(),
+    check('isSubject','Este es un campo obligatorio.').notEmpty().isBoolean(),
+    check('reason','La razón de su aplicación es un campo obligatorio.').notEmpty(),
+    check('proposal','La propuesta es un campo obligatorio.').isEmail()
+], async (req, res, next) => {
     
-    const newApp = await Application.create(req.body);
+    const errors = validationResult(req);
 
-    if(!newApp){
-        res.status(404).send({error:'No se pudo crear la aplicación.'});
-    }else{
-        res.status(200).send(newApp);
+    if (!errors.isEmpty()) {
+        return res.status(422).json({message:errors["errors"][0]["msg"]});
     }
+
+    const newApp = await Application.create(req.body);
+    res.status(200).send(newApp);
 
 });
 
 // Devuelve las aplicaciones de un estudiante dado el id del estudiante
-router.get('/by_student/:studentId',async (req,res,next)=>{
+router.get('/by_student/:studentId', async (req,res,next)=>{
     const app = await Application.findAll({
         where: {
             userId: req.params.studentId,
@@ -50,11 +58,27 @@ router.get('/by_student/:studentId',async (req,res,next)=>{
     });
 
     if(!app){
-        res.status(404).send({error:'Usuario no encontrado.'})
+        res.status(404).send({message:'No se pudo encontrar al Usuario.'})
     }else{
         res.status(200).send(app)
     }
 });
+
+router.put('/:id', async (req,res,next)=>{
+
+    const app = await Application.update({ state: req.body.state }, {
+        where: {
+          id: req.params.id
+        }
+      });
+
+    if(!app){
+        res.status(404).send({message:'Aplicación no pudo ser actualizada.'})
+    }else{
+        next();
+    }
+
+}, updateApplication);
 
 // Elimina una aplicacion dado su id. 
 router.delete('/:id', async (req,res,next)=>{
@@ -66,8 +90,9 @@ router.delete('/:id', async (req,res,next)=>{
       });
 
     if(!app){
-        res.status(404).send({error:'Aplicación no pudo ser eliminada.'})
+        res.status(404).send({message:'Aplicación no pudo ser eliminada.'})
     }else{
+        sendEmail(app.user.firstName, app.project.title, "Rechazado",app.user.email,req.body.rejectedReaso);
         res.status(200).send({message:'Aplicación se eliminó exitosamente.'})
     }
 

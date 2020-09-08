@@ -1,22 +1,19 @@
 DROP DATABASE spool;
 CREATE DATABASE spool;
 
-# Inserts userType
 INSERT INTO spool.userTypes (id, type) VALUES 
 (1,"estudiante"),
 (2,"cliente"),
 (3,"admin");
 
-# Inserts user
 INSERT INTO spool.users (firstName, lastName, email, password, birthday, userTypeId) VALUES 
 ("Valeria","Palacios","admin@espol.edu.ec","root", now(), 3),
 ("Doménica","Barreiro","dombpala@espol.edu.ec","lalalala", now(), 2),
-("Robert","Moreno","rodemore@espol.edu.ec","password", now(), 2),
-("Carlos","Pillajo","cpillaj@espol.edu.ec","12345678", now(), 1),
-("Daniel","Sinchi","daniens@espol.edu.ec","12345678", now(), 1),
+("Carlos","Pillajo","cpillaj@espol.edu.ec","password", now(), 2),
+("Robert","Pillajo","robertmorenoc@gmail.com","12345678", now(), 1),
+("Doménica","Barreiro","dombpala@fiec.espol.edu.ec","12345678", now(), 1),
 ("Alejandro","Vargas","alexvarg123@espol.edu.ec","12345678", now(), 1);
 
-# Inserts skills
 INSERT INTO spool.skills (id, name) VALUES
 (1,"Python"),
 (2,"R Studio"),
@@ -27,7 +24,6 @@ INSERT INTO spool.skills (id, name) VALUES
 (7, "Matlab"),
 (8, "Tableau");
 
-# Inserts categories
 INSERT INTO spool.categories (id, name) VALUES
 (1,"Desarrollo Web"),
 (2,"Computación en la Nube"),
@@ -38,7 +34,6 @@ INSERT INTO spool.categories (id, name) VALUES
 (7, "Deep learning");
 
 
-# Inserts Projects
 INSERT INTO spool.projects(title, description, 
 mainCategory, maxParticipants, color, contactEmail, state, logicState, userId) 
 VALUES 
@@ -49,7 +44,6 @@ VALUES
 ("Inkscape", "Es un editor de gráficos vectoriales con capacidades similares a Illustrator, CorelDraw o Xara X, utiliza el formato SVG para manejar funcionalidades como marcadores, clones y mezclas alpha. Es muy fácil editar nodos, realizar operaciones de ruta complejas, trazar mapas de bits y mucho más.",
  "Diseño gráfico", 6, "#3AD030", "pedro_fer@gmail.com","Activo",false, 3);        
 
-# Inserts projects-skills  
 INSERT INTO spool.`projects-skills`(ProjectId, SkillId) VALUES 
 (1,1),
 (1,2),
@@ -64,7 +58,6 @@ INSERT INTO spool.`projects-skills`(ProjectId, SkillId) VALUES
 (3,1),
 (3,2);
 
-# Inserts projects-categories  
 INSERT INTO spool.`projects-categories`(ProjectId, categoryId) VALUES 
 (1,1),
 (1,2),
@@ -79,17 +72,27 @@ INSERT INTO spool.`projects-categories`(ProjectId, categoryId) VALUES
 (3,1),
 (3,3);
 
+<<<<<<< HEAD
 # Insert applications
 INSERT INTO spool.applications(state,isSubject,reason,proposal,logicState,userId,projectId) VALUES
 ("En espera", false, "Obtener experiencia", "Propongo lalalalalalal", TRUE, 4,1),
 ("Aceptada", true, "Llevar este proyecto para mi materia de DAWM", "Propongo lalalalalalal", TRUE, 5,3),
+=======
+INSERT INTO spool.applications(state,isSubject,reason,proposal,logicState,userId,projectId) VALUES
+("En espera", false, "Obtener experiencia", "Propongo lalalalalalal", TRUE, 4,1),
+("Aceptada", true, "Llevar este proyecto para mi materia de DAWM", "Propongo lalalalalalal", TRUE, 5,1),
+>>>>>>> r_branch
 ("En espera", true, "Llevar este proyecto para IHC","lalalalalalallalalala", TRUE, 4,2),
 ("En espera", true, "Me llama mucho la antención la idea de este proyecto", "Propongo lalalalalalal", TRUE, 6,3);
 
-#Insert news
 INSERT INTO spool.news(title, description, date, logicState, userId) VALUES 
-("Nueva Actualización", "Hemos añadido nuevas funcionalidades a la aplicación", NOW(),TRUE, 3),
-("Nueva Actualización", "Matenimiento de la aplicacióń este 30 de Agosto", NOW(),TRUE, 3);
+("Nueva Actualización", "Hemos agregado nuevas funcionalidades a la aplicación", NOW(),TRUE, 3),
+("Nueva Actualización", "Matenimiento de la aplicación este 30 de Agosto", NOW(),TRUE, 3);
+
+INSERT INTO spool.studentDetails( faculty, career, userId) VALUES 
+("FIEC", "COMPUTACION", 4),
+("FIMCP", "ING INDUSTRIAL", 5),
+("FIEC", "ELECTRICIDAD", 6);
 
 
 
