@@ -2,16 +2,16 @@ import React,{useState, useEffect} from 'react';
 import {Radar} from 'react-chartjs-2';
 
 
-const CategoriesPlot = () =>{
+const CategoriesPlot = (props) =>{
     const [chartData,setChartData] = useState({});
     
     const chart = () =>{
         setChartData(
             {
-                labels: ['Ciencia de Datos', 'Desarrollo Web', 'Estadísitica', 'IOT','BioTecnología','Desarrollo de Videojuegos'],
+                labels: props.category,
                 datasets: [{
                     label:'Categorías',
-                    data: [15, 10, 13, 11,5,10],
+                    data: props.count,
                     backgroundColor:['rgba(0, 16, 151, 0.18)']
                 }]
             }
