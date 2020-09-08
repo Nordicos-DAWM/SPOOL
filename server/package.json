@@ -11,11 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-<<<<<<< HEAD
-    "cors": "^2.8.5",
-=======
     "bcryptjs": "^2.4.3",
->>>>>>> r_branch
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-validator": "^6.6.1",
