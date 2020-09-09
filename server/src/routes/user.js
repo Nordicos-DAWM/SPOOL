@@ -24,7 +24,8 @@ router.post('/',[
     check('email','El email proporcionado no es válido.').isEmail(),
     check('password','La contraseña es un campo obligatorio.').notEmpty(),
     check('birthday','La fecha de nacimiento es un campo obligatorio.').notEmpty(),
-    check('birthday','Debe ingresar una fecha válida.').isDate()
+    check('birthday','Debe ingresar una fecha válida.').isDate(),
+    check('userType', 'El tipo de usuario es requerido.').isInt()
 ], async (req, res, next) => {
     const errors = validationResult(req);
 
