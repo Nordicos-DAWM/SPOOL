@@ -18,7 +18,6 @@ const applicationRouter = require('./routes/application');
 const contactRouter = require('./routes/contact');
 const authRouter = require('./routes/auth');
 const reportsRouter = require('./routes/reports');
-const bodyParser = require('body-parser');
 /*Configuracion del servidor*/
 
 app.set('port' ,process.env.PORT || 8080);
@@ -27,10 +26,7 @@ app.set('port' ,process.env.PORT || 8080);
 app.use(morgan('dev'));
 
 
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
- 
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
