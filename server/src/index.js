@@ -35,7 +35,7 @@ app.options('*', cors());
 
 /*Rutas*/
 
-app.use("/api/project",validarToken,projectRouter);
+app.use("/api/project",projectRouter);
 app.use("/api/chart/",validarToken,chartRouter);
 app.use("/api/new",validarToken,newsRouter);
 app.use("/api/user",userRouter);
