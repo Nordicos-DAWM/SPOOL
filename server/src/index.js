@@ -4,7 +4,7 @@ const express = require('express');
 const morgan = require('morgan');
 //Llamo al objeto express y lo guardo en una constante
 const app = express();
-
+let cors = require('cors')
 const {validarToken} = require('./middlewares/auth');
 
 require('dotenv').config();
@@ -29,6 +29,8 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+app.use(cors());
+app.options('*', cors());
 
 /*Rutas*/
 
