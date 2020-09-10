@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const {check, validationResult} = require('express-validator');
-const {User, UserType} = require("../databases/db");
+const {User, UserType, StudentDetails} = require("../databases/db");
 const bcrypt = require("bcryptjs"); 
 
 const {validarToken} = require('../middlewares/auth')
@@ -25,7 +25,7 @@ router.post('/',[
     check('password','La contraseña es un campo obligatorio.').notEmpty(),
     check('birthday','La fecha de nacimiento es un campo obligatorio.').notEmpty(),
     check('birthday','Debe ingresar una fecha válida.').isDate(),
-    check('userType', 'El tipo de usuario es requerido.').isInt()
+    check('userTypeId', 'El tipo de usuario es requerido.').isInt()
 ], async (req, res, next) => {
     const errors = validationResult(req);
 
@@ -36,10 +36,15 @@ router.post('/',[
     req.body.password = bcrypt.hashSync(req.body.password,7);
     
     try{
-        const newUser = await User.create(req.body)
+        const newUser = await User.create(req.body);
+        if (req.body.userTypeId == 1){
+            console.log("estudiante");
+            const details = await StudentDetails.create({"faculty": req.body.faculty.toUpperCase(),"career": req.body.career.toUpperCase(), "userId": newUser.id })
+        }
         res.status(200).send(newUser);
-    } catch (error){    
-        return res.status(400).send({message:"El correo ingresado ya está registrado en la aplicación."})      
+    } catch (error){ 
+        res.send(error);   
+        //return res.status(400).send({message:"El correo ingresado ya está registrado en la aplicación."})      
     }
 
     
