@@ -38,7 +38,6 @@ router.post('/',[
     try{
         const newUser = await User.create(req.body);
         if (req.body.userTypeId == 1){
-            console.log("estudiante");
             const details = await StudentDetails.create({"faculty": req.body.faculty.toUpperCase(),"career": req.body.career.toUpperCase(), "userId": newUser.id })
         }
         res.status(200).send(newUser);
