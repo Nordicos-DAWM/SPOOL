@@ -43,8 +43,7 @@ router.post('/',[
         }
         res.status(200).send(newUser);
     } catch (error){ 
-        res.send(error);   
-        //return res.status(400).send({message:"El correo ingresado ya está registrado en la aplicación."})      
+        return res.status(400).send({message:"El correo ingresado ya está registrado en la aplicación."})      
     }
 
     
