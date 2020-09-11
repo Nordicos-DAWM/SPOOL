@@ -17,6 +17,7 @@ router.post('/', async (req, res, next)=>{
             model: UserType,
             attributes: ['type']
         }],
+        raw: true
     });
 
     if(!user){
