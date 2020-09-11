@@ -28,7 +28,7 @@ router.post('/', async (req, res, next)=>{
         return res.status(404).send({message:"Usuario o contraseña incorrectos."});
     }
 
-    let token = jwt.sign(req.body, config.get('secretToken'), {expiresIn: '24h'});
+    let token = jwt.sign(user, config.get('secretToken'), {expiresIn: '24h'});
     next();
     res.status(200).send({token: token, user: user});
 },userLogs);
