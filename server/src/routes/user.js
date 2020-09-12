@@ -3,10 +3,11 @@ var router = express.Router();
 const {check, validationResult} = require('express-validator');
 const {User, UserType, StudentDetails} = require("../databases/db");
 const bcrypt = require("bcryptjs"); 
-
+const config = require('config');
+const jwt = require("jsonwebtoken");
 const {validarToken} = require('../middlewares/auth')
 
-router.get('/',async (req, res, next) => {
+router.get('/',validarToken, async (req, res, next) => {
     const users =  await User.findAll({
         include:[{
             model: UserType,
@@ -14,6 +15,13 @@ router.get('/',async (req, res, next) => {
         }],
     });
     res.status(200).send(users);
+});
+
+router.get('/me',validarToken, (req,res,next)=>{
+    const token = req.headers['x-access-token']
+
+    const decoded = jwt.verify(token, config.get("secretToken"));
+    res.send(decoded);
 });
 
 

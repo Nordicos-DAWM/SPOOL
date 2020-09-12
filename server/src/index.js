@@ -44,9 +44,7 @@ app.use("/api/application",validarToken,applicationRouter);
 app.use("/api/reports",validarToken,reportsRouter);
 app.use("/api/contact",contactRouter );
 app.use("/api/auth",authRouter);
-app.use("/", (req, res)=>{
-	res.send("Bienvenido a SPOOL API");
-});
+
 
 app.listen(app.get('port') , () => {
 	console.log('Server on port' , app.get('port'));
