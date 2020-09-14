@@ -18,7 +18,7 @@ function add(project){
         body:JSON.stringify(project)
     };
 
-    return fetch('/api/project/',requestOptions).then(handleResponse)
+    return fetch('http://54.88.62.27/spoolapi/api/project/',requestOptions).then(handleResponse)
 }
 
 function get(){
@@ -26,7 +26,7 @@ function get(){
         method: 'GET',
         headers: authHeader()
     };
-    return fetch(`https://raw.githubusercontent.com/abimaell95/fake-backend/master/projects.json`,requestOptions).then(handleResponse)
+    return fetch(`http://54.88.62.27/spoolapi/api/project/`,requestOptions).then(handleResponse)
 }
 
 function update(id){
@@ -51,7 +51,7 @@ function getById(id){
         method: 'GET',
         headers: authHeader()
     };
-    return fetch(`/api/project/by_id/${id}`,requestOptions).then(handleResponse)
+    return fetch(`http://54.88.62.27/spoolapi/api/project/by_id/${id}`,requestOptions).then(handleResponse)
 }
 
 function getByUserId(user_id){

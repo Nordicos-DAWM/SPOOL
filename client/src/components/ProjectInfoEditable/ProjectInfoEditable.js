@@ -133,11 +133,11 @@ function ProjectInfoEditable(props) {
                     <div className="col-md-4 col-lg-4 col-sm-12 bg-dark text-white">
                         <div className="category_skills_div">
                             <h5 className="text-white">Categorías</h5>
-                            {props.data.categories.map(i => <span className="badge badge-secondary badge-pill category"> {i}</span>)}
+                            {props.data.categories.map(i => <span className="badge badge-secondary badge-pill category"> {i.name}</span>)}
                         </div>
                         <div className="category_skills_div">
                             <h5 className="text-white">Habilidades</h5>
-                            {props.data.skills.map(i => <span className="badge badge-light badge-pill text-dark category"> {i}</span>)}
+                            {props.data.skills.map(i => <span className="badge badge-light badge-pill text-dark category"> {i.name}</span>)}
                         </div>
                     </div>
 

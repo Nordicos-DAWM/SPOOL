@@ -14,7 +14,7 @@ function getAll() {
         headers:authHeader(),
     };
 
-    return fetch('/api/new/',requestOptions).then(handleResponse)
+    return fetch('http://25.56.181.17:3000/api/news',requestOptions).then(handleResponse)
 }
 
 function add(_new) {

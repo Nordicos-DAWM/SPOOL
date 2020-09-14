@@ -1,6 +1,8 @@
-import React, { Fragment,useState } from "react";
-import {ProjectInfoEditable, Footer, Proposal,NavBar2} from '../../components';
+import React, { Fragment,useState,useEffect } from "react";
+import {ProjectInfoEditable, Footer, Proposal,NavBar2,Preloader} from '../../components';
+import {projectService } from '../../_services';
 import "./style.css";
+/*
 let project = {
   id:'2',
   title: "BioGears",
@@ -14,6 +16,7 @@ let project = {
   color : "5ED46A",
   skills:["R", "SQL", "Python"]
 }
+*/
 
 const applications = [{ 
   id:1,
@@ -44,13 +47,35 @@ const applications = [{
     name: "Doménica Barreiro"
     } ]
 
-function ProjectProposer(props) {
-  const [data, setData] = useState(project);
+function ProjectProposer({match}) {
+  const [loading, setLoading] = useState(true);
+  const [project, setProject] = useState([]);
+
+  useEffect(()=>{
+    function fetchProjectData() {
+      projectService.getById(match.params.id)
+          .then(
+              project => {
+                  setProject(project);
+                  setLoading(false);
+              },
+              error => {
+                  console.log(error);
+              }
+          );
+  }
+  fetchProjectData();// eslint-disable-next-line
+  },[])
+
+  if(loading){
+    return <Preloader/>
+  }
+
     return (
     <Fragment>
       <NavBar2 userType='client' isLoggedIn={true} activePage='clientPool'/>
       <div className="container mt-5">
-      <ProjectInfoEditable data={data} setData={setData}/>
+      <ProjectInfoEditable data={project} setData={setProject}/>
       <hr class="mb-4"/>
       <h4 class="mb-3">Propuestas</h4>
       {applications.map(i => <Proposal key={i.id} data={i}/>)}

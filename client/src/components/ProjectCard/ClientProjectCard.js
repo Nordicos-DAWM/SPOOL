@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './ProjectCard.css';
 
 function ClientProjectCard(props) {
@@ -26,10 +27,10 @@ function ClientProjectCard(props) {
                             </div>
                         </div>
                         <div className="d-inline-flex">
-                            <a href="/client/project" className="btn btn-primary px-2 py-2">
+                            <Link to={`/client/project/${props.id}`} className="btn btn-primary px-2 py-2">
                                 <i className="fas fa-eye text-3 mr-2"></i>
                                 Ver
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

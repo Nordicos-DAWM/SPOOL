@@ -1,6 +1,6 @@
-import React from 'react';
-import { useState } from 'react';
-import {NavBar2,Footer,NewCard,NewModal} from '../../components'
+import React,{useState,useEffect} from 'react';
+import {NavBar2,Footer,NewCard,NewModal,Preloader} from '../../components'
+import {newService} from '../../_services';
 
 const NewsAdmin = ()=>{
     const [open,setOpen] = useState(false);
@@ -10,7 +10,29 @@ const NewsAdmin = ()=>{
         
     }
 
+    const [loading, setLoading] = useState(true);
+    const [news, setNews] = useState([]);
+
+    useEffect(() => {
+        function fetchNewsData() {
+            newService.getAll()
+                .then(
+                    news => {
+                        setNews(news);
+                        setLoading(false);
+                    },
+                    error => {
+                        console.log(error);
+                    }
+                );
+        }
+        fetchNewsData();// eslint-disable-next-line
+    }, [])
+
+
+
     const emptyNew = {title:"",date:"",content:""}
+    /*
     const news = [
         {
             id:1,
@@ -32,6 +54,10 @@ const NewsAdmin = ()=>{
             content:"Durante los próximos meses estaremos llevando este trabajo a otro nivel!"
         }
     ]
+    */
+    if(loading){
+        return <Preloader/>
+    }
     return(
         <>
             <NavBar2 activePage = 'news'/>
@@ -54,8 +80,8 @@ const NewsAdmin = ()=>{
                         <section className="section pt-5 pb-0">
                             <div className="container">
                                 <div className="row">
-                                   {news && news.map(n =>(
-                                       <NewCard {...n} key={n.id} className="col-12"/>
+                                {news && news.map(n =>(
+                                    <NewCard {...n} key={n.id} className="col-12"/>
                                 ))}
                                 </div>
                             </div>

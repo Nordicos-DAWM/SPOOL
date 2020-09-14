@@ -34,7 +34,7 @@ function NewCard(props){
                         </div>
                         
                         <p className="text-4 line-height-4 text-muted col-12">{props.date}</p>
-                        <p className="text-4 line-height-4 col-12">{props.content}</p>
+                        <p className="text-4 line-height-4 col-12">{props.description}</p>
                     </div>
                 </div>
             </div>

@@ -83,9 +83,9 @@ function Pool() {
             projectService.get()
                 .then(
                     projects => {
-                        setLoading(false);
                         setProjects(projects);
                         setFilteredProjects(projects);
+                        setLoading(false);
                     },
                     error => {
                         console.log(error);

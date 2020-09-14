@@ -36,7 +36,7 @@ const Page3 = (props) =>{
             <div className="row mt-3">
                 <div className="col text-center">
                     <button type="submit" className="btn btn-primary mr-3" onClick={props.prevStep}>Atrás</button>
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <button type="submit" className="btn btn-primary" onClick={props.createProject}>Submit</button>
                 </div>
             </div>
         </div>

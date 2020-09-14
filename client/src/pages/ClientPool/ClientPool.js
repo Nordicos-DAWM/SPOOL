@@ -1,10 +1,31 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import '../../index.css';
-import {NavBar2, ClientProjectCard} from '../../components';
-
+import {NavBar2, ClientProjectCard, Preloader} from '../../components';
+import {projectService} from '../../_services';
 
 function ClientPool() {
 
+    const [loading, setLoading] = useState(true);
+    const [projects,setProjects] = useState([]);
+
+
+    useEffect(() => {
+        function fetchProjectData() {
+            projectService.get()
+                .then(
+                    projects => {
+                        setProjects(projects);
+                        setLoading(false);
+                    },
+                    error => {
+                        console.log(error);
+                    }
+                );
+        }
+        fetchProjectData();
+    }, [])
+
+    /*
     const projects = [
 
         {id:'2',
@@ -40,7 +61,11 @@ function ClientPool() {
         applications: 12}
     
     ]
+    */
 
+    if(loading){
+        return <Preloader/>
+    }
 
     return(
         <>
