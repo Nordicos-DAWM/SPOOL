@@ -38,8 +38,8 @@ function NewCard(props){
                     </div>
                 </div>
             </div>
-            <NewModal {...props} show={open} onHide={()=>setOpen(false)}/>
-            <DeleteApplicationModal {...text} show={openDelete} onHide={()=>setOpenDelete(false)}/>
+            <NewModal {...props} show={open} onHide={()=>setOpen(false)} isEdit={true}/>
+            <DeleteApplicationModal {...text} show={openDelete} onHide={()=>setOpenDelete(false)} id={props.id}/>
         </>
 
     );

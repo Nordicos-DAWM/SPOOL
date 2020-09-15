@@ -1,10 +1,22 @@
 import React  from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import { useHistory } from "react-router-dom";
+import {newService } from '../../_services';
 
 function DeleteApplicationModal (props) {
+    let history = useHistory();
     const handleDelete = () =>{
-        //manejar borrado de aplicació
+        newService._delete(props.id)
+            .then(
+                deletedNew =>{
+                    console.log(deletedNew);
+                    history.go(0);
+                },
+                error =>{
+                    console.log(error);
+                }
+            )
         
     }
     return(

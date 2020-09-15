@@ -27,13 +27,12 @@ const MainRouter = () =>{
                 <Route path="/register" component={RegisterHome}/>
                 <Route path="/login" component={Login}/>
                 
-
+                <Route path="/admin/news" component={NewsAdmin}/>
                 <Route path="/admin" component={AdminHome}/>
                 <Route exact path="/help" component={Help}/>
                 <Route path="/how-start" component={HowWorks}/>
                 <Route path="/our-team" component={DeveloperTeam}/>
                 <Route path="/news" component={PageNews}/>
-                <Route path="/admin/news" component={NewsAdmin}/>
                 <Route exact path="/pool" component={Pool}/>
                 <Route path="/" component={Home}/>
                 

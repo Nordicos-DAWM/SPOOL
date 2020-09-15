@@ -34,7 +34,7 @@ function update(id){
         method: 'PUT',
         headers: authHeader()
     };
-    return fetch(`/api/project/${id}`,requestOptions).then(handleResponse)
+    return fetch(`http://54.88.62.27/spoolapi/api/project/${id}`,requestOptions).then(handleResponse)
 }
 
 function _delete(id){
@@ -42,7 +42,7 @@ function _delete(id){
         method: 'DELETE',
         headers: authHeader()
     };
-    return fetch(`/api/project/${id}`,requestOptions).then(handleResponse)
+    return fetch(`http://54.88.62.27/spoolapi/api/project/${id}`,requestOptions).then(handleResponse)
 }
 
 
@@ -59,7 +59,7 @@ function getByUserId(user_id){
         method: 'GET',
         headers: authHeader()
     };
-    return fetch(`/api/project/by_user/${user_id}`,requestOptions).then(handleResponse)
+    return fetch(`http://54.88.62.27/spoolapi/api/project/by_user/${user_id}`,requestOptions).then(handleResponse)
 }
 
 function getReports(){
