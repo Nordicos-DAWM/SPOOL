@@ -24,6 +24,12 @@ router.get('/me',validarToken, (req,res,next)=>{
     res.send(decoded);
 });
 
+router.get('/types',validarToken, async (req,res,next)=>{
+    const usersTypes =  await UserType.findAll();
+    res.status(200).send(usersTypes);
+});
+
+
 
 router.post('/',[
     check('firstName','El nombre del usuario es un campo obligatorio.').notEmpty(),
