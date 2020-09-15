@@ -1,7 +1,9 @@
 import React,{useState, useEffect} from 'react';
+import { history } from '../../_helpers';
 import logo from '../../assets/Brand-01.png';
 import {putValidPass,putValidConfirmPass} from './validateForm';
 import {loadFaculties,loadCareers} from './LoadData';
+import { userService } from '../../_services';
 
 const RegisterStudent = () =>{
     const [inputs,setInputs] = useState({
@@ -20,8 +22,7 @@ const RegisterStudent = () =>{
 
     const [submitted,setSubmitted] = useState(false);
     const {firstName,lastName,email,password,confirmPassword,faculty,career,birthday} = inputs;
-    const [isOlder,setIsOlder] = useState(false);
-
+    //const [isOlder,setIsOlder] = useState(false);
     function handleChange (e) {
         const { name, value } = e.target;
         setInputs(inputs=>({ ...inputs, [name]:value }))
@@ -30,6 +31,18 @@ const RegisterStudent = () =>{
     function handleSubmit (e) {
         e.preventDefault();
         setSubmitted(true);
+        const user = {...inputs,userTypeId:1}
+
+        userService.register(user)
+            .then(
+                user =>{
+                    history.replace('/login');
+                    window.location.reload()
+                },
+                error=>{
+                    console.log(error)
+                }
+            )
         //Realizar verificacion de usuario
     }
 
@@ -45,15 +58,18 @@ const RegisterStudent = () =>{
           putValidConfirmPass(e.target.value,password);
       }
 
-      function validateAge(e){
+      /*function validateAge(e){
           handleChange(e);
           setIsOlder(isOlder(e.target.value));
-      }
+      }*/
 
       function setFaculty(e){
           handleChange(e);
           loadCareers(e.target.value);
       }
+      function setCareer(e){
+        handleChange(e);
+    }
 
       function seePassInfo(){
         let passMessage = document.getElementById("passMessage");
@@ -78,7 +94,7 @@ const RegisterStudent = () =>{
                             </a>
                             <h3 className="my-4">ESTUDIANTE</h3>
                             <form name="form" onSubmit={handleSubmit}>
-                                <div class="form-row">
+                                <div className="form-row">
                                     <div className="form-group col-sm-12 col-md-6">
                                     <input
                                     type="text"
@@ -106,7 +122,7 @@ const RegisterStudent = () =>{
                                     </div>
                                 </div>
 
-                                <div class="form-row">
+                                <div className="form-row">
                                     <div className="form-group col-12">
                                     <input
                                     type="email"
@@ -123,7 +139,7 @@ const RegisterStudent = () =>{
 
                                 </div>
 
-                                <div class="form-row">
+                                <div className="form-row">
                                     <div className="form-group col-12">
                                     <input
                                     type="password"
@@ -132,7 +148,7 @@ const RegisterStudent = () =>{
                                     defaultValue={password}
                                     onChange={validatePass}
                                     placeholder="Ingresa una contraseña"
-                                    onMouseOver={seePassInfo}
+                                    onClick={seePassInfo}
                                     onMouseOut={hiddenPassInfo}
                                     className={'form-control' + (submitted && !password ? ' is-invalid' : '')} />
                                     {submitted && !password &&
@@ -145,7 +161,7 @@ const RegisterStudent = () =>{
 
                                 </div>
 
-                                <div class="form-row">
+                                <div className="form-row">
                                     <div className="form-group col-12">
                                     <input
                                     type="password"
@@ -163,9 +179,9 @@ const RegisterStudent = () =>{
 
                                 </div>
                                 
-                                <div class="form-row">
+                                <div className="form-row">
                                     <div className="form-group col-12">
-                                        <select className={'form-control custom-select' + (submitted && !faculty ? ' is-invalid' : '')} id="faculties" onChange={setFaculty}>
+                                        <select className={'form-control custom-select' + (submitted && !faculty ? ' is-invalid' : '')} id="faculties" onChange={setFaculty} name="faculty">
                                         <option selected disabled>Facultad</option>
                                         </select>
                                         {submitted && !faculty &&
@@ -175,9 +191,9 @@ const RegisterStudent = () =>{
 
                                 </div>
 
-                                <div class="form-row">
+                                <div className="form-row">
                                     <div className="form-group col-12">
-                                        <select className={'form-control custom-select' + (submitted && !career ? ' is-invalid' : '')} id="careers">
+                                        <select className={'form-control custom-select' + (submitted && !career ? ' is-invalid' : '')} id="careers" onChange={setCareer} name="career">
                                         <option selected disabled>Carrera</option>
                                         </select>
                                         {submitted && !career &&
@@ -187,24 +203,27 @@ const RegisterStudent = () =>{
 
                                 </div>
 
-                                <div class="form-row">
+                                <div className="form-row">
                                     <div className="form-group col-12">
 
                                         <input
                                             type="date"
                                             name="birthday"
                                             defaultValue={birthday}
-                                            onChange={validateAge}
+                                            onChange={handleChange}
                                             className={'form-control' + (submitted && !birthday ? ' is-invalid' : '')} />
-                                            {submitted && !lastName &&
+                                            {submitted && !birthday &&
                                                 <div className="invalid-feedback">Birthday is required</div>
                                             }
                                     </div>
 
                                 </div>
-                                <div class="form-row">
+                                <div className="form-row">
                                     <div className="form-group col-12">
-                                        <button type="submit" className="btn btn-primary">Registrarse</button>
+                                        <button type="submit" className="btn btn-primary d-block mx-auto">
+                                            
+                                            Registrarse</button>
+                                            
                                     </div>
                                 
                                 </div>

@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import '../../index.css';
 import {NavBar2, ProjectCard,Footer} from '../../components';
-
+import { getUserId } from '../../_helpers';
 
 function Pool() {
 
@@ -51,8 +51,14 @@ function Pool() {
     
     ]
 
+    
+    const [userId,setUserId] = useState();
     const [filteredProjects, setFilteredProjects] = useState(projects);
-
+    useEffect(()=>{
+        
+        
+        getUserId(setUserId)
+    },[userId])
 
     function filterCategories(event){
     

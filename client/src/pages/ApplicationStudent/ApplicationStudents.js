@@ -1,64 +1,31 @@
-import React  from 'react';
+import React,{ useEffect,useState }  from 'react';
 
 import { NavBar2, ApplicationCard, Footer } from '../../components';
 import { applicationService } from '../../_services'
-import { useEffect } from 'react';
-import { useState } from 'react';
-
+import { getUserId } from '../../_helpers';
 const ApplicationStudents = () =>{
 
-    /*const datos = [
-
-        {id:'1',
-        title: "Hydroplant",
-        project_state:"Activo",
-        main_category:"Otra",
-        categories:["Energía",""],
-        state:"Aprobado",
-        description:"Tecnología de punta para el control de cultivos hidropónicos, considerando un sistema para el control del aire que requiere la planta y otro para entregar el agua y nutrientes. El sistema incluye electrobombas diseñadas por la propia empresa y además, todo puede ser monitoreado desde el celular."},
-        
-        {id:'2',
-        title: "Hydroplant",
-        project_tate:"Activo",
-        main_category:"Otra",
-        categories:["Energía",""],
-        state:"Rechazado",
-        description:"Tecnología de punta para el control de cultivos hidropónicos, considerando un sistema para el control del aire que requiere la planta y otro para entregar el agua y nutrientes. El sistema incluye electrobombas diseñadas por la propia empresa y además, todo puede ser monitoreado desde el celular."},
-        
-        {id:'3',
-        title: "Hydroplant",
-        project_state:"Activo",
-        main_category:"Otra",
-        state:"Revision",
-        categories:["Energía",""],
-        description:"Tecnología de punta para el control de cultivos hidropónicos, considerando un sistema para el control del aire que requiere la planta y otro para entregar el agua y nutrientes. El sistema incluye electrobombas diseñadas por la propia empresa y además, todo puede ser monitoreado desde el celular."},
-        
-        {id:'4',
-        title: "Hydroplant",
-        project_state:"Activo",
-        main_category:"Otra",
-        state:"Aprobado",
-        categories:["Energía",""],
-        description:"Tecnología de punta para el control de cultivos hidropónicos, considerando un sistema para el control del aire que requiere la planta y otro para entregar el agua y nutrientes. El sistema incluye electrobombas diseñadas por la propia empresa y además, todo puede ser monitoreado desde el celular."}
-    
-    ]*/
     const [datos,setDatos] = useState([]);
+    const [userId,setUserId] = useState();
 
     useEffect(()=>{
         function fetchApplicationData() {
-            applicationService.getByUserId(4)
-            .then(
-                application=>{
-                    setDatos(application)
-                },
-                error=>{
-                    console.log(error)
-                }
-            );
+            if(userId){
+                applicationService.getByUserId(userId)
+                .then(
+                    applications=>{
+                        setDatos(applications)
+                    },
+                    error=>{
+                        console.log(error)
+                    }
+                );
+            }
         }
-
+        
+        getUserId(setUserId)
         fetchApplicationData()
-    },[])
+    },[userId])
     
     return(
 

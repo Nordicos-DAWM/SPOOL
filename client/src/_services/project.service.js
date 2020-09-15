@@ -26,7 +26,7 @@ function get(){
         method: 'GET',
         headers: authHeader()
     };
-    return fetch(`/api/project/`,requestOptions).then(handleResponse)
+    return fetch(`http://54.88.62.27/spoolapi/api/project/`,requestOptions).then(handleResponse)
 }
 
 function update(id){
@@ -59,7 +59,7 @@ function getByUserId(user_id){
         method: 'GET',
         headers: authHeader()
     };
-    return fetch(`/api/project/by_user/${user_id}`,requestOptions).then(handleResponse)
+    return fetch(`http://54.88.62.27/spoolapi/api/project/by_user/${user_id}`,requestOptions).then(handleResponse)
 }
 
 function getReports(){

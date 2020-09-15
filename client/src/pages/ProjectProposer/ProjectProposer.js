@@ -1,6 +1,8 @@
-import React, { Fragment,useState } from "react";
+import React, { Fragment,useState,useEffect } from "react";
 import {ProjectInfoEditable, Footer, Proposal,NavBar2} from '../../components';
 import "./style.css";
+import { getUserId } from '../../_helpers';
+
 let project = {
   id:'2',
   title: "BioGears",
@@ -44,8 +46,16 @@ const applications = [{
     name: "Doménica Barreiro"
     } ]
 
+ 
+
 function ProjectProposer(props) {
   const [data, setData] = useState(project);
+  const [userId,setUserId] = useState();
+  useEffect(()=>{
+        
+        
+    getUserId(setUserId)
+ },[userId])
     return (
     <Fragment>
       <NavBar2 userType='client' isLoggedIn={true} activePage='clientPool'/>
