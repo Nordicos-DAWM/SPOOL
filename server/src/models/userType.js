@@ -13,3 +13,4 @@ const UserType = (sequelize, type) =>{
 }
 
 module.exports = UserType; 
+

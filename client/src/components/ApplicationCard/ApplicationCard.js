@@ -36,12 +36,12 @@ function ApplicationCard (props){
         <div className="card container m-4">
             
             <div className="card-body row">
-                <h5 className="card-title col-10 col-md-11 mt-2">{props.title}</h5>
+                <h5 className="card-title col-10 col-md-11 mt-2">{props.project.title}</h5>
 
                 <i className="fa fa-trash col-2 col-md-1 mt-2 text-right" onClick={handleOpenDelete}></i>
 
                 <p className={colorText()+" font-weight-bold col-12"}>{props.state}</p>    
-                <p className="card-text col-12 text-justify">{props.description}</p>
+                <p className="card-text col-12 text-justify">{props.project.description}</p>
                 <a href=" " className="card-link col-12" onClick={handleOpen}>Ver más</a>   
             </div>
             

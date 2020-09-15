@@ -12,7 +12,7 @@ export const userActions = {
     delete: _delete
 };
 
-function login(email, password, slug) {
+function login(email, password) {
     return dispatch => {
         dispatch(request({ email }));
 
@@ -20,7 +20,7 @@ function login(email, password, slug) {
             .then(
                 user => {
                     dispatch(success(user));
-                    history.push('/'+slug);
+                    history.push('/');
                 },
                 error => {
                     dispatch(failure(error));

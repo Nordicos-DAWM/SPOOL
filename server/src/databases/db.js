@@ -1,20 +1,18 @@
 
 const Sequelize = require("sequelize");
+const config = require('config');
 // Modelos
-const UserModel = require("./models/user");
-const UserTypeModel = require("./models/userType");
-const ProjectModel = require("./models/project");
-const SkillModel = require("./models/skill");
-const CategoryModel = require("./models/category");
-const ApplicationModel = require("./models/application");
-const NewsModel = require("./models/news");
-const StudentDetailsModel = require("./models/studentDetails");
+const UserModel = require("../models/user");
+const UserTypeModel = require("../models/userType");
+const ProjectModel = require("../models/project");
+const SkillModel = require("../models/skill");
+const CategoryModel = require("../models/category");
+const ApplicationModel = require("../models/application");
+const NewsModel = require("../models/news");
+const StudentDetailsModel = require("../models/studentDetails");
 
 
-const conn = new Sequelize("spool","root", "root", {
-    host: "localhost",
-    dialect: "mysql"
-});
+const conn = new Sequelize(config.get('dbConfig.mysql.db'),config.get('dbConfig.mysql.user'), config.get('dbConfig.mysql.password'),config.get('dbConfig.mysql.sequelizeOpt') );
 
 // Tablas en BD
 const User = UserModel(conn,Sequelize);
@@ -62,11 +60,10 @@ Application.belongsTo(Project);
 
 conn.sync({force:false})
 .then(()=> {
-    console.log("Conexion exitosa");
+    console.log("MySQL connnection successful");
 })
 
 
-
 module.exports = {
-    User, Project, UserType, Skill, Category, Application, News, StudentDetails
+    conn, User, Project, UserType, Skill, Category, Application, News, StudentDetails
 }

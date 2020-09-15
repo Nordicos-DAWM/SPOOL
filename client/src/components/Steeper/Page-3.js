@@ -1,9 +1,16 @@
 import React from 'react';
+import { getUserId } from '../../_helpers';
+import { useEffect,useState } from 'react';
 
 const Page3 = (props) =>{
 
     const values = props.values;
-
+    const [userId,setUserId] = useState();
+    useEffect(()=>{
+        
+        
+        getUserId(setUserId)
+    },[userId])
 
     return( <>
         <div className="container-fluid">

@@ -10,11 +10,11 @@ export const applicationService = {
 function add(_new){
     const requestOptions = {
         method:'POST',
-        headers:{...authHeader,'Content-Type':'application/json'},
+        headers:{...authHeader(),'Content-Type':'application/json'},
         body:JSON.stringify(_new)
     }
 
-    return fetch('/api/application/',requestOptions).then(handleResponse)
+    return fetch('http://54.88.62.27/spoolapi/api/application/',requestOptions).then(handleResponse)
 }
 
 function _delete(id){
@@ -29,10 +29,10 @@ function _delete(id){
 function getByUserId(user_id){
     const requestOptions = {
         method:'GET',
-        headers:{...authHeader,'Content-Type':'application/json'},
+        headers:{...authHeader(),'Content-Type':'application/json'},
     }
 
-    return fetch(`/api/application/by_student/${user_id}`,requestOptions).then(handleResponse)
+    return fetch(`http://54.88.62.27/spoolapi/api/application/by_student/${user_id}`,requestOptions).then(handleResponse)
 }
 
 function handleResponse(response) {

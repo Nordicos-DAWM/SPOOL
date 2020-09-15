@@ -12,20 +12,14 @@ export const userService = {
 };
 
 function login(username, password) {
+    const user = { email:username, password }
     const requestOptions = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(user)
     };
 
-    return fetch(`/user/authenticate`, requestOptions)
-        .then(handleResponse)
-        .then(user => {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('token', JSON.stringify(user));
-
-            return user;
-        });
+    return fetch(`http://54.88.62.27/spoolapi/api/auth/`, requestOptions).then(handleResponse)
 }
 
 function logout() {
@@ -48,7 +42,7 @@ function getById(id) {
         headers: authHeader()
     };
 
-    return fetch(`/api/user/${id}`, requestOptions).then(handleResponse);
+    return fetch(`http://localhost:3000/api/user/${id}`, requestOptions).then(handleResponse);
 }
 
 function register(user) {
@@ -58,7 +52,7 @@ function register(user) {
         body: JSON.stringify(user)
     };
 
-    return fetch(`/api/user/`, requestOptions).then(handleResponse);
+    return fetch(`http://54.88.62.27/spoolapi/api/user/`, requestOptions).then(handleResponse);
 }
 
 function update(user) {
@@ -90,8 +84,15 @@ function getReports(){
     return fetch(`/api/user/reports`, requestOptions).then(handleResponse);
 }
 
+/*function getUser(token){
+    const requestOptions = {
+        method: 'GET',
+        body: JSON.stringify({token:token})
+    };
 
-
+    return fetch(`http://54.88.62.27/spoolapi/api/me/`, requestOptions).then(handleResponse);
+}
+*/
 function handleResponse(response) {
     return response.text().then(text => {
         const data = text && JSON.parse(text);

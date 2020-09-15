@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import '../../index.css';
 import { NavBar2, ProjectCard, Footer, Preloader} from '../../components';
 import {projectService} from '../../_services'; 
+import { getUserId } from '../../_helpers';
+
 function Pool() {
     /*
     const projectsG = [
@@ -65,10 +67,9 @@ function Pool() {
     const [projects,setProjects] = useState([]);
     const [filteredProjects, setFilteredProjects] = useState([]);
     const [loading,setLoading] = useState(true);
+    const [userId,setUserId] = useState();
 
-
-    function filterCategories(event) {
-
+    function filterCategories(event) {    
         let category = event.target.value;
 
         let filtered = projects.filter((val) => {
@@ -79,8 +80,9 @@ function Pool() {
     }
 
     useEffect(() => {
+        getUserId(setUserId)
         function fetchProjectData() {
-            projectService.get()
+            projectService.getByUserId(userId)
                 .then(
                     projects => {
                         setProjects(projects);
@@ -93,6 +95,7 @@ function Pool() {
                 );
         }
         fetchProjectData();
+        
     }, [])
 
 

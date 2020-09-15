@@ -43,6 +43,7 @@ const Project = (sequelize, type) =>{
     state: {
         type: type.STRING,
         allowNull: true,
+        defaultValue: "Disponible"
     },
     logicState: {
         type: type.BOOLEAN,

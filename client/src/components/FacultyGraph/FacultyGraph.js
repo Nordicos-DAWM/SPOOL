@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {Bar} from 'react-chartjs-2';
 
-const FacultyGraph = () =>{
+const FacultyGraph = (props) =>{
     const [chartData,setChartData] = useState({});
     const options = {
         responsive:true,
@@ -24,11 +24,11 @@ const FacultyGraph = () =>{
     }
     const chart = () =>{
         setChartData({
-            labels:["FADCOM","FCV","FCNM","FCSH","FCT","FIEC","FIMCP","FIMCM"],
+            labels:props.faculty,
             datasets:[
                 {
                     label:'Estudiantes por facultad',
-                    data:[10,7,11,15,10,25,9,7],
+                    data:props.count,
                     backgroundColor:[
                     'rgba(89, 48, 145, 0.72)',
                     'rgba(35, 124, 197, 0.72)',
