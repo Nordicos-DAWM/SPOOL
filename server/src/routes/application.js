@@ -27,7 +27,7 @@ router.post('/', [
     check('state','El estado de la aplicación es un campo obligatorio.').notEmpty(),
     check('isSubject','Este es un campo obligatorio.').notEmpty().isBoolean(),
     check('reason','La razón de su aplicación es un campo obligatorio.').notEmpty(),
-    check('proposal','La propuesta es un campo obligatorio.').isEmail()
+    check('proposal','La propuesta es un campo obligatorio.').notEmpty()
 ], async (req, res, next) => {
     
     const errors = validationResult(req);
@@ -59,6 +59,30 @@ router.get('/by_student/:studentId', async (req,res,next)=>{
 
     if(!app){
         res.status(404).send({message:'No se pudo encontrar al Usuario.'})
+    }else{
+        res.status(200).send(app)
+    }
+});
+
+
+// Devuelve las aplicaciones de un proyecto dado su id
+router.get('/by_project/:projectId', async (req,res,next)=>{
+    const app = await Application.findAll({
+        where: {
+            projectId: req.params.projectId,
+            logicState: true
+        },
+        include:[{
+            model: User,
+        },{
+            model: Project,
+            attributes: ['id','title','description','mainCategory','maxParticipants',
+        'color','contactEmail','urlRepository','state']
+        }],
+    });
+
+    if(!app){
+        res.status(404).send({message:'No se pudo encontrar aplicaciones para el proyecto.'})
     }else{
         res.status(200).send(app)
     }
