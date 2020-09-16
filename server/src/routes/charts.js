@@ -42,6 +42,18 @@ router.get('/categories' , (req, res, next) => {
         })    
 });
 
+router.get('/main_categories' , (req, res, next) => {
+    let categories;
+    conn.query('SELECT DISTINCT mainCategory FROM spool.projects;')
+    .then((result) =>{
+        res.status(200).json({"mainCategories": result[0].map((c)=>{
+            return c.mainCategory;
+        })
+    });
+        
+    }); 
+});
+
 
 router.get('/is_subject', (req,res,next)=>{
     let isSubject;
