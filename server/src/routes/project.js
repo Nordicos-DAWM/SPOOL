@@ -118,8 +118,6 @@ router.put('/:id',[
     check('color', 'El color es un campo obligatorio.').optional().isString(),
     check('contactEmail', 'El email de contacto es un campo obligatorio.').optional().isString(),
     check('contactEmail', 'El email proporcionado no es válido.').optional().isEmail(),
-    check('categories', 'Las categorías son un campo obligatorio.').optional().isArray(),
-    check('skills', 'Las habilidades son un campo obligatorio.').optional().isArray(),
     check('urlRepository', 'El link del repositorio debe ser un link válido.').optional().isURL(),
     check('state', 'El estado del proyecto es un campo obligatorio.').optional().isString()
     ], (req,res,next)=>{
