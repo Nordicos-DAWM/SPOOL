@@ -4,6 +4,9 @@ const projectReportSchema = new mongoose.Schema({
     projectId: {
         type: Number
     },
+    mainCategory:{
+        type: String
+    },
     stateBefore: {
         type: String
     },

@@ -15,6 +15,7 @@ let projectLogs = async (req, res, next) =>{
             const newEntry = await projectReport.create(
                 {
                     projectId: req.params.id,
+                    mainCategory: projectBefore.mainCategory,
                     stateBefore: projectBefore.state,
                     stateNow: req.body.state,
                     timestamp: new Date()
@@ -35,6 +36,7 @@ let projectCreated = (req, res, next) =>{
         const newEntry = await projectReport.create(
             {
                 projectId: maxId,
+                mainCategory: req.body.mainCategory,
                 stateBefore: null,
                 stateNow: "Disponible",
                 timestamp: new Date()

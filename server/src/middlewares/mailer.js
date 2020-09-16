@@ -132,6 +132,14 @@ let updateApplication = async (req,res,next) =>{
             }
         });
 
+        if(req.body.state =="Aceptado"){
+            await Project.update({ state: "En desarrollo" }, {
+                where: {
+                    projectId: req.body.projectId
+                }
+            });
+        }
+
 }
 
 module.exports = {
