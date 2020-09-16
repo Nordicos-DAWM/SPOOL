@@ -21,9 +21,9 @@ let contactEmail = async (req, res) => {
 
     let info = await transporter.sendMail(mailOptions, (err,data)=>{
         if(err){
-            res.send("No se ha podido enviar el correo");
+            res.json({message:"No se ha podido enviar el correo"});
         }else{
-            res.send("Correo enviado.");
+            res.json({message:"Correo enviado"});
         }
     });
 
