@@ -43,7 +43,6 @@ function Application (props){
         }
     )
   }
-  console.log(props)
   useEffect(()=>{
     function isApplicable(){
       if(userId){
@@ -70,7 +69,7 @@ function Application (props){
   }
   return (
     <div>
-      {applicable ? <Button className= {"text-center" + ""} onClick={toggle}>Aplicar</Button> : <div className="text-success text-3"> Ya has aplicado para este proyecto</div>}
+      <Button className= {"text-center" + ""} onClick={toggle}>Aplicar</Button> 
       <Modal size="lg" open={open} toggle={toggle}>
         <ModalHeader>Aplicación</ModalHeader>
         <ModalBody>

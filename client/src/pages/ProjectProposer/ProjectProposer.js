@@ -1,7 +1,7 @@
 import React, { Fragment,useState,useEffect } from "react";
 import {ProjectInfoEditable, Footer, Proposal,NavBar2} from '../../components';
 import "./style.css";
-import { getUserId } from '../../_helpers';
+import { applicationService } from '../../_services';
 
 let project = {
   id:'2',
@@ -17,7 +17,7 @@ let project = {
   skills:["R", "SQL", "Python"]
 }
 
-const applications = [{ 
+/*const applications = [{ 
   id:1,
   projectID:2,
   reason: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis cumque numquam similique beatae nam unde est doloremque, autem tenetur hic tempore consectetur vitae eum expedita!",
@@ -45,17 +45,25 @@ const applications = [{
     username : "dombpala",
     name: "Doménica Barreiro"
     } ]
-
+*/
  
 
 function ProjectProposer(props) {
   const [data, setData] = useState(project);
-  const [userId,setUserId] = useState();
+  const[applications,setApplications] = useState(null);
+
   useEffect(()=>{
-        
-        
-    getUserId(setUserId)
- },[userId])
+        function getAplications(){
+          applicationService.getByProject(2).then(
+            applications=>{
+              setApplications(applications)
+            },error=>{
+                //el encargado
+            }
+          )
+        }
+        getAplications()
+ },[])
     return (
     <Fragment>
       <NavBar2 userType='client' isLoggedIn={true} activePage='clientPool'/>
@@ -63,7 +71,7 @@ function ProjectProposer(props) {
       <ProjectInfoEditable data={data} setData={setData}/>
       <hr class="mb-4"/>
       <h4 class="mb-3">Propuestas</h4>
-      {applications.map(i => <Proposal key={i.id} data={i}/>)}
+      {applications && applications.map(application => <Proposal key={application.id} data={application} applications={applications}/>)}
       </div>
       <Footer/>
     </Fragment>

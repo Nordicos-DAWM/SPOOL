@@ -4,6 +4,8 @@ import { userService } from './user.service';
 export const applicationService = {
     add,
     getByUserId,
+    getByProject,
+    updateState,
     delete:_delete
 }
 
@@ -33,6 +35,25 @@ function getByUserId(user_id){
     }
 
     return fetch(`http://54.88.62.27/spoolapi/api/application/by_student/${user_id}`,requestOptions).then(handleResponse)
+}
+
+function getByProject(id){
+    const requestOptions = {
+        method:'GET',
+        headers:{...authHeader(),'Content-Type':'application/json'},
+    }
+    return fetch(`http://54.88.62.27/spoolapi/api/application/by_project/${id}`,requestOptions).then(handleResponse)
+}
+
+function updateState(newState){
+    const requestOptions = {
+        method:'PUT',
+        headers:{...authHeader(),'Content-Type':'application/json'},
+        body: JSON.stringify(newState)
+    }
+
+    return fetch(`http://54.88.62.27/spoolapi/api/application/${newState.id}`,requestOptions).then(handleResponse)
+
 }
 
 function handleResponse(response) {

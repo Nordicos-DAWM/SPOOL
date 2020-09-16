@@ -1,6 +1,7 @@
 import React from 'react';
 import {useState} from 'react';
 import {Modal,Button} from 'react-bootstrap';
+import { applicationService } from '../../_services'
 
 
 
@@ -27,7 +28,28 @@ function Proposal(props) {
     const handleShow = (e) =>{
       e.preventDefault();
       setShow(true);
-    } 
+    }
+ 
+    function handleStateEvent(state){
+        let newState = {...props.data,state:state}
+      
+        applicationService.updateState(newState).then(
+          application=>{
+            console.log(application)//se acepta una se rechazan las otras?
+            if(state==="Aceptada"){
+              props.applications.map((app)=>{
+                if(app.id!==newState.id){
+                  //update rechazado el resto
+                }
+              })
+            }
+          },error=>{
+            //el encargado
+          }
+        )
+        handleClose();
+
+    }
 
     return (
         <>
@@ -64,10 +86,10 @@ function Proposal(props) {
 
         <Modal.Footer>
 
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={()=>handleStateEvent("Aceptada")}>
             Aceptar aplicación
           </Button>
-          <Button variant="danger" onClick={handleClose}>
+          <Button variant="danger" onClick={()=>handleStateEvent("Rechazada")}>
             Rechazar
           </Button>
         </Modal.Footer>
