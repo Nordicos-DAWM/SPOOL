@@ -116,7 +116,6 @@ router.delete('/:id', async (req,res,next)=>{
     if(!app){
         res.status(404).send({message:'Aplicación no pudo ser eliminada.'})
     }else{
-        sendEmail(app.user.firstName, app.project.title, "Rechazado",app.user.email,req.body.rejectedReaso);
         res.status(200).send({message:'Aplicación se eliminó exitosamente.'})
     }
 
