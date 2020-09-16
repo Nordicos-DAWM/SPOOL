@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import '../../index.css';
 import { NavBar2, ProjectCard, Footer, Preloader} from '../../components';
 import {projectService} from '../../_services'; 
-import { getUserId } from '../../_helpers';
 
 function Pool() {
     /*
@@ -67,7 +66,6 @@ function Pool() {
     const [projects,setProjects] = useState([]);
     const [filteredProjects, setFilteredProjects] = useState([]);
     const [loading,setLoading] = useState(true);
-    const [userId,setUserId] = useState();
 
     function filterCategories(event) {    
         let category = event.target.value;
@@ -80,9 +78,8 @@ function Pool() {
     }
 
     useEffect(() => {
-        getUserId(setUserId)
         function fetchProjectData() {
-            projectService.getByUserId(userId)
+            projectService.get()
                 .then(
                     projects => {
                         setProjects(projects);

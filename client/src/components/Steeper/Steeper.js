@@ -72,7 +72,8 @@ const Steeper = (props) =>{
             contactEmail:project.contactMail,
             categories:project.subcategories,
             skills:project.skills,
-            urlRepository:project.respositoryURL
+            urlRepository:project.respositoryURL,
+            userId:props.userId
         });
     }
 

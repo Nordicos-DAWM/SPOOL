@@ -1,10 +1,19 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react';
 import { useHistory } from "react-router-dom";
-import {Steeper,NavBar2,Footer} from '../../components'
+import {Steeper,NavBar2,Footer,Preloader} from '../../components'
 import {projectService} from '../../_services';
+import { getUserId } from '../../_helpers';
 const CreateProject = () =>{
+    const [userId,setUserId] = useState();
+    
 
     let history = useHistory();
+
+    useEffect(() => {
+        getUserId(setUserId)
+    },[userId])
+
+
     const createProject = (project) =>{
         projectService.add(project)
         .then(
@@ -16,6 +25,10 @@ const CreateProject = () =>{
                 console.log(error);
             }
         )
+    }
+
+    if(!userId){
+        return <Preloader/>
     }
 
     return(
@@ -35,7 +48,7 @@ const CreateProject = () =>{
                         <div className="row">
                             <div className="col-md-8 offset-md-2 mb-5">
                                 <div className="bg-white shadow-sm rounded p-4">
-                                    <Steeper createProject={createProject}/>
+                                    <Steeper createProject={createProject} userId={userId}/>
                                 </div>
                             </div>
                         </div>
