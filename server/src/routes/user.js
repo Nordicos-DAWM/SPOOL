@@ -9,6 +9,7 @@ const {validarToken} = require('../middlewares/auth')
 
 router.get('/',validarToken, async (req, res, next) => {
     const users =  await User.findAll({
+        exclude: ["password"],
         include:[{
             model: UserType,
             attributes: ['type']

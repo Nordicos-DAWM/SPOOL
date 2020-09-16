@@ -29,7 +29,7 @@ let contactEmail = async (req, res) => {
 
 }
 
-let sendEmail = async (name, project, state, mail, reason ) =>{
+let sendEmail = async (name, project, state, mail, reason,res ) =>{
     let contentHTML;
     if (reason){
         contentHTML =
@@ -82,7 +82,7 @@ let deleteProject = async (req,res,next) =>{
               id: app.id
             }
           });
-        sendEmail(app.user.firstName, app.project.title, "Rechazado",app.user.email, "El proyecto el cual usted ha aplicado ha sido eliminado por la persona que lo propuso.");
+        sendEmail(app.user.firstName, app.project.title, "Rechazado",app.user.email, "El proyecto el cual usted ha aplicado ha sido eliminado por la persona que lo propuso.",res);
     });
     res.status(200).json({deleted: true, message: "Se ha eliminado correctamente"});
 
@@ -102,9 +102,9 @@ let updateApplication = async (req,res,next) =>{
         }],
     });
 
-    sendEmail(app.user.firstName, app.project.title, req.body.state, app.user.email, req.body.rejectionReason);
+    sendEmail(app.user.firstName, app.project.title, req.body.state, app.user.email, req.body.rejectionReason,res);
     
-    res.status(200).json({deleted: true, message: "Se ha actualizado correctamente"});
+    res.status(200).json({updated: true, message: "Se ha actualizado correctamente"});
 
 }
 
