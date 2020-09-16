@@ -21,9 +21,9 @@ let contactEmail = async (req, res) => {
 
     let info = await transporter.sendMail(mailOptions, (err,data)=>{
         if(err){
-            res.status(500).send("No se ha podido enviar el correo");
+            res.send("No se ha podido enviar el correo");
         }else{
-            res.status(200).send("Correo enviado.");
+            res.send("Correo enviado.");
         }
     });
 
@@ -89,9 +89,9 @@ let deleteProject = async (req,res,next) =>{
             console.log("Error autenticando el correo");
         }
     });
-
-
 }
+
+
 
 let updateApplication = async (req,res,next) =>{
     const app =  await Application.findOne({ 
