@@ -69,7 +69,7 @@ function Application (props){
   }
   return (
     <div>
-      <Button className= {"text-center" + ""} onClick={toggle}>Aplicar</Button> 
+      {applicable ? <Button className= {"text-center" + ""} onClick={toggle}>Aplicar</Button> : <div className="text-success text-3"> Ya has aplicado para este proyecto</div>}
       <Modal size="lg" open={open} toggle={toggle}>
         <ModalHeader>Aplicación</ModalHeader>
         <ModalBody>
