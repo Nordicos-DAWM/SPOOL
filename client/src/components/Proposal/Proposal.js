@@ -86,7 +86,7 @@ function Proposal(props) {
 
         <Modal.Footer>
 
-          <Button variant="primary" onClick={()=>handleStateEvent("Aceptado")}>
+          <Button variant="primary" onClick={()=>handleStateEvent("Aprobado")}>
             Aceptar aplicación
           </Button>
           <Button variant="danger" onClick={()=>handleStateEvent("Rechazado")}>

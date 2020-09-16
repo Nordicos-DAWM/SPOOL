@@ -81,7 +81,7 @@ function getReports(){
         headers: authHeader()
     };
 
-    return fetch(`/api/user/reports`, requestOptions).then(handleResponse);
+    return fetch(`http://54.88.62.27/spoolapi/api/reports/user`, requestOptions).then(handleResponse);
 }
 
 /*function getUser(token){

@@ -40,7 +40,7 @@ const Login = () =>{
                     }else if(type===2){
                         history.push('/client/pool')
                     }else{
-                        //Pagina de reportes
+                        history.push('/admin')
                     }
 
 

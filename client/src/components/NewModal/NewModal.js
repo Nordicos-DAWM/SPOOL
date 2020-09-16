@@ -1,7 +1,9 @@
 import React  from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { useState } from 'react';
+import { useHistory } from "react-router-dom";
 import { Form,Button } from 'react-bootstrap';
+import {newService } from '../../_services';
 
 function NewModal (props){
     const [inputs,setInputs] = useState({
@@ -16,12 +18,53 @@ function NewModal (props){
         setInputs(inputs=>({...inputs,[name]:value}))
     }
     const [submitted,setSubmitted] = useState(false);
-
+    let history = useHistory();
     function handleSubmit (e) {
         e.preventDefault();
         setSubmitted(true);
-        //Crear o modificar una noticia
+        if(props.isEdit){
+            editNew({
+                id:props.id,
+                title: title,
+                description: content,
+                date: date
+            })
+        }else{
+            createNew({
+                title: title,
+                description: content,
+                date: date
+            });
+        }
     }
+
+    function createNew(_new){
+        newService.add(_new)
+            .then(
+                createdNew =>{
+                    props.onHide();
+                    history.go(0);
+                },
+                error =>{
+                    console.log(error);
+                }
+            )
+    }
+
+    function editNew(_new){
+        newService.update(_new)
+            .then(
+                updatedNew =>{
+                    props.onHide();
+                    history.go(0);
+                },
+                error =>{
+                    console.log(error);
+                }
+            )
+    }
+
+
     return(
         <Modal {...props}>
             <Modal.Header closeButton className="container"> 

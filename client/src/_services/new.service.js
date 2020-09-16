@@ -11,10 +11,10 @@ export const newService = {
 function getAll() {
     const requestOptions = {
         method:'GET',
-        headers:authHeader(),
+        headers:{...authHeader(),'Content-Type':'application/json','mode':'no-cors' },
     };
 
-    return fetch('/api/new/',requestOptions).then(handleResponse)
+    return fetch('http://54.88.62.27/spoolapi/api/new',requestOptions).then(handleResponse)
 }
 
 function add(_new) {
@@ -24,7 +24,7 @@ function add(_new) {
         body:JSON.stringify(_new)
     };
 
-    return fetch('/api/new/',requestOptions) .then(handleResponse)
+    return fetch('http://54.88.62.27/spoolapi/api/new/',requestOptions).then(handleResponse)
 }
 
 function update(_new) {
@@ -34,16 +34,16 @@ function update(_new) {
         body:JSON.stringify(_new)
     };
 
-    return(`/api/new/${_new.id}`,requestOptions).then(handleResponse);
+    return fetch(`http://54.88.62.27/spoolapi/api/new/${_new.id}`,requestOptions).then(handleResponse);
 }
 
 function _delete(id) {
     const requestOptions = {
-        method:'PUT',
+        method:'DELETE',
         headers:authHeader(),
     };
 
-    return(`/api/new/${id}`,requestOptions).then(handleResponse);
+    return fetch(`http://54.88.62.27/spoolapi/api/new/${id}`,requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {

@@ -1,13 +1,12 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import '../../index.css';
-import {NavBar2, ClientProjectCard} from '../../components';
-import { useState, useEffect } from 'react';
-import { projectService } from '../../_services'
+import {NavBar2, ClientProjectCard, Preloader} from '../../components';
+import {projectService} from '../../_services';
 import { getUserId } from '../../_helpers';
-
 
 function ClientPool() {
 
+    const [loading, setLoading] = useState(true);
     const [projects,setProjects] = useState([]);
     const [userId,setUserId] = useState();
     useEffect(()=>{
@@ -17,6 +16,7 @@ function ClientPool() {
                 .then(
                     projects=>{
                         setProjects(projects)
+                        setLoading(false);
                     },
                     error=>{
                         console.log(error)
@@ -28,6 +28,10 @@ function ClientPool() {
         getUserId(setUserId)
         fetchProjects()
     },[userId])
+
+    if(loading){
+        return <Preloader/>
+    }
 
     return(
         <>
