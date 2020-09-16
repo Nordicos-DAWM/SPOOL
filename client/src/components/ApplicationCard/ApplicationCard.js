@@ -28,7 +28,7 @@ function ApplicationCard (props){
         }
     }
 
-    const application = {
+    const application = {...props,
         type:"Aplicación"
     }
     return (

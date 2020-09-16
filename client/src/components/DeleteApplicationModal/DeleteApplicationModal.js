@@ -1,25 +1,43 @@
-import React  from 'react';
+import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { useHistory } from "react-router-dom";
-import {newService } from '../../_services';
+import { newService } from '../../_services';
+import { applicationService } from '../../_services'
 
-function DeleteApplicationModal (props) {
+function DeleteApplicationModal(props) {
     let history = useHistory();
-    const handleDelete = () =>{
-        newService._delete(props.id)
-            .then(
-                deletedNew =>{
-                    console.log(deletedNew);
-                    history.go(0);
-                },
-                error =>{
-                    console.log(error);
+    const handleDelete = () => {
+
+        if (props.type === 'Aplicación') {
+            //manejar borrado de aplicació
+            console.log("mnaejando lalal")
+            applicationService.delete(props.id).then(
+                application => {
+                    console.log("se borro")
+                    window.location.reload()
+                }, error => {
+                    //el encargado
                 }
             )
-        
+        } else {
+            newService._delete(props.id)
+                .then(
+                    deletedNew => {
+                        console.log(deletedNew);
+                        history.go(0);
+                    },
+                    error => {
+                        console.log(error);
+                    }
+                )
+        }
+
+
+
+
     }
-    return(
+    return (
         <Modal {...props}>
             <Modal.Header closeButton>
                 <Modal.Title>Eliminar {props.type}</Modal.Title>
@@ -37,4 +55,4 @@ function DeleteApplicationModal (props) {
     )
 
 }
-export {DeleteApplicationModal};
+export { DeleteApplicationModal };

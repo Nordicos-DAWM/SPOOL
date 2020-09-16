@@ -18,7 +18,7 @@ function NewCard(props){
         
     }
     const text = {
-        type:"Aplicación"
+        type:"Noticia"
     }
     
 
