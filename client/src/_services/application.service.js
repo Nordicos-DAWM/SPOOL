@@ -19,11 +19,11 @@ function add(_new){
 
 function _delete(id){
     const requestOptions = {
-        method:'POST',
-        headers:{...authHeader,'Content-Type':'application/json'},
+        method:'DELETE',
+        headers:{...authHeader(),'Content-Type':'application/json'},
     }
 
-    return fetch(`/api/application/${id}`,requestOptions).then(handleResponse)
+    return fetch(`http://54.88.62.27/spoolapi/api/application/${id}`,requestOptions).then(handleResponse)
 }
 
 function getByUserId(user_id){

@@ -1,7 +1,7 @@
 import React from "react";
 import './style.css'
 import {Application} from "../../components"
-
+ 
 
 
 function ProjectInfo(props) {
@@ -77,7 +77,7 @@ function ProjectInfo(props) {
         </div>
         <div className="row bg-white">
             <div className="col my-3 text-center">
-                <Application />
+                <Application {...props.data}/>
             </div>
         </div> 
     </div>

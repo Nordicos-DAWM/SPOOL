@@ -1,10 +1,21 @@
 import React  from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import { applicationService } from '../../_services'
 
 function DeleteApplicationModal (props) {
     const handleDelete = () =>{
         //manejar borrado de aplicació
+        console.log("mnaejando lalal")
+        applicationService.delete(props.id).then(
+            application=>{
+                console.log("se borro")
+                window.location.reload()
+            },error=>{
+                //el encargado
+            }
+        )
+
         
     }
     return(
