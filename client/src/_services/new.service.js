@@ -11,7 +11,7 @@ export const newService = {
 function getAll() {
     const requestOptions = {
         method:'GET',
-        headers:authHeader(),
+        headers:{...authHeader(),'Content-Type':'application/json','mode':'no-cors' },
     };
 
     return fetch('http://54.88.62.27/spoolapi/api/new',requestOptions).then(handleResponse)

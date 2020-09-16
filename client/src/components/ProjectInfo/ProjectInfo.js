@@ -77,7 +77,7 @@ function ProjectInfo(props) {
         </div>
         <div className="row bg-white">
             <div className="col my-3 text-center">
-                <Application {...props.data}/>
+                <Application {...props}/>
             </div>
         </div> 
     </div>
