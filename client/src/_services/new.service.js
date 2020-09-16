@@ -48,7 +48,7 @@ function _delete(id) {
 
 function handleResponse(response) {
     return response.text().then(text => {
-        const data = text && JSON.parse(text);
+        const data = text 
         if (!response.ok) {
             if (response.status === 401) {
                 

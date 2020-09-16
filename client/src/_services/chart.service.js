@@ -14,7 +14,7 @@ function getSkills () {
         headers: authHeader()
     }
 
-    return fetch('http://localhost:3000/api/chart/skills/',requestOptinos).then(handleResponse);
+    return fetch('http://54.88.62.27/spoolapi/api/chart/skills/',requestOptinos).then(handleResponse);
 }
 
 function getCategories() {
@@ -23,7 +23,7 @@ function getCategories() {
         headers: authHeader()
     }
 
-    return fetch('http://localhost:3000/api/chart/categories/',requestOptinos).then(handleResponse);
+    return fetch('http://54.88.62.27/spoolapi/api/chart/categories/',requestOptinos).then(handleResponse);
 }
 
 function getIsSubject() {
@@ -32,7 +32,7 @@ function getIsSubject() {
         headers: authHeader()
     }
 
-    return fetch('http://localhost:3000/api/chart/is_subject/',requestOptinos).then(handleResponse);
+    return fetch('http://54.88.62.27/spoolapi/api/chart/is_subject/',requestOptinos).then(handleResponse);
 }
 
 function getSchool() {
@@ -41,7 +41,7 @@ function getSchool() {
         headers: authHeader()
     }
 
-    return fetch('http://localhost:3000/api/chart/school/',requestOptinos).then(handleResponse);
+    return fetch('http://54.88.62.27/spoolapi/api/chart/school/',requestOptinos).then(handleResponse);
 }
 
 
