@@ -89,18 +89,19 @@ router.get('/by_project/:projectId', async (req,res,next)=>{
 });
 
 router.put('/:id', async (req,res,next)=>{
-
     const app = await Application.update({ state: req.body.state }, {
         where: {
           id: req.params.id
         }
       });
-
-    if(!app){
-        res.status(404).send({message:'Aplicación no pudo ser actualizada.'})
-    }else{
-        next();
-    }
+      
+        if(!app){
+            res.status(404).send({message:'Aplicación no pudo ser actualizada.'})
+        }else{
+            
+            res.status(200).json({updated: true, message: "Se ha actualizado correctamente"});
+            next();
+        }
 
 }, updateApplication);
 

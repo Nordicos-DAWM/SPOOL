@@ -94,25 +94,43 @@ let deleteProject = async (req,res,next) =>{
 
 
 let updateApplication = async (req,res,next) =>{
-    const app =  await Application.findOne({ 
-        where: {
-            projectId: req.params.id
-        },
-        include:[{
-            model: User,
-            attributes: ['firstName','email']
-        },{
-            model: Project,
-            attributes: ['title']
-        }],
-    });
-    res.status(200).json({updated: true, message: "Se ha actualizado correctamente"});
+        
+        const apps =  await Application.findAll({ 
+            where: {
+                projectId: req.body.projectId,
+            },
+            include:[{
+                model: User,
+                attributes: ['firstName','email']
+            },{
+                model: Project,
+                attributes: ['title']
+            }],
+        });
+        apps.forEach(async app => {
+            if (app.id == req.params.id){
+                try{
+                    sendEmail(app.user.firstName, app.project.title, req.body.state, app.user.email, req.body.rejectionReason,res);
+                
+                }catch(error){
+                    console.log(error);
+                }
+            }
+            else if (req.body.state =="Aceptado"){
 
-    try{
-    sendEmail(app.user.firstName, app.project.title, req.body.state, app.user.email, req.body.rejectionReason,res);
-    }catch(error){
-        console.log("Error autenticando el correo");
-    }
+            await Application.update({ state: "Rechazado" }, {
+                where: {
+                  id: app.id,
+                }
+              });
+            
+                try{
+                    sendEmail(app.user.firstName, app.project.title, "Rechazado",app.user.email, "En este proyecto ha aceptado otra aplicación",res);
+                }catch(error){
+                    console.log(error);
+                }
+            }
+        });
 
 }
 
