@@ -16,17 +16,19 @@ const MainRouter = () =>{
                 <Route exact path="/student/project/:id" component={Project}/>
                 <Route path="/student/applications" component={ApplicationStudents}/>
 
-                <Route path="/client/charts" component={ChartsPage}/>
+                
                 <Route exact path="/client/project/:id" component={ProjectProposer}/>
                 <Route path="/client/newproject" component={CreateProject}/>
-                <Route path="/client/reports" component={Reports}/>
+                
                 <Route exact path="/client/pool" component={ClientPool}/>
 
                 <Route path="/register/student" component={RegisterStudent}/>
                 <Route path="/register/client" component={RegisterClient}/>
                 <Route path="/register" component={RegisterHome}/>
                 <Route path="/login" component={Login}/>
-                
+
+                <Route path="/admin/charts" component={ChartsPage}/>
+                <Route path="/admin/reports" component={Reports}/>
                 <Route path="/admin/news" component={NewsAdmin}/>
                 <Route path="/admin" component={AdminHome}/>
                 <Route exact path="/help" component={Help}/>

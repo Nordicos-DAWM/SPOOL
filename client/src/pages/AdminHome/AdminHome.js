@@ -5,7 +5,7 @@ import dataCenter from '../../assets/data.jpg';
 const AdminHome = ()=>{
     return(
         <> 
-        <NavBar2 activePage='ourTeam'/>
+        <NavBar2 userType='admin' isLoggedIn={true} activePage='adminHome'/>
         <section className="page-header page-header-text-light py-0 mb-0">
                 <section className="hero-wrap section">
                         <div className="hero-mask opacity-7 bg-dark"></div>

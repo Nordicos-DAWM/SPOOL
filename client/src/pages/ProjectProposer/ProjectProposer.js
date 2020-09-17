@@ -66,6 +66,8 @@ function ProjectProposer({ match }) {
     
   }, [])
 
+  
+
   if (loading) {
     return <Preloader />
   }
@@ -74,7 +76,7 @@ function ProjectProposer({ match }) {
     <Fragment>
       <NavBar2 userType='client' isLoggedIn={true} activePage='clientPool' />
       <div className="container mt-5">
-        <ProjectInfoEditable data={project} setData={setProject} />
+        <ProjectInfoEditable data={project} setData={setProject}  />
         <hr class="mb-4" />
         <h4 class="mb-3">Propuestas</h4>
         {applications && applications.map(i => <Proposal key={i.id} data={i} applications={applications}/>)}

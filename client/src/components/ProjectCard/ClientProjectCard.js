@@ -18,10 +18,10 @@ function ClientProjectCard(props) {
 
                     <div className="row mx-1 d-flex justify-content-between">
                         <div className="d-inline-flex pt-2">
-                            <label htmlFor="campana" className="text-3 bell">Aplicaciones</label>
+                            <label htmlFor="campana" className="text-3 bell">Eliminar Proyecto</label>
                             <div id="campana" style={{float:"left"}}>
                                 <a href=" " style={{float:"left"}}>
-                                    <i className="far fa-bell bell pl-2"></i>
+                                    <i className="fas fa-trash pl-2"></i>
                                 </a>
                                 <span className="badge badge-info">{props.applications}</span>
                             </div>

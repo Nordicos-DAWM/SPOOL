@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {ReportTable} from '../../components';
+import {ReportTable,NavBar2} from '../../components';
 const Reports = () => {
     const [selectOp,setSelectOp] = useState('users');
     const [filter,setFilter] = useState('');
@@ -13,7 +13,8 @@ const Reports = () => {
 
 
     return (
-        <>
+        <>  
+            <NavBar2 userType='admin' isLoggedIn={true} activePage='adminReports'/>
             <section className="page-header page-header-text-dark bg-white py-5 mb-0">
                 <div className="container">
                     <div className="row align-items-center">

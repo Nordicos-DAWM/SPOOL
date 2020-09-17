@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './style.css'
-
+import {projectService} from '../../_services';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function ProjectInfoEditable(props) {
@@ -13,6 +13,7 @@ function ProjectInfoEditable(props) {
         let descriptionRef = React.createRef();
         let emailRef = React.createRef();
         let maxParticipantRef = React.createRef();
+        let editedProject = {...props.data}
 
 
         let handleEditable= (e) =>{ 
@@ -43,12 +44,14 @@ function ProjectInfoEditable(props) {
             let {name} = e.target;
             if (name==="titleOpt"){
                 let value = nameRef.current.value;
-                props.setData(data => ({ ...data, "name": value }));
+                props.setData(data => ({ ...data, "title": value }));
+                editedProject['title'] = value;
                 setEditableTitle(false);
             }
             if (name==="secondaryOpt"){
                 let proposer = proposerRef.current.value;
-                props.setData(data => ({ ...data, proposer }));                
+                props.setData(data => ({ ...data, proposer }));
+                editedProject['proposer'] = proposer;                
                 setEditableSecondaryInfo(false);
             }
             if (name==="aditionalOpt"){
@@ -58,12 +61,37 @@ function ProjectInfoEditable(props) {
 
                 props.setData(data => ({ ...data, maxParticipants }));                
                 props.setData(data => ({ ...data,  description }));                
-                props.setData(data => ({ ...data, email }));                
-                
+                props.setData(data => ({ ...data, email }));
+                editedProject['maxParticipants'] = maxParticipants;
+                editedProject['description'] = description;              
+                editedProject['email'] = email;
                 setEditableAditionalInfo(false);
             }
-            
+
+            editProject(editedProject);
         }
+
+        const editProject = (newProject) =>{
+            let project = {
+                "id": newProject.id,
+                "title": newProject.title,
+                "description": newProject.description,
+                "maxParticipants": newProject.maxParticipants,
+                "contactEmail": newProject.contactEmail,
+            }
+            console.log(project)
+            projectService.update(project)
+            .then(
+                editedProject =>{
+                    console.log(editedProject)
+                },
+                error =>{
+                    console.log(error);
+                }
+            )
+        }
+
+        
     return (<>
             <div>
             <div className=" info" id="containerInfo">
@@ -111,8 +139,8 @@ function ProjectInfoEditable(props) {
                             <div className="col-md-4 col-lg-5 col-sm-12 ">
                                 <p className="text-4 mb-0">Propuesto por</p>
                                 {editableSecondaryInfo
-                                    ? <input ref={proposerRef} type="text" class="form-control"  defaultValue ={props.data.proposer} />
-                                    : <h6 >{ props.data.proposer }</h6>
+                                    ? <input ref={proposerRef} type="text" class="form-control"  defaultValue ={`${props.data.user.firstName} ${props.data.user.lastName}`} />
+                                    : <h6 >{ props.data.user.firstName +' '+props.data.user.lastName  }</h6>
                                     }
                             </div>
 
@@ -183,8 +211,8 @@ function ProjectInfoEditable(props) {
                                         <h5 className=" display-5 card-title">Contacto</h5>
                                         {
                                         editableAditionalInfo
-                                        ?    <input ref={emailRef} class="form-control" defaultValue={props.data.email} />
-                                        :   <p className="card-text">{props.data.email}</p>
+                                        ?    <input ref={emailRef} class="form-control" defaultValue={props.data.contactEmail} />
+                                        :   <p className="card-text">{props.data.contactEmail}</p>
                                         
                                         }
                                     </div>

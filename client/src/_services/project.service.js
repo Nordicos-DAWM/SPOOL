@@ -29,12 +29,13 @@ function get(){
     return fetch(`http://54.88.62.27/spoolapi/api/project/`,requestOptions).then(handleResponse)
 }
 
-function update(id){
+function update(newProject){
     const requestOptions = {
         method: 'PUT',
-        headers: authHeader()
+        headers: {...authHeader(),'Content-Type':'application/json' },
+        body:JSON.stringify(newProject)
     };
-    return fetch(`http://54.88.62.27/spoolapi/api/project/${id}`,requestOptions).then(handleResponse)
+    return fetch(`http://54.88.62.27/spoolapi/api/project/${newProject.id}`,requestOptions).then(handleResponse)
 }
 
 function _delete(id){

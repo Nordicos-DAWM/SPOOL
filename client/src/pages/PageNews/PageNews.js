@@ -12,6 +12,7 @@ const PageNews = ()=>{
                 .then(
                     news => {
                         setNews(news);
+                        console.log(news);
                         setLoading(false);
                     },
                     error => {

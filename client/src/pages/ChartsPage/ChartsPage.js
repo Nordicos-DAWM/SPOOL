@@ -57,7 +57,7 @@ const ChartsPage = () =>{
 
     return(
         <>
-            <NavBar2 userType='client' isLoggedIn={true} activePage='clientCharts'/>
+            <NavBar2 userType='admin' isLoggedIn={true} activePage='adminCharts'/>
             <section className="page-header page-header-text-dark bg-white py-5 mb-0">
                 <div className="container">
                     <div className="row align-items-center">

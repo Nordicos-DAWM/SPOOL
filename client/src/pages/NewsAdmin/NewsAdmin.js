@@ -61,7 +61,7 @@ const NewsAdmin = ()=>{
     }
     return(
         <>
-            <NavBar2 activePage = 'news'/>
+            <NavBar2 userType='admin' isLoggedIn={true} activePage='adminNews'/>
                 <section className="page-header page-header-text-dark bg-white py-5 mb-0 pb-0">
                         <div className="container">
                             <div className="row align-items-center">

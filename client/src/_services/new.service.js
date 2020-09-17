@@ -10,8 +10,7 @@ export const newService = {
 
 function getAll() {
     const requestOptions = {
-        method:'GET',
-        headers:{...authHeader(),'Content-Type':'application/json','mode':'no-cors' },
+        method:'GET'
     };
 
     return fetch('http://54.88.62.27/spoolapi/api/new',requestOptions).then(handleResponse)
@@ -48,7 +47,7 @@ function _delete(id) {
 
 function handleResponse(response) {
     return response.text().then(text => {
-        const data = text 
+        const data = text && JSON.parse(text);
         if (!response.ok) {
             if (response.status === 401) {
                 
