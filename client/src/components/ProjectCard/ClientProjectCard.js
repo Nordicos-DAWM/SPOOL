@@ -17,7 +17,7 @@ function ClientProjectCard(props) {
     }
 
     function colorText(){
-        if(props.state==='Activo'){
+        if(props.state==='Disponible'){
             return "text-success"
         }else{
             return "text-warning"
@@ -27,7 +27,7 @@ function ClientProjectCard(props) {
         <>
         <div className="project-card col-md-4 mb-5">
             <div className="bg-white pb-1 shadow-sm rounded">
-                <div className="color-card"/>
+                <div className="color-card" style={{backgroundColor:props.color}}/>
                 <div className="m-4">
                     <h3 className="text-center">{props.title}</h3>
                     <div className="row mb-3 mx-1 d-flex justify-content-between">
