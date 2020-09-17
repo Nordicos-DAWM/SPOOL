@@ -4,12 +4,14 @@ const ReportTable = (props) => {
     const columns = props.columns;
     let data = props.data;
     const filter = props.filter;
-
+    console.log(data);
     //Filtramos los datos antes de pasar los datos
     data = data.filter((obj)=>obj['type'].toLowerCase() === filter)
-
+    
     return (
+        
         <>
+         
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
@@ -25,14 +27,18 @@ const ReportTable = (props) => {
                                 <tr>
                                     {Object.values(dat).map((value)=>{
                                         return <td>{value}</td>
-                                    })}
+                                    })
+                                    }
                                 </tr>
                             );
-                        })}
+                        })
+                        }
                     </tbody>
                 </table>
             </div>
+        
         </>
+        
     )
 }
 

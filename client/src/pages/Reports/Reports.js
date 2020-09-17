@@ -1,8 +1,15 @@
-import React,{useState} from 'react';
-import {ReportTable,NavBar2} from '../../components';
+import React,{useState,useEffect} from 'react';
+import {ReportTable,NavBar2,Preloader} from '../../components';
+import {userService,projectService} from '../../_services';
 const Reports = () => {
     const [selectOp,setSelectOp] = useState('users');
     const [filter,setFilter] = useState('');
+    const [userData,setUserData] = useState(null);
+    const [projectData,setProjectData] = useState(null);
+    const [loading,setLoading] = useState({user:true,project:true,userData:true,projectData:true});
+    const  [userTypes,setUserTypes] = useState(null);
+    const  [projectTypes,setProjectTypes] = useState(null);
+
     const handleChange = (e) => {
         setSelectOp(e.target.value);
     }
@@ -12,6 +19,73 @@ const Reports = () => {
     }
 
 
+    useEffect(() => {
+        function fetchUserTypes(){
+            userService.getTypes()
+            .then(
+                types =>{
+                    setUserTypes(types);
+                    setLoading({...loading,user:false})
+                },
+                error =>{
+                    console.log(error);
+                }
+            )
+        }
+        function fetchUserData(){
+            userService.getReports()
+            .then(
+                reports =>{
+                    setUserData(reports);
+                    setLoading({...loading,userData:false})
+                },
+                error =>{
+                    console.log(error);
+                }
+            )
+        }
+        function fetchProjectTypes(){
+            projectService.getTypes()
+            .then(
+                types =>{
+                    setProjectTypes(types);
+                    setLoading({...loading,project:false});
+                },
+                error =>{
+                    console.log(error);
+                }
+            )
+        }
+        function fetchProjectData(){
+            projectService.getReports()
+            .then(
+                reports =>{
+                    setProjectData(reports);
+                    setLoading({...loading,projectData:false})
+                },
+                error =>{
+                    console.log(error);
+                }
+            )
+        }
+        fetchUserTypes();
+        fetchUserData()
+        fetchProjectTypes();
+        fetchProjectData()
+    }, []);
+
+
+    function transformUser(user){
+        return {userId:user.userId,user:user.email,type:user.type,timestamp:user.timestamp}
+    }
+
+    function transformProject(project){
+        return {projectId:project.userId,type:project.mainCategory,stateBefore:project.stateBefore,stateNow:project.stateNow,timestamp:project.timestamp}
+    }
+
+    if(loading.user && loading.project && loading.projectData && loading.userData){
+        return <Preloader/>
+    }
     return (
         <>  
             <NavBar2 userType='admin' isLoggedIn={true} activePage='adminReports'/>
@@ -41,20 +115,17 @@ const Reports = () => {
                                     <div className="form-group col-md-6">
                                         <p className="lead mb-0">Tipo</p>
                                         <select className="form-control" id="type" onChange={handleFilterChange}>
-                                            { selectOp==='users' &&
-                                                <>
-                                                    <option value='admin'>Admin</option>
-                                                    <option value='student'>Student</option>
-                                                    <option value='client'>Client</option>
-                                                </> 
+                                        <>
+                                            { selectOp==='users' && userTypes && userTypes.map((type)=>{
+                                                return(<option value={type.type}>{type.type}</option>)
+                                            })
                                             }
-                                            { selectOp==='projects' &&
-                                                <>
-                                                    <option value='cs'>Computer Science</option>
-                                                    <option value='math'>Math</option>
-                                                    <option value='bd'>Big Data</option>
-                                                </> 
+                                        
+                                            { selectOp==='projects' && projectTypes && projectTypes.mainCategories.map((type)=>{
+                                                return(<option value={type.toLowerCase()}>{type.toLowerCase()}</option>)
+                                                })
                                             }  
+                                        </>
                                         </select>
                                     </div>
                                 </div>
@@ -66,7 +137,12 @@ const Reports = () => {
                     <div className="container bg-light">
                         <div className="row">
                             <div className="col">
-                                <ReportTable columns={['#','FirstName','LastName','Type']} data={[{id:1,fn:'Aaron',ln:'Seth',type:'Student'},{id:3,fn:'Rubops',ln:'Omg',type:'Admin'},{id:4,fn:'Lero',ln:'Roo',type:'Client'}]} filter={filter}/>
+                            {
+                                selectOp=='users' && userData && <ReportTable columns={['#','Usuario','Tipo','Timestamp']} data={userData.map((user)=>transformUser(user))} filter={filter}/>
+                            }
+                            {
+                                selectOp=='projects' && projectData && <ReportTable columns={['#','Categoria','Estado Anterior','Estado Actual','Timestamp']} data={projectData.map((project)=>transformProject(project))} filter={filter}/>
+                            }
                             </div>
                         </div>
                     </div>

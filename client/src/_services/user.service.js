@@ -8,7 +8,8 @@ export const userService = {
     getById,
     update,
     delete: _delete,
-    getReports
+    getReports,
+    getTypes
 };
 
 function login(username, password) {
@@ -82,6 +83,15 @@ function getReports(){
     };
 
     return fetch(`http://54.88.62.27/spoolapi/api/reports/user`, requestOptions).then(handleResponse);
+}
+
+function getTypes(){
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+
+    return fetch(`http://54.88.62.27/spoolapi/api/user/types`, requestOptions).then(handleResponse);
 }
 
 /*function getUser(token){

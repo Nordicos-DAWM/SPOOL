@@ -8,7 +8,8 @@ export const projectService = {
     delete:_delete,
     getById,
     getByUserId,
-    getReports
+    getReports,
+    getTypes
 };
 
 function add(project){
@@ -68,8 +69,17 @@ function getReports(){
         method: 'GET',
         headers: authHeader()
     };
-    return fetch(`/api/project/reports`,requestOptions).then(handleResponse)
+    return fetch(`http://54.88.62.27/spoolapi/api/reports/project`,requestOptions).then(handleResponse)
 }
+
+function getTypes(){
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+    return fetch(`http://54.88.62.27/spoolapi/api/chart/main_categories`,requestOptions).then(handleResponse)
+}
+
 
 function handleResponse(response) {
     return response.text().then(text=>{
