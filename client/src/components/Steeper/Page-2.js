@@ -57,6 +57,19 @@ const Page2 = (props) =>{
             setSelected(selected =>({ ...selected, 'selCategory': '' }));
         }       
     }
+    const values = props.values
+    const [next,setNext] = useState(false);
+    function nextStep(e){
+        setNext(true)
+        e.preventDefault();
+        console.log(values.skills.length!==0)
+        if(values.skills.length!==0 && values.subcategories.length!==0){
+            props.nextStep();
+            
+        }
+        
+    }
+    console.log(props)
 
     return( <>
         <div className="container-fluid">
@@ -64,7 +77,10 @@ const Page2 = (props) =>{
                 <div className="col-12 col-lg-5">
                     <div className="form-group">
                         <label htmlFor="category">Categorías ({props.categoriesNum}/7)</label>
-                        <input type="text" value={category} className="form-control" id="category" name="category" placeholder="Categorías" onChange={handleChange}/>
+                        <input type="text" value={category} className={"form-control "+(next && (values.subcategories.length===0)? 'is-invalid':'')} id="category" name="category" placeholder="Categorías" onChange={handleChange}/>
+                        {next && values.subcategories.length===0 &&
+                                    <div className="invalid-feedback">Subcategories are required</div>
+                                }
                         <button type="button" className="btn btn-primary px-2 py-1 " disabled={category?false:true} onClick={handleAddCategories}><i className="fas fa-plus"></i></button>
                         <button type="button" className="btn btn-danger px-2 py-1" disabled={selCategory?false:true} onClick={handleRemoveCategories}><i className="fas fa-minus"></i></button>
                     </div>
@@ -89,7 +105,10 @@ const Page2 = (props) =>{
                 <div className="col-12 col-lg-5">
                     <div className="form-group">
                         <label htmlFor="skill">Habilidades ({props.skillsNum}/7)</label>
-                        <input type="text" value={skill} className="form-control" id="skill" name="skill" placeholder="Habilidades" onChange={handleChange}/>
+                        <input type="text" value={skill} className={"form-control "+(next && values.skills.length===0? 'is-invalid':'')}  id="skill" name="skill" placeholder="Habilidades" onChange={handleChange}/>
+                        {next && values.skills.length===0 &&
+                                    <div className="invalid-feedback">Skills are required</div>
+                        }
                         <button type="button" className="btn btn-primary px-2 py-1" disabled={skill?false:true} onClick={handleAddSkill}><i className="fas fa-plus"></i></button>
                         <button type="button" className="btn btn-danger px-2 py-1" disabled={selSkill?false:true} onClick={handleRemoveSkill}><i className="fas fa-minus"></i></button>
                     </div>
@@ -113,7 +132,7 @@ const Page2 = (props) =>{
             <div className="row mt-3">
                 <div className="col text-center">
                     <button type="button" className="btn btn-primary mr-3" onClick={props.prevStep}>Atrás</button>
-                    <button type="button" className="btn btn-primary" onClick={props.nextStep}>Siguiente</button>
+                    <button type="button" className="btn btn-primary" onClick={nextStep}>Siguiente</button>
                 </div>
             </div>
         </div>
