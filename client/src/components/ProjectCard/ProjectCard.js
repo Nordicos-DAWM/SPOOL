@@ -6,7 +6,7 @@ function ProjectCard(props) {
         <>
         <div className="project-card col-sm-6 col-lg-4 mb-5">
             <div className="bg-white pb-1 shadow-sm rounded text-center">
-                <div className="color-card"/>
+                <div className="color-card" style={{backgroundColor:props.color}}/>
                 <div className="m-4">
                     <h3>{props.title}</h3>
                     <div className="row mb-3 mx-1 d-flex justify-content-between">
