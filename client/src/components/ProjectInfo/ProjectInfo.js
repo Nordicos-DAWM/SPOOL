@@ -9,7 +9,7 @@ function ProjectInfo(props) {
     return (
     <div className="container">
         <div className="row">
-            <div className="col p-4 p-md-5 my-3 bg-dark text-white title">
+            <div className="col p-4 p-md-5 my-3  bg-primary  text-white title">
                 <h1 className="text-white display-5 ">{props.title}</h1>
             </div>
         </div>
@@ -30,7 +30,7 @@ function ProjectInfo(props) {
         </div>
 
         <div className="row">
-            <div className="col-md-4 col-lg-4 col-sm-12 bg-dark text-white">
+            <div className="col-md-4 col-lg-4 col-sm-12 bg-primary text-white">
                 <div className="category_skills_div">
                     <h5 className="text-white">Categorías</h5>
                     {props.categories.map(i => <span className="badge badge-secondary badge-pill category"> {i.name}</span>)}

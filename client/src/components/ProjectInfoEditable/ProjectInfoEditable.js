@@ -105,7 +105,7 @@ function ProjectInfoEditable(props) {
                             <a href="# " name="titleOpt" onClick={handleSave}>Guardar</a>
                             <a href="# " name="titleOpt" class="text-danger" onClick={handleCancel}>Cancelar</a>
                             </>
-                        :   <a href="# " name="titleOpt" onClick={handleEditable}>Editar</a>
+                        :   <a href="# " name="titleOpt" onClick={handleEditable} style={{color:'#fe9004'}}>Editar</a>
                         
                         }
                         </span>
@@ -130,7 +130,7 @@ function ProjectInfoEditable(props) {
                                     <a href="# " name="secondaryOpt" onClick={handleSave}>Guardar</a>
                                     <a href="# " name="secondaryOpt" class="text-danger" onClick={handleCancel}>Cancelar</a>
                                     </>
-                                :   <a href="# " name="secondaryOpt" onClick={handleEditable}>Editar</a>
+                                :   <a href="# " name="secondaryOpt" onClick={handleEditable} style={{color:'#fe9004'}}>Editar</a>
                                 
                                 }
                             </span>
@@ -158,7 +158,7 @@ function ProjectInfoEditable(props) {
                 </div>
 
                 <div className="row">
-                    <div className="col-md-4 col-lg-4 col-sm-12 bg-dark text-white">
+                    <div className="col-md-4 col-lg-4 col-sm-12 bg-primary text-white">
                         <div className="category_skills_div">
                             <h5 className="text-white">Categorías</h5>
                             {props.data.categories.map(i => <span className="badge badge-secondary badge-pill category"> {i.name}</span>)}
@@ -179,7 +179,7 @@ function ProjectInfoEditable(props) {
                                         <a href="# " name="aditionalOpt" onClick={handleSave}>Guardar</a>
                                         <a href="# " name="aditionalOpt" class="text-danger" onClick={handleCancel}>Cancelar</a>
                                         </>
-                                    :   <a href="# " name="aditionalOpt" onClick={handleEditable}>Editar</a>
+                                    :   <a href="# " name="aditionalOpt" onClick={handleEditable} style={{color:'#fe9004'}}>Editar</a>
                                     
                                     }
                             </span>

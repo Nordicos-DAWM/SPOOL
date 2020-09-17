@@ -17,8 +17,8 @@ const Login = () =>{
     let alert = null
 
     useEffect(()=>{
-        //logout
-    });
+        userService.logout();
+    },[]);
 
     function handleChange (e) {
         const { name, value } = e.target;
