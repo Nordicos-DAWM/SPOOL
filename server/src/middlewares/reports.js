@@ -59,11 +59,12 @@ let userLogs = async (req,res,next) =>{
             attributes: ['type']
         }]
     });
+
     const newEntry = await userReport.create(
         {
             userId: user.id,
             email: user.email,
-            type: user.type,
+            type: user.userType.type,
             timestamp: new Date()
         }
     );  

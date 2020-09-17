@@ -10,6 +10,9 @@ const userReportSchema = new mongoose.Schema({
     type: {
         type: String
     },
+    userType:{
+        type: String
+    },
     timestamp: {
         type: Date
     }
