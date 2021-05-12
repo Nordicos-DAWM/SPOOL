@@ -17,7 +17,7 @@
     "request": "^2.88.2"
   },
   "devDependencies": {
-    "nodemailer": "^6.4.11",
+    "nodemailer": "^6.4.16",
     "nodemon": "^1.19.4"
   }
 }
