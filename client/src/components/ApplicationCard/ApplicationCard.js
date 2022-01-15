@@ -27,6 +27,10 @@ function ApplicationCard (props){
             return "text-warning"
         }
     }
+
+    const application = {
+        type:"Aplicación"
+    }
     return (
         <>
         <div className="card container m-4">
@@ -43,7 +47,7 @@ function ApplicationCard (props){
             
         </div>
         <ApplicationModal {...props} show={open} onHide={() => setOpen(false)}/>
-        <DeleteApplicationModal show={openDelete} onHide={()=>setOpenDelete(false)}/>
+        <DeleteApplicationModal {...application}show={openDelete} onHide={()=>setOpenDelete(false)}/>
         </>
         // react-bootstrap<ApplicationModal show={open} onHide={() => setOpen(false)}/>
         //<ApplicationModal open={open} toggle={toggle} key={props.id}/>
