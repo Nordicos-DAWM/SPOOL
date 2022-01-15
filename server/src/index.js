@@ -21,7 +21,7 @@ const reportsRouter = require('./routes/reports');
 
 /*Configuracion del servidor*/
 
-app.set('port' ,process.env.PORT || 8080);
+app.set('port' ,process.env.PORT || 8000);
 
 /*Middlewares*/
 app.use(morgan('dev'));
@@ -36,7 +36,7 @@ app.options('*', cors());
 
 /*Rutas*/
 
-app.use("/api/project",validarToken,projectRouter);
+app.use("/api/project",projectRouter);
 app.use("/api/chart/",validarToken,chartRouter);
 app.use("/api/new",newsRouter);
 app.use("/api/user",userRouter);
