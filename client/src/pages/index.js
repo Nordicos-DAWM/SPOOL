@@ -16,3 +16,4 @@ export * from './PageNews/PageNews';
 export * from './ChartsPage/ChartsPage';
 export * from './NewsAdmin/NewsAdmin';
 export * from './Reports/Reports';
+export * from './AdminHome/AdminHome';

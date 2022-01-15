@@ -1,4 +1,4 @@
-import { userConstants } from '../_constants';
+/*import { userConstants } from '../_constants';
 
 let user = JSON.parse(localStorage.getItem('token'));
 const initialState = user ? { loggedIn: true, user } : {};
@@ -22,4 +22,4 @@ export function authentication(state = initialState, action) {
     default:
       return state
   }
-}
+}*/

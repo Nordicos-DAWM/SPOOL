@@ -3,7 +3,7 @@ import Page1 from './Page-1';
 import Page2 from './Page-2';
 import Page3 from './Page-3';
 import ProgressStep from './ProgressStep';
-const Steeper = () =>{
+const Steeper = (props) =>{
     const [inputs,setInputs] = useState({
         title:'',
         category:'',
@@ -61,6 +61,22 @@ const Steeper = () =>{
         }
     }
 
+    function handleCreate(){
+        let project = inputs;
+        props.createProject({
+            title:project.title,
+            description:project.description,
+            mainCategory:project.category,
+            maxParticipants:project.maxParticipants,
+            color:project.color,
+            contactEmail:project.contactMail,
+            categories:project.subcategories,
+            skills:project.skills,
+            urlRepository:project.respositoryURL,
+            userId:props.userId
+        });
+    }
+
     const [step,setStep] = useState(0);
 
     const nextStep = () =>{
@@ -75,7 +91,7 @@ const Steeper = () =>{
         <ProgressStep step={step}/>
         { step===0 && <Page1 nextStep={nextStep} values={inputs} handleChange={handleChange} />}
         { step===1 && <Page2 nextStep={nextStep} values={inputs} prevStep={prevStep} handleAddCategories={handleAddCategories} handleAddSkill={handleAddSkill} skillsNum={nAtrr['skillsNum']} categoriesNum={nAtrr['categoriesNum']} handleRemoveCategories={handleRemoveCategories} handleRemoveSkill={handleRemoveSkill}/>}
-        { step===2 && <Page3 prevStep={prevStep} values={inputs} handleChange={handleChange}/>}
+        { step===2 && <Page3 prevStep={prevStep} values={inputs} handleChange={handleChange} createProject={handleCreate}/>}
     </>);
 }
 

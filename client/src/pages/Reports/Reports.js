@@ -1,8 +1,94 @@
-import React from 'react';
-
+import React,{useState,useEffect} from 'react';
+import {ReportTable,NavBar2,Preloader} from '../../components';
+import {userService,projectService} from '../../_services';
 const Reports = () => {
+    const [selectOp,setSelectOp] = useState('users');
+    const [filter,setFilter] = useState('');
+    const [userData,setUserData] = useState(null);
+    const [projectData,setProjectData] = useState(null);
+    const [loading,setLoading] = useState({user:true,project:true,userData:true,projectData:true});
+    const  [userTypes,setUserTypes] = useState(null);
+    const  [projectTypes,setProjectTypes] = useState(null);
+
+    const handleChange = (e) => {
+        setSelectOp(e.target.value);
+    }
+
+    const handleFilterChange = (e) => {
+        setFilter(e.target.value);
+    }
+
+
+    useEffect(() => {
+        function fetchUserTypes(){
+            userService.getTypes()
+            .then(
+                types =>{
+                    setUserTypes(types);
+                    setLoading({...loading,user:false})
+                },
+                error =>{
+                    console.log(error);
+                }
+            )
+        }
+        function fetchUserData(){
+            userService.getReports()
+            .then(
+                reports =>{
+                    setUserData(reports);
+                    setLoading({...loading,userData:false})
+                },
+                error =>{
+                    console.log(error);
+                }
+            )
+        }
+        function fetchProjectTypes(){
+            projectService.getTypes()
+            .then(
+                types =>{
+                    setProjectTypes(types);
+                    setLoading({...loading,project:false});
+                },
+                error =>{
+                    console.log(error);
+                }
+            )
+        }
+        function fetchProjectData(){
+            projectService.getReports()
+            .then(
+                reports =>{
+                    setProjectData(reports);
+                    setLoading({...loading,projectData:false})
+                },
+                error =>{
+                    console.log(error);
+                }
+            )
+        }
+        fetchUserTypes();
+        fetchUserData()
+        fetchProjectTypes();
+        fetchProjectData()
+    }, []);
+
+
+    function transformUser(user){
+        return {userId:user.userId,user:user.email,type:user.type,timestamp:user.timestamp}
+    }
+
+    function transformProject(project){
+        return {projectId:project.userId,type:project.mainCategory,stateBefore:project.stateBefore,stateNow:project.stateNow,timestamp:project.timestamp}
+    }
+
+    if(loading.user && loading.project && loading.projectData && loading.userData){
+        return <Preloader/>
+    }
     return (
-        <>
+        <>  
+            <NavBar2 userType='admin' isLoggedIn={true} activePage='adminReports'/>
             <section className="page-header page-header-text-dark bg-white py-5 mb-0">
                 <div className="container">
                     <div className="row align-items-center">
@@ -14,23 +100,49 @@ const Reports = () => {
                 </div>
             </section>
             <div id="content">
-                <section className="section pt-5 pb-0">
+                <section className="section pt-3 pb-0">
                     <div className="container bg-light">
-                        <div id="horizontalTab" class="resp-htabs" style={{display: 'block', width: '100%', margin: '0px'}}>
-                            <ul class="resp-tabs-list">
-                                <li class="resp-tab-item resp-tab-active" aria-controls="tab_item-0" role="tab">Usuarios</li>
-                                <li class="resp-tab-item" aria-controls="tab_item-1" role="tab">Proyectos</li>
-                            </ul>
-                            <div class="resp-tabs-container">
-                                <h2 class="resp-accordion resp-tab-active" role="tab" aria-controls="tab_item-0"><i class="resp-arrow"></i>Responsive Tab-1</h2><div class="resp-tab-content resp-tab-content-active" style={{display:'block'}} aria-labelledby="tab_item-0">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna, euismod ut ornare non, volutpat vel tortor. Integer laoreet placerat suscipit. Sed sodales scelerisque commodo. Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis urna gravida mollis.</p>
+                        <div className="row">
+                            <div className="col-6">
+                                <div className="form-row">
+                                    <div className="form-group col-md-6">
+                                        <p className="lead mb-0">Tabla</p>
+                                        <select className="form-control" id="table" onChange={handleChange}>
+                                            <option value='users'>Usuarios</option>
+                                            <option value='projects'>Proyectos</option>
+                                        </select>
+                                    </div>
+                                    <div className="form-group col-md-6">
+                                        <p className="lead mb-0">Tipo</p>
+                                        <select className="form-control" id="type" onChange={handleFilterChange}>
+                                        <>
+                                            { selectOp==='users' && userTypes && userTypes.map((type)=>{
+                                                return(<option value={type.type}>{type.type}</option>)
+                                            })
+                                            }
+                                        
+                                            { selectOp==='projects' && projectTypes && projectTypes.mainCategories.map((type)=>{
+                                                return(<option value={type.toLowerCase()}>{type.toLowerCase()}</option>)
+                                                })
+                                            }  
+                                        </>
+                                        </select>
+                                    </div>
                                 </div>
-                                <h2 class="resp-accordion" role="tab" aria-controls="tab_item-1"><i class="resp-arrow"></i>Responsive Tab-2</h2><div class="resp-tab-content" aria-labelledby="tab_item-1">
-                                    <p>This tab has icon in consectetur adipiscing eliconse consectetur adipiscing elit. Vestibulum nibh urna, ctetur adipiscing elit. Vestibulum nibh urna, t.consectetur adipiscing elit. Vestibulum nibh urna,  Vestibulum nibh urna,it.</p>
-                                </div>
-                                <h2 class="resp-accordion" role="tab" aria-controls="tab_item-2"><i class="resp-arrow"></i>Responsive Tab-3</h2><div class="resp-tab-content" aria-labelledby="tab_item-2">
-                                    <p>Suspendisse blandit velit Integer laoreet placerat suscipit. Sed sodales scelerisque commodo. Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis Integer laoreet placerat suscipit. Sed sodales scelerisque commodo. Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis urna gravid urna gravid eget erat suscipit in malesuada odio venenatis.</p>
-                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section className="section pt-2 pb-0">
+                    <div className="container bg-light">
+                        <div className="row">
+                            <div className="col">
+                            {
+                                selectOp=='users' && userData && <ReportTable columns={['#','Usuario','Tipo','Timestamp']} data={userData.map((user)=>transformUser(user))} filter={filter}/>
+                            }
+                            {
+                                selectOp=='projects' && projectData && <ReportTable columns={['#','Categoria','Estado Anterior','Estado Actual','Timestamp']} data={projectData.map((project)=>transformProject(project))} filter={filter}/>
+                            }
                             </div>
                         </div>
                     </div>

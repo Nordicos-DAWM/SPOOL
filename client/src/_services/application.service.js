@@ -2,17 +2,58 @@ import { authHeader } from '../_helpers';
 import { userService } from './user.service';
 
 export const applicationService = {
-    add
+    add,
+    getByUserId,
+    getByProject,
+    updateState,
+    delete:_delete
 }
 
-function add(){
+function add(_new){
     const requestOptions = {
         method:'POST',
-        headers:{...authHeader,'Content-Type':'application/json'},
+        headers:{...authHeader(),'Content-Type':'application/json'},
         body:JSON.stringify(_new)
     }
 
-    return fetch('/api/application/',requestOptions).then(handleResponse)
+    return fetch('http://localhost:8000/api/application/',requestOptions).then(handleResponse)
+}
+
+function _delete(id){
+    const requestOptions = {
+        method:'DELETE',
+        headers:{...authHeader(),'Content-Type':'application/json'},
+    }
+
+    return fetch(`http://localhost:8000/api/application/${id}`,requestOptions).then(handleResponse)
+}
+
+function getByUserId(user_id){
+    const requestOptions = {
+        method:'GET',
+        headers:{...authHeader(),'Content-Type':'application/json'},
+    }
+
+    return fetch(`http://localhost:8000/api/application/by_student/${user_id}`,requestOptions).then(handleResponse)
+}
+
+function getByProject(id){
+    const requestOptions = {
+        method:'GET',
+        headers:{...authHeader(),'Content-Type':'application/json'},
+    }
+    return fetch(`http://localhost:8000/api/application/by_project/${id}`,requestOptions).then(handleResponse)
+}
+
+function updateState(newState){
+    const requestOptions = {
+        method:'PUT',
+        headers:{...authHeader(),'Content-Type':'application/json'},
+        body: JSON.stringify(newState)
+    }
+
+    return fetch(`http://localhost:8000/api/application/${newState.id}`,requestOptions).then(handleResponse)
+
 }
 
 function handleResponse(response) {

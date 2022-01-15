@@ -1,17 +1,12 @@
 import React,{useState, useEffect} from 'react';
 import logo from '../../assets/Brand-01.png';
-import { useLocation } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import {history} from '../../_helpers';
-import { userActions } from '../../_actions';
 import { Link } from 'react-router-dom';
+import { userService } from '../../_services';
+import { history } from '../../_helpers';
 
-    function useQuery(){
-        return new URLSearchParams(useLocation().search)
-    }
+
 
 const Login = () =>{
-    const query = useQuery();
     
     const [inputs,setInputs] = useState({
         email:'',
@@ -19,27 +14,43 @@ const Login = () =>{
     });
     const [submitted,setSubmitted] = useState(false);
     const {email,password} = inputs;
-
-    const alert = useSelector(state =>state.alert);
-    const loggingIn = useSelector(state => state.authentication.loggingIn);
-    const dispatch = useDispatch();
+    let alert = null
 
     useEffect(()=>{
-        dispatch(userActions.logout());
-    });
+        userService.logout();
+    },[]);
 
     function handleChange (e) {
         const { name, value } = e.target;
         setInputs(inputs=>({ ...inputs, [name]:value }))
     }
 
-    function handleSubmit (e) {
+    function handleSubmit(e) {
         e.preventDefault();
         
         setSubmitted(true);
-        /*if(email && password){
-            dispatch(userActions.login(email,password,slug));
-        }*/
+        if(email && password){
+            userService.login(email,password)
+            .then(
+                user =>{
+                    localStorage.setItem("token", user.token);
+                    const type= user.user.userTypeId;
+                    if(type===1){
+                        history.push('/student/pool')
+                    }else if(type===2){
+                        history.push('/client/pool')
+                    }else{
+                        history.push('/admin')
+                    }
+
+
+                    window.location.reload()
+                },
+                error=>{
+                    alert = {message: error, type:"Danger"};//no hace na aiuda
+                }
+            )
+        }
         
     }
 
@@ -47,7 +58,7 @@ const Login = () =>{
         <div className="container">
             <div className="col-md-10 offset-md-1">
                 {
-                alert.message &&
+                alert &&
                 <div className={`alert ${alert.type}`}>{alert.message}</div>
                 }
                 <div className="row d-flex justify-content-center py-5">
@@ -83,17 +94,17 @@ const Login = () =>{
                             </div>
                             <button className="btn btn-primary"
                                 onClick={()=>{
-                                    let slug = query.get("slug");
+                                    /*let slug = query.get("slug");
                                     console.log(slug);
                                     if(slug === 'client'){
                                         history.push('/client/pool');
                                     }else{
                                         history.push('/student/pool');
-                                    }
-                                    window.location.reload()
+                                    }*/
+                                    //window.location.reload()
                                 }}
                             >
-                            {loggingIn && <span className="spinner-border spinner-border-sm mr-1"></span>}
+                            {/*loggingIn && <span className="spinner-border spinner-border-sm mr-1"></span>*/}
                             Ingresar
                             </button>
                         </form>

@@ -1,5 +1,5 @@
 {
-  "homepage":"http://Nordicos-DAWM.github.io/SPOOL",
+  "homepage": "http://Nordicos-DAWM.github.io/SPOOL",
   "name": "client",
   "version": "0.1.0",
   "private": true,
@@ -13,9 +13,9 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "bootstrap": "^4.5.0",
+    "chart.js": "^2.9.3",
     "intro.js": "^2.9.3",
     "intro.js-react": "^0.2.0",
-    "chart.js": "^2.9.3",
     "react": "^16.13.1",
     "react-bootstrap": "^1.2.2",
     "react-chartjs-2": "^2.9.0",

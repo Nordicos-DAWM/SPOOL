@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import {Doughnut} from 'react-chartjs-2';
 
-const MatterGraph = () =>{
+const MatterGraph = (props) =>{
     const [chartData,setChartData] = useState({});
     const [options,setOptions] = useState({});
     const chart = () =>{
         setChartData({
-            labels:["Si","No"],
+            labels:["No","Si"],
             datasets:[
                 {
                     label:'¿És una materia?',
-                    data:[20,2],
+                    data:props.count,
                     backgroundColor:[
                     'rgba(0, 117, 120, 1)',
                     'rgba(149, 52, 101, 1)']

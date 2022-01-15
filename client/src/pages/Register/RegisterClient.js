@@ -1,6 +1,8 @@
 import React,{useState} from 'react';
 import logo from '../../assets/Brand-01.png';
 import {putValidPass,putValidConfirmPass} from './validateForm';
+import { userService } from '../../_services';
+import { history } from '../../_helpers';                                       
 
 const RegisterClient = () =>{
     const [inputs,setInputs] = useState({
@@ -13,7 +15,7 @@ const RegisterClient = () =>{
 
 
     const [submitted,setSubmitted] = useState(false);
-    const {firstName,lastName,email,password,confirmPassword} = inputs;
+    const {firstName,lastName,email,password,birthday,confirmPassword} = inputs;
 
     function handleChange (e) {
         const { name, value } = e.target;
@@ -23,6 +25,17 @@ const RegisterClient = () =>{
     function handleSubmit (e) {
         e.preventDefault();
         setSubmitted(true);
+        const user = {...inputs,userTypeId:2}
+        userService.register(user)
+            .then(
+                user =>{
+                    history.replace('/login');
+                    window.location.reload()
+                },
+                error=>{
+                    console.log(error)
+                }
+            )
         //Realizar verificacion de usuario
     }
 
@@ -86,7 +99,7 @@ const RegisterClient = () =>{
                                     </div>
                                 </div>
 
-                                <div class="form-row">
+                                <div className="form-row">
                                     <div className="form-group col-12">
                                     <input
                                     type="email"
@@ -103,7 +116,7 @@ const RegisterClient = () =>{
 
                                 </div>
 
-                                <div class="form-row">
+                                <div className="form-row">
                                     <div className="form-group col-12">
                                     <input
                                     type="password"
@@ -111,7 +124,7 @@ const RegisterClient = () =>{
                                     id="password"
                                     defaultValue={password}
                                     onChange={validatePass}
-                                    onMouseOver={seePassInfo}
+                                    onClick={seePassInfo}
                                     onMouseOut={hiddenPassInfo}
                                     placeholder="Ingresa una contraseña"
                                     className={'form-control' + (submitted && !password ? ' is-invalid' : '')} />
@@ -125,7 +138,7 @@ const RegisterClient = () =>{
 
                                 </div>
 
-                                <div class="form-row">
+                                <div className="form-row">
                                     <div className="form-group col-12">
                                     <input
                                     type="password"
@@ -143,9 +156,25 @@ const RegisterClient = () =>{
 
                                 </div>
 
-                                <div class="form-row">
+                                <div className="form-row">
                                     <div className="form-group col-12">
-                                        <button type="submit" className="btn btn-primary">Registrarse</button>
+
+                                        <input
+                                            type="date"
+                                            name="birthday"
+                                            defaultValue={birthday}
+                                            onChange={handleChange}
+                                            className={'form-control' + (submitted && !birthday ? ' is-invalid' : '')} />
+                                            {submitted && !birthday &&
+                                                <div className="invalid-feedback">Birthday is required</div>
+                                            }
+                                    </div>
+
+                                </div>
+
+                                <div className="form-row">
+                                    <div className="form-group col-12">
+                                        <button type="submit" className="btn btn-primary d-block mx-auto">Registrarse</button>
                                     </div>
                                 
                                 </div>

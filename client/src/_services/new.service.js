@@ -10,11 +10,10 @@ export const newService = {
 
 function getAll() {
     const requestOptions = {
-        method:'GET',
-        headers:authHeader(),
+        method:'GET'
     };
 
-    return fetch('/api/new/',requestOptions).then(handleResponse)
+    return fetch('http://localhost:8000/api/new',requestOptions).then(handleResponse)
 }
 
 function add(_new) {
@@ -24,7 +23,7 @@ function add(_new) {
         body:JSON.stringify(_new)
     };
 
-    return fetch('/api/new/',requestOptions) .then(handleResponse)
+    return fetch('http://localhost:8000/api/new/',requestOptions).then(handleResponse)
 }
 
 function update(_new) {
@@ -34,17 +33,16 @@ function update(_new) {
         body:JSON.stringify(_new)
     };
 
-    return(`/api/new/${_new.id}`,requestOptions).then(handleResponse);
+    return fetch(`http://localhost:8000/api/new/${_new.id}`,requestOptions).then(handleResponse);
 }
 
 function _delete(id) {
     const requestOptions = {
-        method:'PUT',
+        method:'DELETE',
         headers:authHeader(),
-        body:JSON.stringify(_new)
     };
 
-    return(`/api/new/${id}`,requestOptions).then(handleResponse);
+    return fetch(`http://localhost:8000/api/new/${id}`,requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {

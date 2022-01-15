@@ -1,9 +1,63 @@
 import React from 'react';
 import {CategoriesPlot,SkillsPlot,FacultyGraph,MatterGraph,NavBar2,Footer} from '../../components';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { chartService } from '../../_services'
 const ChartsPage = () =>{
+    const[skills,setSkills]= useState(null);
+    const[categories,setCategories]=useState(null);
+    const[subject,setSubject]=useState(null);
+    const[school,setSchool]=useState(null)
+
+    useEffect(()=>{
+        function fetchSkills(){
+            chartService.getSkills()
+            .then(
+                skills=>{
+                    setSkills(skills);
+                },
+                error=>{
+                    console.log(error)
+                }
+            )
+        }
+        function fetchCategories(){
+            chartService.getCategories()
+            .then(
+                categories=>{
+                    setCategories(categories)
+                },
+                error=>{console.log(error)}
+            )
+        }
+        function fetchSubject(){
+            chartService.getIsSubject()
+            .then(
+                isSubject=>{
+                    setSubject(isSubject)
+                },error=>{console.log(error)}
+            )
+        }
+
+        function fetchSchool(){
+            chartService.getSchool()
+            .then(
+                schools=>{
+                    console.log(schools)
+                    setSchool(schools)
+                },error=>{console.log(error)}
+            )
+        }
+        fetchSkills();
+        fetchCategories();
+        fetchSubject();
+        fetchSchool();
+
+    },[])
+
     return(
         <>
-            <NavBar2 userType='client' isLoggedIn={true} activePage='clientCharts'/>
+            <NavBar2 userType='admin' isLoggedIn={true} activePage='adminCharts'/>
             <section className="page-header page-header-text-dark bg-white py-5 mb-0">
                 <div className="container">
                     <div className="row align-items-center">
@@ -21,28 +75,28 @@ const ChartsPage = () =>{
                             <div className="col-12 col-md-6 mb-5">
                                 <div className="bg-white shadow-sm rounded p-4">
                                     <div className="featured-box style-4 py-2 text-left">
-                                        <SkillsPlot/>
+                                        {skills && <SkillsPlot {...skills}/>}
                                     </div>
                                 </div>
                             </div>
                             <div className="col-12 col-md-6 mb-5">
                                 <div className="bg-white shadow-sm rounded p-4">
                                     <div className="featured-box style-4 py-2 text-left">
-                                        <CategoriesPlot/>
+                                        {categories && <CategoriesPlot {...categories}/>}
                                     </div>
                                 </div>
                             </div>
                             <div className="col-12 col-md-6 mb-5">
                                 <div className="bg-white shadow-sm rounded p-4">
                                     <div className="featured-box style-4 py-2 text-left">
-                                        <MatterGraph/>
+                                        {subject && <MatterGraph {...subject}/>}
                                     </div>
                                 </div>
                             </div>
                             <div className="col-12 col-md-6 mb-5">
                                 <div className="bg-white shadow-sm rounded p-4">
                                     <div className="featured-box style-4 py-2 text-left">
-                                        <FacultyGraph/>
+                                        {school && <FacultyGraph {...school}/>}
                                     </div>
                                 </div>
                             </div>
