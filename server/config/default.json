@@ -1,11 +1,11 @@
 {
     "dbConfig": {
         "mysql": {
-            "db": "spool",
-            "user": "root",
+            "db": "spooldb",
+            "user": "admin",
             "password": "password",
             "sequelizeOpt":{
-                "host": "localhost",
+                "host": "spooldb.copztjl0ijpg.us-east-1.rds.amazonaws.com",
                 "dialect": "mysql",
                 "logging": false
             }

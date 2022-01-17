@@ -7,12 +7,12 @@ INSERT INTO spool.userTypes (id, type) VALUES
 (3,"admin");
 
 INSERT INTO spool.users (firstName, lastName, email, password, birthday, userTypeId) VALUES 
-("Valeria","Palacios","admin@espol.edu.ec","root", now(), 3),
-("Doménica","Barreiro","dombpala@espol.edu.ec","lalalala", now(), 2),
-("Carlos","Pillajo","cpillaj@espol.edu.ec","password", now(), 2),
-("Robert","Pillajo","robertmorenoc@gmail.com","12345678", now(), 1),
-("Doménica","Barreiro","dombpala@fiec.espol.edu.ec","12345678", now(), 1),
-("Alejandro","Vargas","alexvarg123@espol.edu.ec","12345678", now(), 1);
+("Valeria","Palacios","admin@espol.edu.ec","$2a$06$ExyQIwUTCxv.QO03SiaFF.g1XBZ1sw4WnRFhzMAUQgzV.w/Qb0dRS", now(), 3),
+("Doménica","Barreiro","dombpala@espol.edu.ec","$2a$06$ExyQIwUTCxv.QO03SiaFF.g1XBZ1sw4WnRFhzMAUQgzV.w/Qb0dRS", now(), 2),
+("Carlos","Pillajo","cpillaj@espol.edu.ec","$2a$06$ExyQIwUTCxv.QO03SiaFF.g1XBZ1sw4WnRFhzMAUQgzV.w/Qb0dRS", now(), 2),
+("Robert","Pillajo","robertmorenoc@gmail.com","$2a$06$ExyQIwUTCxv.QO03SiaFF.g1XBZ1sw4WnRFhzMAUQgzV.w/Qb0dRS", now(), 1),
+("Doménica","Barreiro","dombpala@fiec.espol.edu.ec","$2a$06$ExyQIwUTCxv.QO03SiaFF.g1XBZ1sw4WnRFhzMAUQgzV.w/Qb0dRS", now(), 1),
+("Alejandro","Vargas","alexvarg123@espol.edu.ec","$2a$06$ExyQIwUTCxv.QO03SiaFF.g1XBZ1sw4WnRFhzMAUQgzV.w/Qb0dRS", now(), 1);
 
 INSERT INTO spool.skills (id, name) VALUES
 (1,"Python"),
