@@ -58,7 +58,7 @@ Project.hasMany(Application);
 Application.belongsTo(Project);
 
 
-conn.sync({force:true})
+conn.sync({force:false})
 .then(()=> {
     console.log("MySQL connnection successful");
 })

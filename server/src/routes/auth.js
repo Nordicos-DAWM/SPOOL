@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs'); 
 const {User, UserType} = require('../databases/db');
 const router = Router();
-const {userLogs} = require('../middlewares/reports');
 const config = require('config');
 
 // USER LOGIN
@@ -32,7 +31,7 @@ router.post('/', async (req, res, next)=>{
     let token = jwt.sign(user, config.get('secretToken'), {expiresIn: '24h'});
     next();
     res.status(200).send({token: token, user: user});
-},userLogs);
+});
 
 module.exports = router;
 

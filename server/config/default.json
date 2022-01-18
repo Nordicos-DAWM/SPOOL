@@ -9,9 +9,6 @@
                 "dialect": "mysql",
                 "logging": false
             }
-        },
-        "mongodb":{
-            "url": "mongodb://localhost:27017/spoolReports"
         }
     },
     "mailer": {

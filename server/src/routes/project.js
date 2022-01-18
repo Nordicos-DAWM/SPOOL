@@ -3,7 +3,6 @@ const { Router } = require('express');
 const router = Router();
 
 const { Project, Skill, Category, User } = require("../databases/db");
-const { projectLogs, projectCreated} = require("../middlewares/reports");
 const { deleteProject} = require('../middlewares/mailer');
 
 
@@ -107,7 +106,7 @@ router.post('/',[
     } );  
     next();
     res.send(project);
-},projectCreated);
+});
 
 
 router.put('/:id',[
@@ -126,7 +125,7 @@ router.put('/:id',[
             return res.status(422).json({updated: true,message:errors["errors"][0]["msg"]});
         }
         next();
-    },projectLogs, async (req,res,next)=>{
+    }, async (req,res,next)=>{
         
         const projectsUpdated = await Project.update(req.body, {
             where: {
