@@ -19,7 +19,7 @@ function add(project){
         body:JSON.stringify(project)
     };
 
-    return fetch('http://localhost:8000/api/project/',requestOptions).then(handleResponse)
+    return fetch('http://ec2-54-224-159-194.compute-1.amazonaws.com//api/project/',requestOptions).then(handleResponse)
 }
 
 function get(){
@@ -27,7 +27,7 @@ function get(){
         method: 'GET',
         headers: authHeader()
     };
-    return fetch(`http://localhost:8000/api/project/`,requestOptions).then(handleResponse)
+    return fetch(`http://ec2-54-224-159-194.compute-1.amazonaws.com//api/project/`,requestOptions).then(handleResponse)
 }
 
 function update(newProject){
@@ -36,7 +36,7 @@ function update(newProject){
         headers: {...authHeader(),'Content-Type':'application/json' },
         body:JSON.stringify(newProject)
     };
-    return fetch(`http://localhost:8000/api/project/${newProject.id}`,requestOptions).then(handleResponse)
+    return fetch(`http://ec2-54-224-159-194.compute-1.amazonaws.com//api/project/${newProject.id}`,requestOptions).then(handleResponse)
 }
 
 function _delete(id){
@@ -44,7 +44,7 @@ function _delete(id){
         method: 'DELETE',
         headers: authHeader()
     };
-    return fetch(`http://localhost:8000/api/project/${id}`,requestOptions).then(handleResponse)
+    return fetch(`http://ec2-54-224-159-194.compute-1.amazonaws.com//api/project/${id}`,requestOptions).then(handleResponse)
 }
 
 
@@ -53,7 +53,7 @@ function getById(id){
         method: 'GET',
         headers: authHeader()
     };
-    return fetch(`http://localhost:8000/api/project/by_id/${id}`,requestOptions).then(handleResponse)
+    return fetch(`http://ec2-54-224-159-194.compute-1.amazonaws.com//api/project/by_id/${id}`,requestOptions).then(handleResponse)
 }
 
 function getByUserId(user_id){
@@ -61,7 +61,7 @@ function getByUserId(user_id){
         method: 'GET',
         headers: authHeader()
     };
-    return fetch(`http://localhost:8000/api/project/by_user/${user_id}`,requestOptions).then(handleResponse)
+    return fetch(`http://ec2-54-224-159-194.compute-1.amazonaws.com//api/project/by_user/${user_id}`,requestOptions).then(handleResponse)
 }
 
 function getReports(){
@@ -69,7 +69,7 @@ function getReports(){
         method: 'GET',
         headers: authHeader()
     };
-    return fetch(`http://localhost:8000/api/reports/project`,requestOptions).then(handleResponse)
+    return fetch(`http://ec2-54-224-159-194.compute-1.amazonaws.com//api/reports/project`,requestOptions).then(handleResponse)
 }
 
 function getTypes(){
@@ -77,7 +77,7 @@ function getTypes(){
         method: 'GET',
         headers: authHeader()
     };
-    return fetch(`http://localhost:8000/api/chart/main_categories`,requestOptions).then(handleResponse)
+    return fetch(`http://ec2-54-224-159-194.compute-1.amazonaws.com//api/chart/main_categories`,requestOptions).then(handleResponse)
 }
 
 

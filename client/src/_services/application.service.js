@@ -16,7 +16,7 @@ function add(_new){
         body:JSON.stringify(_new)
     }
 
-    return fetch('http://localhost:8000/api/application/',requestOptions).then(handleResponse)
+    return fetch('http://ec2-54-224-159-194.compute-1.amazonaws.com//api/application/',requestOptions).then(handleResponse)
 }
 
 function _delete(id){
@@ -25,7 +25,7 @@ function _delete(id){
         headers:{...authHeader(),'Content-Type':'application/json'},
     }
 
-    return fetch(`http://localhost:8000/api/application/${id}`,requestOptions).then(handleResponse)
+    return fetch(`http://ec2-54-224-159-194.compute-1.amazonaws.com//api/application/${id}`,requestOptions).then(handleResponse)
 }
 
 function getByUserId(user_id){
@@ -34,7 +34,7 @@ function getByUserId(user_id){
         headers:{...authHeader(),'Content-Type':'application/json'},
     }
 
-    return fetch(`http://localhost:8000/api/application/by_student/${user_id}`,requestOptions).then(handleResponse)
+    return fetch(`http://ec2-54-224-159-194.compute-1.amazonaws.com//api/application/by_student/${user_id}`,requestOptions).then(handleResponse)
 }
 
 function getByProject(id){
@@ -42,7 +42,7 @@ function getByProject(id){
         method:'GET',
         headers:{...authHeader(),'Content-Type':'application/json'},
     }
-    return fetch(`http://localhost:8000/api/application/by_project/${id}`,requestOptions).then(handleResponse)
+    return fetch(`http://ec2-54-224-159-194.compute-1.amazonaws.com//api/application/by_project/${id}`,requestOptions).then(handleResponse)
 }
 
 function updateState(newState){
@@ -52,7 +52,7 @@ function updateState(newState){
         body: JSON.stringify(newState)
     }
 
-    return fetch(`http://localhost:8000/api/application/${newState.id}`,requestOptions).then(handleResponse)
+    return fetch(`http://ec2-54-224-159-194.compute-1.amazonaws.com//api/application/${newState.id}`,requestOptions).then(handleResponse)
 
 }
 
