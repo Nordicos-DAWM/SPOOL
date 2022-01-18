@@ -14,7 +14,7 @@ function getSkills () {
         headers: authHeader()
     }
 
-    return fetch('http://ec2-54-224-159-194.compute-1.amazonaws.com//api/chart/skills/',requestOptinos).then(handleResponse);
+    return fetch('http://ec2-54-224-159-194.compute-1.amazonaws.com/api/chart/skills/',requestOptinos).then(handleResponse);
 }
 
 function getCategories() {
@@ -23,7 +23,7 @@ function getCategories() {
         headers: authHeader()
     }
 
-    return fetch('http://ec2-54-224-159-194.compute-1.amazonaws.com//api/chart/categories/',requestOptinos).then(handleResponse);
+    return fetch('http://ec2-54-224-159-194.compute-1.amazonaws.com/api/chart/categories/',requestOptinos).then(handleResponse);
 }
 
 function getIsSubject() {
@@ -32,7 +32,7 @@ function getIsSubject() {
         headers: authHeader()
     }
 
-    return fetch('http://ec2-54-224-159-194.compute-1.amazonaws.com//api/chart/is_subject/',requestOptinos).then(handleResponse);
+    return fetch('http://ec2-54-224-159-194.compute-1.amazonaws.com/api/chart/is_subject/',requestOptinos).then(handleResponse);
 }
 
 function getSchool() {
@@ -41,7 +41,7 @@ function getSchool() {
         headers: authHeader()
     }
 
-    return fetch('http://ec2-54-224-159-194.compute-1.amazonaws.com//api/chart/school/',requestOptinos).then(handleResponse);
+    return fetch('http://ec2-54-224-159-194.compute-1.amazonaws.com/api/chart/school/',requestOptinos).then(handleResponse);
 }
 
 
