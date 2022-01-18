@@ -11,7 +11,7 @@ function getUser(){
         method: 'GET',
         headers: authHeader()
     };
-    return fetch(`http://ec2-34-228-20-198.compute-1.amazonaws.com/api/user/me/`, requestOptions).then(handleResponse);
+    return fetch(`https://ec2-3-82-36-116.compute-1.amazonaws.com/api/user/me/`, requestOptions).then(handleResponse);
 }
 
 

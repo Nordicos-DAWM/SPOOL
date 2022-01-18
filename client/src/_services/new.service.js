@@ -13,7 +13,7 @@ function getAll() {
         method:'GET'
     };
 
-    return fetch('http://ec2-34-228-20-198.compute-1.amazonaws.com/api/new',requestOptions).then(handleResponse)
+    return fetch('https://ec2-3-82-36-116.compute-1.amazonaws.com/api/new',requestOptions).then(handleResponse)
 }
 
 function add(_new) {
@@ -23,7 +23,7 @@ function add(_new) {
         body:JSON.stringify(_new)
     };
 
-    return fetch('http://ec2-34-228-20-198.compute-1.amazonaws.com/api/new/',requestOptions).then(handleResponse)
+    return fetch('https://ec2-3-82-36-116.compute-1.amazonaws.com/api/new/',requestOptions).then(handleResponse)
 }
 
 function update(_new) {
@@ -33,7 +33,7 @@ function update(_new) {
         body:JSON.stringify(_new)
     };
 
-    return fetch(`http://ec2-34-228-20-198.compute-1.amazonaws.com/api/new/${_new.id}`,requestOptions).then(handleResponse);
+    return fetch(`https://ec2-3-82-36-116.compute-1.amazonaws.com/api/new/${_new.id}`,requestOptions).then(handleResponse);
 }
 
 function _delete(id) {
@@ -42,7 +42,7 @@ function _delete(id) {
         headers:authHeader(),
     };
 
-    return fetch(`http://ec2-34-228-20-198.compute-1.amazonaws.com/api/new/${id}`,requestOptions).then(handleResponse);
+    return fetch(`https://ec2-3-82-36-116.compute-1.amazonaws.com/api/new/${id}`,requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {
