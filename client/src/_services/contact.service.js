@@ -9,7 +9,7 @@ function sendMail(contactBody){
         body:JSON.stringify(contactBody)
     };
 
-    return fetch('https://ec2-3-82-36-116.compute-1.amazonaws.com/api/contact/',requestOptions).then(handleResponse)
+    return fetch('http://ec2-3-82-36-116.compute-1.amazonaws.com//api/contact/',requestOptions).then(handleResponse)
 }
 
 function handleResponse(response) {

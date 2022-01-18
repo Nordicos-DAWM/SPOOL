@@ -20,7 +20,7 @@ function login(username, password) {
         body: JSON.stringify(user)
     };
 
-    return fetch(`https://ec2-3-82-36-116.compute-1.amazonaws.com/api/auth/`, requestOptions).then(handleResponse)
+    return fetch(`http://ec2-3-82-36-116.compute-1.amazonaws.com//api/auth/`, requestOptions).then(handleResponse)
 }
 
 function logout() {
@@ -53,7 +53,7 @@ function register(user) {
         body: JSON.stringify(user)
     };
 
-    return fetch(`https://ec2-3-82-36-116.compute-1.amazonaws.com/api/user/`, requestOptions).then(handleResponse);
+    return fetch(`http://ec2-3-82-36-116.compute-1.amazonaws.com//api/user/`, requestOptions).then(handleResponse);
 }
 
 function update(user) {
@@ -82,7 +82,7 @@ function getReports(){
         headers: authHeader()
     };
 
-    return fetch(`https://ec2-3-82-36-116.compute-1.amazonaws.com/api/reports/user`, requestOptions).then(handleResponse);
+    return fetch(`http://ec2-3-82-36-116.compute-1.amazonaws.com//api/reports/user`, requestOptions).then(handleResponse);
 }
 
 function getTypes(){
@@ -91,7 +91,7 @@ function getTypes(){
         headers: authHeader()
     };
 
-    return fetch(`https://ec2-3-82-36-116.compute-1.amazonaws.com/api/user/types`, requestOptions).then(handleResponse);
+    return fetch(`http://ec2-3-82-36-116.compute-1.amazonaws.com//api/user/types`, requestOptions).then(handleResponse);
 }
 
 /*function getUser(token){
@@ -100,7 +100,7 @@ function getTypes(){
         body: JSON.stringify({token:token})
     };
 
-    return fetch(`https://ec2-3-82-36-116.compute-1.amazonaws.com/api/me/`, requestOptions).then(handleResponse);
+    return fetch(`http://ec2-3-82-36-116.compute-1.amazonaws.com//api/me/`, requestOptions).then(handleResponse);
 }
 */
 function handleResponse(response) {
